@@ -1,0 +1,3475 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blu Padel — Padel e Esportes de Areia em Blumenau</title>
+  <meta name="description" content="5 quadras de padel de vidro cobertas e 9 quadras de areia em Blumenau/SC. Reserve online sem mensalidade, faça aulas com profissionais, jogue torneios e assista seus lances em replay.">
+  <meta name="theme-color" content="#050B2E">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Blu Padel — Padel e Esportes de Areia em Blumenau">
+  <meta property="og:description" content="5 quadras de padel cobertas + 9 de areia. Reserve online, faça aulas e viva o padel em Blumenau.">
+  <meta property="og:image" content="assets/img/quadras-padel.webp">
+  <meta property="og:locale" content="pt_BR">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+/* ==========================================================================
+   BLU PADEL — Design tokens
+   Paleta extraída da identidade: azul royal profundo + verde-limão (bola) + branco
+   ========================================================================== */
+:root {
+  --navy-950: #030719;
+  --navy-900: #050B2E;
+  --navy-850: #071240;
+  --navy-800: #0A1650;
+  --navy-700: #0F2275;
+  --royal: #1B3FD1;
+  --court: #2158E8;
+  --lime: #D4F53C;
+  --lime-600: #BADB1F;
+  --white: #FFFFFF;
+  --paper: #F2F5FC;
+  --ink: #0A1650;
+  --ink-soft: #3B4A7A;
+  --muted: rgba(255, 255, 255, .72);
+  --line: rgba(255, 255, 255, .12);
+
+  --font-d: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
+  --font-b: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --r-xl: 36px;
+  --r-lg: 26px;
+  --r-md: 18px;
+  --r-sm: 12px;
+
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+
+  --container: 1320px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --section: clamp(88px, 12vw, 160px);
+}
+
+/* ========================== Base ========================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--navy-900);
+  color: var(--white);
+  font-family: var(--font-b);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+main { overflow-x: clip; }
+a { color: inherit; text-decoration: none; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p, figure { margin: 0; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+svg { flex-shrink: 0; }
+::selection { background: var(--lime); color: var(--navy-900); }
+
+:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; border-radius: 6px; }
+
+.skip-link {
+  position: fixed; left: 16px; top: -60px; z-index: 200;
+  background: var(--lime); color: var(--navy-900); padding: 10px 16px; border-radius: 10px; font-weight: 700;
+  transition: top .2s;
+}
+.skip-link:focus { top: 16px; }
+
+.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+.section { padding-block: var(--section); position: relative; }
+
+/* ========================== Typography ========================== */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-d); font-weight: 700; font-size: 15px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 18px;
+}
+.eyebrow::before { content: ""; width: 26px; height: 2px; background: currentColor; }
+.eyebrow--dark { color: var(--royal); }
+.hero__eyebrow::before { display: none; }
+.eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 4px rgba(212, 245, 60, .2); animation: pulse 2s infinite; }
+
+.h2 {
+  font-family: var(--font-d); font-weight: 800; text-transform: uppercase;
+  font-size: clamp(42px, 6.4vw, 92px); line-height: .92; letter-spacing: -.01em;
+  text-wrap: balance;
+}
+.h2 em, .final__title em { font-style: italic; color: var(--lime); }
+.h3 { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: clamp(28px, 3.4vw, 44px); line-height: 1; }
+.lead { font-size: clamp(17px, 1.4vw, 20px); color: var(--muted); max-width: 56ch; margin-top: 24px; }
+
+/* ========================== Buttons ========================== */
+.btn {
+  --bh: 54px;
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: var(--bh); padding: 0 26px;
+  border-radius: 999px;
+  font-family: var(--font-d); font-weight: 800; font-size: 18px; letter-spacing: .04em; text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .25s var(--ease-out), background-color .25s, color .25s, box-shadow .25s, border-color .25s;
+  isolation: isolate;
+  white-space: nowrap;
+}
+.btn__ico { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.btn--sm { --bh: 44px; padding: 0 20px; font-size: 16px; }
+.btn--lg { --bh: 60px; padding: 0 30px; font-size: 19px; }
+.btn--xl { --bh: 76px; padding: 0 42px; font-size: clamp(20px, 2vw, 26px); }
+
+.btn--lime { background: var(--lime); color: var(--navy-900); box-shadow: 0 10px 30px -10px rgba(212, 245, 60, .55); }
+.btn--lime:hover { background: #E2FF55; transform: translateY(-2px); box-shadow: 0 16px 40px -12px rgba(212, 245, 60, .7); }
+.btn--ghost { color: var(--white); border: 1.5px solid rgba(255, 255, 255, .28); background: rgba(255, 255, 255, .04); backdrop-filter: blur(8px); }
+.btn--ghost:hover { border-color: var(--lime); color: var(--lime); transform: translateY(-2px); }
+.btn--navy { background: var(--navy-800); color: var(--white); }
+.btn--navy:hover { background: var(--royal); transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(.97); }
+
+/* — Raquete que rebate o botão — */
+.btn-hit { overflow: visible; }
+.btn__racket {
+  position: absolute; left: -6px; top: 50%;
+  width: 30px; height: 66px;
+  transform-origin: 50% 96%;
+  transform: translate(-34px, -62%) rotate(-95deg);
+  opacity: 0; pointer-events: none; z-index: 2;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .35));
+}
+.btn__racket svg { width: 100%; height: 100%; }
+.btn__ball {
+  position: absolute; left: 0; top: 50%;
+  width: 16px; height: 16px; margin-top: -8px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #F4FFB0, var(--lime) 45%, #A9C716);
+  box-shadow: inset -2px -2px 4px rgba(0,0,0,.18);
+  opacity: 0; pointer-events: none; z-index: 3;
+}
+.btn__ball::after { content: ""; position: absolute; inset: 2px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.85); border-color: rgba(255,255,255,.9) transparent rgba(255,255,255,.9) transparent; transform: rotate(30deg); }
+.btn-hit.is-hitting .btn__racket { animation: racketSwing .8s var(--ease-out) both; }
+.btn-hit.is-hitting .btn__ball { animation: ballFly .8s cubic-bezier(.2, .7, .3, 1) both; }
+.btn-hit.is-hitting { animation: btnKick .8s both; }
+
+@keyframes racketSwing {
+  0% { opacity: 0; transform: translate(-46px, -62%) rotate(-120deg); }
+  30% { opacity: 1; transform: translate(-40px, -62%) rotate(-100deg); }
+  48% { opacity: 1; transform: translate(-30px, -62%) rotate(-10deg); }
+  62% { opacity: 1; transform: translate(-28px, -62%) rotate(30deg); }
+  100% { opacity: 0; transform: translate(-34px, -62%) rotate(55deg); }
+}
+@keyframes ballFly {
+  0%, 44% { opacity: 0; transform: translate(-14px, 0) scale(.6); }
+  48% { opacity: 1; transform: translate(-6px, 0) scale(1.2, .8); }
+  100% { opacity: 0; transform: translate(calc(var(--bw, 260px) + 60px), -70px) scale(.8) rotate(540deg); }
+}
+@keyframes btnKick {
+  0%, 46% { transform: none; }
+  52% { transform: translateX(5px) rotate(1.2deg) scale(.98); }
+  64% { transform: translateX(-2px) rotate(-.4deg); }
+  80%, 100% { transform: none; }
+}
+
+/* ========================== Cursor ========================== */
+.cursor-ball {
+  position: fixed; left: 0; top: 0; z-index: 300; pointer-events: none;
+  width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #F4FFB0, var(--lime) 50%, #A9C716);
+  opacity: 0; transition: width .25s var(--ease-out), height .25s var(--ease-out), margin .25s var(--ease-out), opacity .3s, background .25s;
+  mix-blend-mode: normal;
+}
+.cursor-ball.is-on { opacity: 1; }
+.cursor-ball.is-link { width: 46px; height: 46px; margin: -23px 0 0 -23px; background: rgba(212, 245, 60, .18); border: 1.5px solid var(--lime); }
+@media (hover: none), (pointer: coarse) { .cursor-ball { display: none; } }
+
+/* ========================== Header ========================== */
+.header {
+  position: fixed; inset: 0 0 auto; z-index: 100;
+  padding-block: 18px;
+  transition: padding .35s var(--ease-out), background-color .35s, backdrop-filter .35s, transform .4s var(--ease-out);
+}
+.header.is-scrolled { padding-block: 10px; background: rgba(5, 11, 46, .78); backdrop-filter: blur(14px) saturate(140%); border-bottom: 1px solid var(--line); }
+.header.is-hidden { transform: translateY(-110%); }
+.header__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+
+.logo { display: inline-flex; align-items: center; }
+.logo__img { display: block; height: 50px; width: auto; transition: transform .4s var(--ease-out); }
+.logo:hover .logo__img { transform: rotate(-3deg) scale(1.04); }
+.logo__img--lg { height: 92px; }
+@media (max-width: 560px) { .logo__img { height: 42px; } .logo__img--lg { height: 80px; } }
+
+.nav { display: flex; align-items: center; gap: 30px; }
+.nav__list { display: flex; gap: 28px; }
+.nav__list a {
+  font-family: var(--font-d); font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: .08em;
+  color: rgba(255,255,255,.82); position: relative; padding-block: 8px;
+  transition: color .2s;
+}
+.nav__list a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 2px; background: var(--lime); transform: scaleX(0); transform-origin: right; transition: transform .35s var(--ease-out); }
+.nav__list a:hover { color: var(--white); }
+.nav__list a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+.burger { display: none; width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--line); position: relative; z-index: 120; }
+.burger span { position: absolute; left: 14px; right: 14px; height: 2px; background: var(--white); transition: transform .35s var(--ease-out), top .35s var(--ease-out); }
+.burger span:first-child { top: 19px; }
+.burger span:last-child { top: 27px; }
+.burger[aria-expanded="true"] span:first-child { top: 23px; transform: rotate(45deg); }
+.burger[aria-expanded="true"] span:last-child { top: 23px; transform: rotate(-45deg); }
+
+@media (max-width: 1080px) {
+  .burger { display: block; }
+  .nav {
+    position: fixed; inset: 0; z-index: 110;
+    flex-direction: column; justify-content: center; align-items: flex-start; gap: 36px;
+    padding: 100px var(--gutter) 40px;
+    background: radial-gradient(120% 80% at 100% 0%, var(--navy-700), var(--navy-900) 60%);
+    clip-path: circle(0 at calc(100% - 44px) 40px);
+    transition: clip-path .7s var(--ease-out);
+    visibility: hidden;
+  }
+  .nav.is-open { clip-path: circle(150% at calc(100% - 44px) 40px); visibility: visible; }
+  .nav__list { flex-direction: column; gap: 6px; }
+  .nav__list a { font-size: clamp(38px, 10vw, 56px); font-weight: 800; letter-spacing: 0; color: var(--white); }
+  .nav__cta { --bh: 58px; font-size: 19px; }
+}
+
+/* ========================== Hero ========================== */
+.hero {
+  position: relative; min-height: 100vh; min-height: 100svh;
+  display: flex; align-items: center;
+  padding-block: 112px 90px;
+  overflow: hidden;
+  background: var(--navy-900);
+}
+.hero__bg { position: absolute; inset: 0; pointer-events: none; }
+.hero__glow {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(60% 55% at 72% 42%, rgba(33, 88, 232, .55), transparent 70%),
+    radial-gradient(40% 40% at 85% 75%, rgba(212, 245, 60, .10), transparent 70%),
+    radial-gradient(80% 60% at 0% 100%, rgba(15, 34, 117, .9), transparent 70%);
+}
+.hero__bgword {
+  position: absolute; right: -2vw; top: 50%; transform: translateY(-50%);
+  font-family: var(--font-d); font-weight: 900; font-style: italic;
+  font-size: clamp(160px, 30vw, 520px); line-height: .8; letter-spacing: -.02em;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(255, 255, 255, .07);
+  white-space: nowrap; user-select: none;
+}
+.hero__floor { position: absolute; left: -20%; right: -20%; bottom: -8%; height: 58%; perspective: 600px; perspective-origin: 50% 0%; }
+.hero__floor-lines {
+  position: absolute; inset: 0;
+  transform: rotateX(68deg); transform-origin: 50% 0;
+  background:
+    linear-gradient(to bottom, transparent 0, var(--navy-900) 0) 0 0 / 0 0 no-repeat,
+    linear-gradient(90deg, transparent calc(50% - 1px), rgba(255,255,255,.35) calc(50% - 1px), rgba(255,255,255,.35) calc(50% + 1px), transparent calc(50% + 1px)),
+    linear-gradient(transparent 0 46%, rgba(255,255,255,.3) 46% calc(46% + 2px), transparent calc(46% + 2px)),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 80px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 80px),
+    linear-gradient(180deg, rgba(33, 88, 232, .55), rgba(27, 63, 209, .25));
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+  animation: floorMove 6s linear infinite;
+}
+@keyframes floorMove { to { background-position: 0 0, 0 0, 0 0, 0 0, 0 80px, 0 0; } }
+
+#hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; cursor: pointer; }
+.hero__inner { position: relative; z-index: 2; pointer-events: none; }
+.hero__inner a, .hero__inner button { pointer-events: auto; }
+
+.hero__title {
+  font-family: var(--font-d); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(64px, min(9.6vw, 17vh), 172px); line-height: .84; letter-spacing: -.02em;
+  max-width: 9ch;
+}
+.hero__title .line { display: block; overflow: hidden; padding-bottom: .04em; }
+.hero__title .line__in { display: inline-block; }
+.hero__title em { font-style: italic; color: var(--lime); display: inline-block; padding-right: .06em; }
+.hit-word.is-hit { animation: wordHit .55s var(--ease-spring); }
+@keyframes wordHit {
+  0% { transform: none; }
+  30% { transform: translateX(10px) skewX(-8deg) scale(1.04); text-shadow: 0 0 40px rgba(212,245,60,.7); }
+  100% { transform: none; }
+}
+.hero__lead { max-width: 46ch; margin-top: 28px; font-size: clamp(17px, 1.45vw, 21px); color: var(--muted); }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+.hero__facts { display: flex; flex-wrap: wrap; gap: 14px 40px; margin-top: 44px; }
+.hero__facts li { display: flex; align-items: center; gap: 12px; }
+.hero__facts strong { font-family: var(--font-d); font-weight: 800; font-size: 46px; line-height: 1; color: var(--white); }
+.hero__facts li:last-child strong { color: var(--lime); font-style: italic; }
+.hero__facts span { font-size: 14px; line-height: 1.25; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+
+.hero__hint {
+  position: absolute; right: var(--gutter); bottom: 40px; z-index: 2;
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-d); font-weight: 700; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.6);
+}
+.hero__hint-ball { width: 12px; height: 12px; border-radius: 50%; background: var(--lime); animation: bounce 1s cubic-bezier(.5, 0, .5, 1) infinite alternate; }
+@keyframes bounce { from { transform: translateY(-6px); } to { transform: translateY(4px) scale(1.1, .85); } }
+
+.hero__scroll { position: absolute; left: 50%; bottom: 28px; z-index: 2; width: 28px; height: 46px; margin-left: -14px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,.35); }
+.hero__scroll span { position: absolute; left: 50%; top: 9px; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: var(--lime); animation: scrollDot 1.8s var(--ease-out) infinite; }
+@keyframes scrollDot { 0% { transform: translateY(0); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(20px); opacity: 0; } }
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(212,245,60,.5); } 50% { box-shadow: 0 0 0 7px rgba(212,245,60,0); } }
+
+@media (max-width: 860px) {
+  .hero { align-items: flex-start; padding-block: 110px 70px; }
+  .hero__title { font-size: clamp(60px, 18vw, 120px); }
+  .hero__lead { max-width: 34ch; }
+  .hero__facts { gap: 12px 26px; margin-top: 40px; }
+  .hero__facts strong { font-size: 36px; }
+  .hero__facts span { font-size: 12px; }
+  .hero__hint, .hero__scroll { display: none; }
+  .hero__bgword { top: auto; bottom: 4%; transform: none; }
+  .hero { padding-bottom: 0; flex-direction: column; align-items: stretch; }
+  .hero__inner { order: 1; }
+  #hero-canvas { order: 2; position: relative; inset: auto; height: 64vh; height: 64svh; margin-top: -60px; z-index: 1; }
+  .hero__eyebrow { font-size: 13px; letter-spacing: .14em; }
+}
+
+/* ========================== Fitas (marquee) ========================== */
+.tapes { position: relative; z-index: 3; height: clamp(150px, 15vw, 210px); margin-top: -60px; overflow: hidden; pointer-events: none; }
+.tape { position: absolute; left: -5%; right: -5%; top: 50%; overflow: hidden; padding-block: 16px; box-shadow: 0 20px 50px -20px rgba(0,0,0,.6); }
+.tape--lime { background: var(--lime); color: var(--navy-900); top: 56%; transform: translateY(-50%) rotate(-3deg); }
+.tape--navy { background: var(--navy-700); color: var(--white); top: 44%; transform: translateY(-50%) rotate(3.2deg); border-block: 1px solid rgba(255,255,255,.14); }
+.tape__track { display: flex; align-items: center; gap: 34px; width: max-content; will-change: transform; animation: marquee 28s linear infinite; }
+.tape--navy .tape__track { animation-direction: reverse; animation-duration: 36s; }
+.js .tape__track { animation: none; }
+.tape span { font-family: var(--font-d); font-weight: 900; font-style: italic; text-transform: uppercase; font-size: clamp(26px, 3vw, 40px); line-height: 1; white-space: nowrap; }
+.tape--navy span { font-size: clamp(20px, 2.2vw, 30px); font-weight: 800; letter-spacing: .04em; color: transparent; -webkit-text-stroke: 1.2px rgba(255,255,255,.85); }
+.tape i { width: 22px; height: 22px; border-radius: 50%; background: var(--navy-900); position: relative; flex-shrink: 0; }
+.tape i::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; border: 2px solid var(--lime); border-color: var(--lime) transparent; transform: rotate(30deg); }
+.tape b { width: 12px; height: 12px; background: var(--lime); transform: rotate(45deg); flex-shrink: 0; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ========================== Clube ========================== */
+.clube__grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(40px, 6vw, 100px); align-items: center; }
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 48px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; }
+.stat { background: var(--navy-900); padding: 26px 24px; }
+.stat strong { display: block; font-family: var(--font-d); font-weight: 800; font-size: 54px; line-height: 1; color: var(--lime); font-style: italic; }
+.stat span { display: block; margin-top: 10px; font-size: 15px; color: var(--muted); line-height: 1.4; }
+
+.clube__media { position: relative; aspect-ratio: 1 / 1.08; perspective: 1000px; }
+.clube__img { position: absolute; border-radius: var(--r-lg); overflow: hidden; box-shadow: 0 40px 80px -30px rgba(0,0,0,.7); transform-style: preserve-3d; will-change: transform; }
+.clube__img img { width: 100%; height: 100%; object-fit: cover; }
+.clube__img--a { inset: 0 18% 34% 0; }
+.clube__img--b { inset: 36% 0 0 40%; border: 6px solid var(--navy-900); }
+.clube__badge { position: absolute; left: 4%; bottom: 4%; width: 140px; height: 140px; display: grid; place-items: center; }
+.clube__badge svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 16s linear infinite; }
+.clube__badge text { font-family: var(--font-d); font-weight: 800; font-size: 13.2px; letter-spacing: .16em; fill: var(--white); }
+.clube__badge-ball { width: 54px; height: 54px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F4FFB0, var(--lime) 50%, #A9C716); position: relative; box-shadow: 0 10px 30px -6px rgba(212,245,60,.6); }
+.clube__badge-ball::after { content: ""; position: absolute; inset: 7px; border-radius: 50%; border: 3px solid #fff; border-color: #fff transparent; transform: rotate(30deg); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 900px) {
+  .clube__grid { grid-template-columns: 1fr; }
+  .clube__media { max-width: 560px; width: 100%; margin-inline: auto; }
+}
+@media (max-width: 480px) {
+  .stat { padding: 20px 16px; }
+  .stat strong { font-size: 42px; }
+  .stat span { font-size: 14px; }
+  .clube__badge { width: 110px; height: 110px; }
+}
+
+/* ========================== Court 3D (pinned) ========================== */
+.court { position: relative; background: var(--navy-950); }
+.court__stage { position: relative; height: 100vh; height: 100svh; overflow: hidden; background: radial-gradient(70% 60% at 50% 60%, #0B1C5E, var(--navy-950) 75%); }
+.no-webgl .court__stage { background: linear-gradient(rgba(3,7,25,.55), rgba(3,7,25,.85)), url("../assets/img/quadras-padel.webp") center / cover; }
+#court-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.court__vignette { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(3,7,25,.85) 0%, rgba(3,7,25,.35) 38%, transparent 60%), linear-gradient(0deg, rgba(3,7,25,.7), transparent 30%); }
+.court__ui { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 40px; pointer-events: none; }
+.court__head .h2 { font-size: clamp(40px, 5.2vw, 76px); max-width: 10ch; }
+.court__steps { position: relative; max-width: 420px; min-height: 190px; }
+.court-step { position: absolute; inset: 0 0 auto; opacity: 0; transform: translateY(24px); transition: opacity .5s var(--ease-out), transform .6s var(--ease-out); }
+.court-step.is-active { opacity: 1; transform: none; }
+.court-step__n { font-family: var(--font-d); font-weight: 900; font-style: italic; font-size: 22px; color: var(--navy-900); background: var(--lime); padding: 2px 12px; border-radius: 8px; display: inline-block; }
+.court-step h3 { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: clamp(30px, 3vw, 44px); line-height: 1; margin-top: 16px; }
+.court-step p { color: var(--muted); margin-top: 12px; font-size: 17px; }
+.court__rec {
+  position: absolute; right: var(--gutter); top: 100px; z-index: 3;
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-d); font-weight: 800; letter-spacing: .14em; font-size: 15px;
+  padding: 8px 14px; border-radius: 8px; background: rgba(3,7,25,.6); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(6px);
+  opacity: 0; transform: translateY(-10px); transition: opacity .4s, transform .5s var(--ease-out);
+}
+.court__rec i { width: 9px; height: 9px; border-radius: 50%; background: #FF3B3B; animation: blink 1.1s infinite; }
+.court.is-rec .court__rec { opacity: 1; transform: none; }
+.court.is-rec .court__stage::after { content: ""; position: absolute; inset: 18px; z-index: 2; pointer-events: none; border: 2px solid rgba(255,255,255,.0);
+  background:
+    linear-gradient(var(--lime), var(--lime)) top left / 34px 3px no-repeat, linear-gradient(var(--lime), var(--lime)) top left / 3px 34px no-repeat,
+    linear-gradient(var(--lime), var(--lime)) top right / 34px 3px no-repeat, linear-gradient(var(--lime), var(--lime)) top right / 3px 34px no-repeat,
+    linear-gradient(var(--lime), var(--lime)) bottom left / 34px 3px no-repeat, linear-gradient(var(--lime), var(--lime)) bottom left / 3px 34px no-repeat,
+    linear-gradient(var(--lime), var(--lime)) bottom right / 34px 3px no-repeat, linear-gradient(var(--lime), var(--lime)) bottom right / 3px 34px no-repeat; }
+.court__saved {
+  position: absolute; right: var(--gutter); bottom: 12vh; z-index: 3;
+  display: flex; align-items: center; gap: 14px; padding: 14px 20px 14px 14px; border-radius: 18px;
+  background: var(--lime); color: var(--navy-900); box-shadow: 0 30px 60px -20px rgba(0,0,0,.6);
+  opacity: 0; transform: translateY(20px) scale(.92); transition: opacity .35s, transform .6s var(--ease-spring); pointer-events: none;
+}
+.court__saved.is-on { opacity: 1; transform: none; }
+.court__saved-ico { width: 44px; height: 44px; border-radius: 50%; background: var(--navy-900); display: grid; place-items: center; }
+.court__saved-ico svg { width: 22px; height: 22px; fill: none; stroke: var(--lime); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 24; stroke-dashoffset: 24; transition: stroke-dashoffset .5s .25s var(--ease-out); }
+.court__saved.is-on .court__saved-ico svg { stroke-dashoffset: 0; }
+.court__saved b { display: block; font-family: var(--font-d); font-weight: 900; font-style: italic; text-transform: uppercase; font-size: 24px; line-height: 1; }
+.court__saved small { font-size: 13.5px; font-weight: 600; }
+.court__progress { width: 220px; height: 3px; border-radius: 3px; background: rgba(255,255,255,.15); overflow: hidden; }
+.court__progress span { display: block; height: 100%; width: 100%; background: var(--lime); transform: scaleX(0); transform-origin: left; }
+
+@media (max-width: 760px) {
+  .court__vignette { background: linear-gradient(180deg, rgba(3,7,25,.9) 0%, transparent 30%, transparent 52%, rgba(3,7,25,.95) 78%); }
+  .court__ui { justify-content: flex-start; gap: 18px; padding-block: 90px 36px; }
+  .court__steps { margin-top: auto; }
+  .court__steps { min-height: 170px; }
+  .court__rec { top: auto; bottom: 58px; right: auto; left: var(--gutter); font-size: 13px; }
+  .court__saved { bottom: 250px; right: auto; left: var(--gutter); padding: 10px 14px 10px 10px; } .court__saved b { font-size: 19px; } .court__saved-ico { width: 36px; height: 36px; }
+  .court-step p { font-size: 16px; }
+}
+
+/* ========================== Section head ========================== */
+.section-head { margin-bottom: clamp(44px, 6vw, 80px); }
+.section-head--split { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: end; }
+.section-head--split .lead { margin-top: 0; }
+@media (max-width: 860px) { .section-head--split { grid-template-columns: 1fr; gap: 0; } .section-head--split .lead { margin-top: 20px; } }
+
+/* ========================== Modalidades ========================== */
+.modal__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.mcard { position: relative; border-radius: var(--r-xl); overflow: hidden; min-height: 560px; display: flex; align-items: flex-end; isolation: isolate; }
+.mcard__img { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.mcard__img img { width: 100%; height: 120%; object-fit: cover; transition: transform 1.2s var(--ease-out); }
+.mcard:hover .mcard__img img { transform: scale(1.06); }
+.mcard::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 30%, rgba(5,11,46,.92) 88%); }
+.mcard__body { display: grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items: end; padding: 34px; width: 100%; }
+.mcard__num { font-family: var(--font-d); font-weight: 900; font-style: italic; font-size: clamp(80px, 9vw, 130px); line-height: .8; color: var(--lime); }
+.mcard h3 { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: clamp(30px, 3vw, 44px); line-height: 1; }
+.mcard p { color: var(--muted); margin-top: 8px; font-size: 16px; max-width: 34ch; }
+.arrow-link { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: var(--white); color: var(--navy-900); transition: transform .35s var(--ease-spring), background .25s; }
+.arrow-link svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.arrow-link:hover { background: var(--lime); transform: rotate(45deg) scale(1.08); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.chips li { padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); font-family: var(--font-d); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 15px; color: rgba(255,255,255,.85); }
+
+@media (max-width: 900px) {
+  .modal__grid { grid-template-columns: 1fr; }
+  .mcard { min-height: 440px; }
+}
+@media (max-width: 520px) {
+  .mcard__body { grid-template-columns: 1fr auto; padding: 24px; gap: 14px; }
+  .mcard__num { grid-column: 1 / -1; }
+}
+
+/* ========================== Como funciona (light) ========================== */
+.how { background: var(--paper); color: var(--ink); border-radius: var(--r-xl) var(--r-xl) 0 0; }
+.how .lead { color: var(--ink-soft); }
+.how .h2 em { color: var(--royal); }
+.how__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.pcard { background: var(--white); border-radius: var(--r-lg); padding: 30px 26px; display: flex; flex-direction: column; gap: 14px; border: 1px solid #E1E7F5; transition: transform .4s var(--ease-out), box-shadow .4s; }
+.pcard:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -30px rgba(10, 22, 80, .35); }
+.pcard__top { display: flex; justify-content: space-between; align-items: center; min-height: 48px; }
+.pcard__ico { width: 48px; height: 48px; padding: 11px; border-radius: 14px; background: #E8EEFF; stroke: var(--royal); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pcard h3 { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 30px; line-height: 1; }
+.pcard p { color: var(--ink-soft); font-size: 16px; }
+.pcard .btn { margin-top: auto; }
+.pcard .ticks { margin-bottom: 10px; }
+.pcard--feature { background: linear-gradient(160deg, var(--royal), var(--navy-800)); color: var(--white); border: 0; }
+.pcard--feature p { color: rgba(255,255,255,.8); }
+.pcard--feature .pcard__ico { background: rgba(255,255,255,.12); stroke: var(--lime); }
+.tag { background: var(--lime); color: var(--navy-900); font-family: var(--font-d); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: 13px; padding: 4px 10px; border-radius: 6px; }
+
+.ticks { display: grid; gap: 8px; }
+.ticks li { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; }
+.ticks li::before { content: ""; width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; background: var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23050B2E' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 11px no-repeat; }
+.ticks--light { margin-top: 28px; }
+
+.steps3 { margin-top: 26px; background: var(--navy-900); color: var(--white); border-radius: var(--r-lg); padding: 26px 30px; display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
+.steps3__title { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 24px; color: var(--lime); font-style: italic; }
+.steps3 ol { display: flex; gap: 14px 34px; flex-wrap: wrap; flex: 1; }
+.steps3 li { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 16px; }
+.steps3 li span { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--lime); color: var(--lime); font-family: var(--font-d); font-weight: 800; font-size: 18px; }
+
+@media (max-width: 1180px) { .how__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .how__grid { grid-template-columns: 1fr; } .steps3 { padding: 24px; } }
+
+/* ========================== Replay ========================== */
+.replay { background: var(--navy-950); overflow: hidden; }
+.replay::before { content: ""; position: absolute; inset: 0; background: radial-gradient(50% 60% at 80% 50%, rgba(33,88,232,.35), transparent 70%); }
+.replay__grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 90px); align-items: center; }
+.replay .btn { margin-top: 36px; }
+.screen { position: relative; display: block; aspect-ratio: 4 / 5; border-radius: var(--r-xl); overflow: hidden; border: 1px solid rgba(255,255,255,.18); box-shadow: 0 50px 100px -40px rgba(33, 88, 232, .65); transform-style: preserve-3d; will-change: transform; max-width: 520px; justify-self: center; width: 100%; }
+.screen img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.1) contrast(1.05); }
+.screen__ui { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3,7,25,.45), transparent 25%, transparent 70%, rgba(3,7,25,.8)); }
+.screen__live { position: absolute; left: 20px; top: 20px; display: flex; align-items: center; gap: 8px; background: rgba(3,7,25,.65); backdrop-filter: blur(6px); padding: 6px 12px; border-radius: 8px; font-family: var(--font-d); font-weight: 800; letter-spacing: .12em; font-size: 14px; }
+.screen__live i { width: 8px; height: 8px; border-radius: 50%; background: #FF3B3B; animation: blink 1.2s infinite; }
+@keyframes blink { 50% { opacity: .2; } }
+.screen__court { position: absolute; right: 20px; top: 20px; font-family: var(--font-d); font-weight: 800; letter-spacing: .12em; font-size: 14px; background: var(--lime); color: var(--navy-900); padding: 6px 12px; border-radius: 8px; }
+.screen__play { position: absolute; left: 50%; top: 50%; width: 92px; height: 92px; margin: -46px 0 0 -46px; border-radius: 50%; background: rgba(212, 245, 60, .92); display: grid; place-items: center; box-shadow: 0 0 0 0 rgba(212,245,60,.6); animation: ring 2.2s infinite; transition: transform .35s var(--ease-spring); }
+.screen__play svg { width: 34px; height: 34px; fill: var(--navy-900); margin-left: 4px; }
+.screen:hover .screen__play { transform: scale(1.1); }
+@keyframes ring { 0% { box-shadow: 0 0 0 0 rgba(212,245,60,.55); } 100% { box-shadow: 0 0 0 30px rgba(212,245,60,0); } }
+.screen__bar { position: absolute; left: 20px; right: 20px; bottom: 54px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.25); overflow: hidden; }
+.screen__bar span { display: block; height: 100%; width: 100%; background: var(--lime); transform-origin: left; animation: progress 8s linear infinite; }
+@keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.screen__tag { position: absolute; left: 20px; bottom: 20px; font-family: var(--font-d); font-weight: 700; letter-spacing: .12em; font-size: 14px; color: rgba(255,255,255,.85); }
+.screen__scan { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 3px); mix-blend-mode: overlay; }
+
+@media (max-width: 900px) { .replay__grid { grid-template-columns: 1fr; } }
+
+/* ========================== Torneios ========================== */
+.torneios { padding-bottom: clamp(60px, 8vw, 110px); }
+.torneios__grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 6vw, 90px); align-items: center; }
+.tour-media { position: relative; }
+.stack { --fan: 0; position: relative; aspect-ratio: 4 / 5; max-width: 480px; margin-inline: auto; perspective: 1400px; touch-action: pan-y; }
+.stack__card {
+  --i: 0;
+  position: absolute; inset: 0; margin: 0; border-radius: var(--r-lg); overflow: hidden; cursor: pointer;
+  background: var(--navy-950);
+  box-shadow: 0 50px 80px -40px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.1);
+  transform:
+    translate3d(calc(var(--i) * (16px + var(--fan) * 54px)), calc(var(--i) * (18px - var(--fan) * 12px)), calc(var(--i) * -40px))
+    rotate(calc(var(--i) * (3deg + var(--fan) * 4deg) - var(--fan) * 3deg))
+    scale(calc(1 - var(--i) * .05));
+  z-index: calc(10 - var(--i));
+  transition: transform .8s var(--ease-out), filter .6s;
+  filter: brightness(calc(1 - var(--i) * .22));
+  will-change: transform;
+}
+.stack__bg { position: absolute; inset: -30px; width: calc(100% + 60px); height: calc(100% + 60px); max-width: none; object-fit: cover; filter: blur(22px) brightness(.55) saturate(1.2); }
+.stack__img { position: relative; width: 100%; height: 100%; object-fit: contain; }
+.stack__card.is-live { box-shadow: 0 50px 80px -40px rgba(0,0,0,.85), 0 0 0 2px var(--lime), 0 0 60px -10px rgba(212,245,60,.55); animation: liveGlow 2.4s ease-in-out infinite; }
+@keyframes liveGlow { 50% { box-shadow: 0 50px 80px -40px rgba(0,0,0,.85), 0 0 0 2px var(--lime), 0 0 90px 0 rgba(212,245,60,.35); } }
+.stack__ribbon { position: absolute; right: 14px; top: 14px; z-index: 2; display: flex; align-items: center; gap: 8px; background: var(--lime); color: var(--navy-900); font-family: var(--font-d); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: 14px; padding: 6px 12px; border-radius: 8px; box-shadow: 0 10px 20px -8px rgba(0,0,0,.5); }
+.stack__ribbon i, .stack__label i, .tourbar__dot, .tour-live__tag i { width: 9px; height: 9px; border-radius: 50%; background: currentColor; flex-shrink: 0; animation: blink 1.1s infinite; }
+.stack__bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: 480px; margin: 34px auto 0; }
+.stack__label { display: flex; align-items: center; gap: 10px; font-family: var(--font-d); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: 15px; color: var(--muted); }
+.stack__label i { background: rgba(255,255,255,.4); animation: none; }
+.stack__label.is-live { color: var(--lime); }
+.stack__label.is-live i { background: var(--lime); animation: blink 1.1s infinite; }
+.stack__btns { display: flex; gap: 8px; }
+.stack__btns[hidden], .tour-live[hidden] { display: none; }
+.stack__btn { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; transition: border-color .2s, color .2s, transform .3s var(--ease-spring); }
+.stack__btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.stack__btn:hover { border-color: var(--lime); color: var(--lime); transform: scale(1.08); }
+
+.tour-live { margin-top: 30px; padding: 24px; border-radius: var(--r-lg); background: linear-gradient(135deg, rgba(212,245,60,.14), rgba(27,63,209,.22)); border: 1px solid rgba(212,245,60,.45); }
+.tour-live__tag { display: inline-flex; align-items: center; gap: 8px; color: var(--lime); font-family: var(--font-d); font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 14px; }
+.tour-live__title { font-family: var(--font-d); font-weight: 900; text-transform: uppercase; font-size: clamp(30px, 3.2vw, 44px); line-height: 1; margin-top: 10px; }
+.tour-live__title em { font-style: italic; color: var(--lime); }
+.tour-live__meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
+.tour-live__meta > div { padding: 14px; border-radius: var(--r-sm); background: rgba(3,7,25,.45); border: 1px solid var(--line); }
+.tour-live__meta small { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.tour-live__meta b { display: block; font-family: var(--font-d); font-weight: 800; font-size: 22px; line-height: 1.1; text-transform: uppercase; margin-top: 4px; }
+.tour-live__meta span { display: block; font-size: 13px; color: var(--muted); margin-top: 2px; }
+.tour-live__cats { margin-top: 14px; color: var(--muted); font-size: 15.5px; }
+.torneios.is-live .events { display: none; }
+@media (max-width: 560px) { .stack { max-width: 74%; margin-inline: 0 auto; } }
+@media (max-width: 560px) { .tour-live__meta { grid-template-columns: 1fr 1fr; } .tour-live__meta > div:last-child { grid-column: span 2; } }
+
+/* ---- barra de torneio no topo ---- */
+.tourbar { display: flex; align-items: stretch; background: var(--lime); color: var(--navy-900); margin-top: -18px; margin-bottom: 14px; transition: margin .35s var(--ease-out); }
+.header.is-scrolled .tourbar { margin-top: -10px; margin-bottom: 10px; }
+.tourbar[hidden] { display: none; }
+.tourbar__link { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 9px 12px 9px var(--gutter); font-family: var(--font-d); text-transform: uppercase; letter-spacing: .04em; font-size: 15px; }
+.tourbar__link b { font-weight: 900; white-space: nowrap; }
+.tourbar__name { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.tourbar__cta { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; white-space: nowrap; background: var(--navy-900); color: var(--lime); padding: 4px 12px; border-radius: 999px; }
+.tourbar__cta svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; transition: transform .3s var(--ease-out); }
+.tourbar__link:hover .tourbar__cta svg { transform: translateX(4px); }
+.tourbar__close { width: 44px; flex-shrink: 0; display: grid; place-items: center; }
+.tourbar__close svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2.4; fill: none; stroke-linecap: round; }
+.nav__tour.has-live::before { content: ""; position: absolute; right: -10px; top: 6px; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 3px rgba(212,245,60,.25); animation: blink 1.1s infinite; }
+@media (max-width: 1080px) { .nav__tour.has-live::before { right: -16px; top: 18px; width: 10px; height: 10px; } }
+@media (max-width: 620px) { .tourbar__name { display: none; } .tourbar__link { justify-content: space-between; } }
+.events { display: grid; gap: 14px; margin-top: 36px; }
+.event { display: flex; gap: 18px; padding: 22px; border-radius: var(--r-md); background: rgba(255,255,255,.04); border: 1px solid var(--line); transition: background .3s, border-color .3s, transform .4s var(--ease-out); }
+.event:hover { background: rgba(212,245,60,.06); border-color: rgba(212,245,60,.35); transform: translateX(6px); }
+.event__ico { width: 50px; height: 50px; border-radius: 14px; background: var(--lime); display: grid; place-items: center; flex-shrink: 0; }
+.event__ico svg { width: 24px; height: 24px; fill: none; stroke: var(--navy-900); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.event h3 { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 26px; line-height: 1.05; }
+.event p { color: var(--muted); font-size: 15.5px; margin-top: 6px; }
+.torneios__ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+
+.rail-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-top: clamp(80px, 10vw, 140px); margin-bottom: 30px; }
+.rail-head .eyebrow { margin-bottom: 12px; }
+.rail-head .h3 { font-size: clamp(40px, 5vw, 72px); }
+.rail-head .h3 em { font-style: italic; color: var(--lime); }
+.rail-sub { color: var(--muted); max-width: 52ch; margin-top: 12px; }
+.rail {
+  display: flex; gap: 18px; overflow-x: auto; overscroll-behavior-x: contain;
+  padding: 10px 0 30px;
+  scrollbar-width: none; cursor: grab; touch-action: pan-x pan-y;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.rail::-webkit-scrollbar { display: none; }
+.rail.is-dragging { cursor: grabbing; }
+.rail.is-dragging img { pointer-events: none; }
+.rail__item { flex: 0 0 clamp(220px, 24vw, 340px); aspect-ratio: 3 / 4; border-radius: var(--r-lg); overflow: hidden; position: relative; padding: 0; transition: transform .5s var(--ease-out); }
+.rail__item:nth-child(even) { transform: translateY(26px) rotate(1.2deg); }
+.rail__item:nth-child(3n) { transform: rotate(-1.4deg); }
+.rail__item::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 0 var(--lime); transition: box-shadow .3s; pointer-events: none; }
+.rail__item:hover::after, .rail__item:focus-visible::after { box-shadow: inset 0 0 0 3px var(--lime); }
+.rail__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease-out), filter .5s; filter: grayscale(.2); user-select: none; -webkit-user-drag: none; }
+.rail__item:hover img { transform: scale(1.07); filter: none; }
+
+@media (max-width: 900px) {
+  .torneios__grid { grid-template-columns: 1fr; }
+  .tour-media { max-width: 480px; width: 100%; margin-inline: auto; }
+}
+
+/* ========================== Estrutura (bento) ========================== */
+.estrutura { background: linear-gradient(180deg, var(--navy-900), var(--navy-850)); }
+.bento { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(190px, auto); gap: 18px; }
+.bento__show { grid-column: span 2; grid-row: span 3; min-height: 460px; }
+.show { position: relative; height: 100%; min-height: inherit; border-radius: var(--r-lg); overflow: hidden; background: var(--navy-950); isolation: isolate; }
+.show__slide { position: absolute; inset: 0; margin: 0; z-index: 0; clip-path: inset(0 0 0 100%); }
+.show__slide img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.18); }
+.show__slide.is-prev { z-index: 1; clip-path: inset(0); }
+.show__slide.is-prev img { transform: scale(1.04); }
+.show__slide.is-active { z-index: 2; clip-path: inset(0); animation: slideIn 1.2s var(--ease-out) both; }
+.show__slide.is-active img { animation: kenburns 7s ease-out both; }
+@keyframes slideIn { from { clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); } to { clip-path: polygon(-30% 0, 100% 0, 100% 100%, 0 100%); } }
+@keyframes kenburns { from { transform: scale(1.22) translateX(2%); } to { transform: scale(1.04); } }
+.show::after { content: ""; position: absolute; inset: 0; z-index: 3; background: linear-gradient(180deg, transparent 45%, rgba(3,7,25,.88)); pointer-events: none; }
+.show__ui { position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; padding: 24px; display: grid; gap: 18px; }
+.show__cap { display: flex; align-items: flex-end; gap: 16px; }
+.show__num { font-family: var(--font-d); font-weight: 900; font-style: italic; font-size: clamp(54px, 6vw, 84px); line-height: .8; color: var(--lime); }
+.show__title { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
+.show__text { color: rgba(255,255,255,.82); font-size: 15.5px; margin-top: 4px; }
+.show__cap.is-swap .show__num, .show__cap.is-swap div { animation: capIn .7s var(--ease-out) both; }
+.show__cap.is-swap div { animation-delay: .08s; }
+@keyframes capIn { from { opacity: 0; transform: translateY(18px); } }
+.show__bars { display: flex; gap: 6px; }
+.show__bar { flex: 1; height: 22px; display: flex; align-items: center; }
+.show__bar i { position: relative; display: block; width: 100%; height: 4px; border-radius: 4px; background: rgba(255,255,255,.28); overflow: hidden; }
+.show__bar i::after { content: ""; position: absolute; inset: 0; background: var(--lime); transform: scaleX(0); transform-origin: left; }
+.show__bar.is-done i::after { transform: scaleX(1); }
+.show__bar.is-active i::after { animation: barFill var(--show-dur, 5s) linear both; }
+.show.is-paused .show__bar.is-active i::after { animation-play-state: paused; }
+@keyframes barFill { to { transform: scaleX(1); } }
+.bento__item { border-radius: var(--r-lg); padding: 24px; background: rgba(255,255,255,.04); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; transition: transform .4s var(--ease-out), border-color .3s, background .3s; }
+.bento__item:hover, .bento__item.is-linked { transform: translateY(-4px); border-color: rgba(212,245,60,.45); background: rgba(212,245,60,.06); }
+.bento__item svg { width: 44px; height: 44px; padding: 9px; border-radius: 12px; background: rgba(212,245,60,.12); fill: none; stroke: var(--lime); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-bottom: auto; transition: transform .5s var(--ease-spring); }
+.bento__item:hover svg { transform: rotate(-12deg) scale(1.1); }
+.bento__item h3 { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 25px; line-height: 1; margin-top: 18px; }
+.bento__item p { color: var(--muted); font-size: 15px; }
+@media (max-width: 1000px) { .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); } .bento__show { grid-row: auto; min-height: 0; aspect-ratio: 16 / 11; } }
+@media (max-width: 560px) { .bento { grid-template-columns: 1fr; grid-auto-rows: auto; } .bento__show { grid-column: auto; aspect-ratio: 4 / 5; } .show__ui { padding: 18px; } .bento__item { padding: 20px; } .bento__item h3 { margin-top: 14px; } }
+
+/* ========================== Lightbox ========================== */
+.lb { width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(3,7,25,.94); color: var(--white); overflow: hidden; }
+.lb[open] { display: grid; place-items: center; animation: lbIn .4s var(--ease-out); }
+.lb::backdrop { background: transparent; }
+@keyframes lbIn { from { opacity: 0; } }
+.lb__fig { margin: 0; display: grid; justify-items: center; gap: 14px; padding: 70px 80px 110px; max-width: 100%; max-height: 100%; }
+.lb__img { max-width: min(92vw, 1100px); max-height: calc(100vh - 200px); max-height: calc(100svh - 200px); width: auto; height: auto; border-radius: var(--r-md); box-shadow: 0 40px 100px -30px rgba(0,0,0,.9); user-select: none; touch-action: pan-y; }
+.lb__img.is-in { animation: lbImg .5s var(--ease-out); }
+@keyframes lbImg { from { opacity: 0; transform: translateX(var(--lb-dir, 40px)) scale(.97); } }
+.lb__cap { color: var(--muted); font-size: 15px; text-align: center; }
+.lb__btn, .lb__close { position: absolute; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.08); border: 1.5px solid var(--line); transition: background .2s, border-color .2s, transform .3s var(--ease-spring); }
+.lb__btn:hover, .lb__close:hover { background: var(--lime); color: var(--navy-900); border-color: var(--lime); transform: scale(1.06); }
+.lb__btn svg, .lb__close svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.lb__prev { left: 20px; top: 50%; margin-top: -28px; }
+.lb__next { right: 20px; top: 50%; margin-top: -28px; }
+.lb__close { right: 20px; top: 20px; }
+.lb__foot { position: absolute; left: 0; right: 0; bottom: 22px; display: flex; justify-content: center; align-items: center; gap: 18px; flex-wrap: wrap; padding-inline: 16px; }
+.lb__count { font-family: var(--font-d); font-weight: 800; letter-spacing: .14em; color: var(--muted); }
+@media (max-width: 700px) {
+  .lb__fig { padding: 70px 12px 150px; }
+  .lb__img { max-width: 100%; max-height: calc(100svh - 240px); }
+  .lb__prev, .lb__next { top: auto; bottom: 86px; margin-top: 0; width: 48px; height: 48px; }
+  .lb__foot { bottom: 20px; }
+}
+
+/* ========================== Títulos com entrada palavra a palavra ========================== */
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .06em; margin-bottom: -.06em; }
+.w__in { display: inline-block; will-change: transform; }
+
+/* ========================== Sponsor ========================== */
+.sponsor { background: linear-gradient(150deg, var(--royal) 0%, var(--navy-700) 45%, var(--navy-900) 100%); overflow: hidden; }
+.sponsor__bg { position: absolute; inset: 0; background:
+  radial-gradient(40% 50% at 90% 10%, rgba(212,245,60,.18), transparent 70%),
+  repeating-linear-gradient(115deg, transparent 0 60px, rgba(255,255,255,.035) 60px 62px); }
+.sponsor__grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 90px); align-items: center; }
+.sponsor .lead { color: rgba(255,255,255,.82); }
+.sponsor__stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 36px; }
+.sponsor__stats > div { padding: 18px; border-radius: var(--r-md); background: rgba(3,7,25,.35); border: 1px solid rgba(255,255,255,.14); }
+.sponsor__stats strong { display: block; font-family: var(--font-d); font-weight: 800; font-size: clamp(32px, 3.4vw, 46px); line-height: 1; color: var(--lime); font-style: italic; }
+.sponsor__stats > div > span { display: block; font-size: 13.5px; color: rgba(255,255,255,.75); margin-top: 6px; line-height: 1.3; }
+.placements { margin: 30px 0 36px; display: grid; gap: 2px; }
+.placements li { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.14); font-weight: 600; font-size: 17px; }
+.placements span { font-family: var(--font-d); font-weight: 800; color: var(--lime); font-size: 17px; }
+
+.netscene { position: relative; aspect-ratio: 1 / 1; perspective: 1100px; border-radius: var(--r-xl); overflow: hidden; }
+.netscene__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: brightness(.5) saturate(1.1); }
+.netscene::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(5,11,46,.3), rgba(5,11,46,.75)); pointer-events: none; }
+.netscene__inner { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; transform-style: preserve-3d; }
+.net3d { position: relative; width: 82%; height: 34%; transform-style: preserve-3d; transform: rotateX(8deg) rotateY(-24deg); transition: transform .2s linear; will-change: transform; }
+.net3d__mesh { position: absolute; inset: 0; border-top: 10px solid #fff; border-radius: 3px; background:
+  repeating-linear-gradient(0deg, rgba(255,255,255,.55) 0 1.5px, transparent 1.5px 14px),
+  repeating-linear-gradient(90deg, rgba(255,255,255,.55) 0 1.5px, transparent 1.5px 14px);
+  box-shadow: 0 0 0 2px rgba(255,255,255,.2) inset; }
+.net3d__post { position: absolute; top: -12%; bottom: -70%; width: 12px; border-radius: 6px; background: linear-gradient(90deg, #cfd6e8, #fff, #9aa6c4); }
+.net3d__post--l { left: -16px; } .net3d__post--r { right: -16px; }
+.net3d__banner {
+  position: absolute; left: 50%; top: 50%; width: 52%; height: 118%;
+  transform: translate(-50%, -50%) translateZ(26px) rotateZ(-4deg);
+  background: linear-gradient(135deg, var(--lime), var(--lime-600));
+  color: var(--navy-900); border-radius: 10px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  box-shadow: 0 30px 50px -20px rgba(0,0,0,.7);
+  font-family: var(--font-d); text-transform: uppercase; text-align: center;
+}
+.net3d__banner::before, .net3d__banner::after { content: ""; position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--navy-900); top: 10px; }
+.net3d__banner::before { left: 10px; } .net3d__banner::after { right: 10px; }
+.net3d__logo { font-weight: 900; font-style: italic; font-size: clamp(30px, 4vw, 54px); line-height: .9; }
+.net3d__small { font-weight: 700; letter-spacing: .14em; font-size: clamp(11px, 1vw, 14px); }
+.net3d__shadow { position: absolute; left: 12%; right: 12%; bottom: 20%; height: 40px; background: radial-gradient(closest-side, rgba(0,0,0,.6), transparent); transform: rotateX(80deg); }
+.net3d__ball { position: absolute; width: 38px; height: 38px; border-radius: 50%; left: 18%; top: 18%; background: radial-gradient(circle at 35% 30%, #F4FFB0, var(--lime) 50%, #A9C716); box-shadow: 0 16px 30px -8px rgba(0,0,0,.6); animation: netBall 3.2s cubic-bezier(.45, 0, .55, 1) infinite; }
+.net3d__ball::after { content: ""; position: absolute; inset: 5px; border-radius: 50%; border: 2.5px solid #fff; border-color: #fff transparent; transform: rotate(30deg); }
+@keyframes netBall {
+  0% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(25vw, -4vw) scale(.8); }
+  50% { transform: translate(min(46vw, 470px), 2vw) scale(.7); }
+  75% { transform: translate(25vw, -6vw) scale(.85); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@media (max-width: 900px) {
+  .sponsor__grid { grid-template-columns: 1fr; }
+  .netscene { max-width: 560px; width: 100%; margin-inline: auto; }
+  .net3d__ball { display: none; }
+}
+@media (max-width: 480px) {
+  .sponsor__stats { grid-template-columns: 1fr 1fr; }
+  .sponsor__stats > div:last-child { grid-column: span 2; }
+}
+
+/* ========================== Contato ========================== */
+.contato__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(40px, 6vw, 90px); align-items: stretch; }
+.info { display: grid; gap: 22px; margin-top: 40px; }
+.info__row { display: flex; gap: 18px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+.info__row > svg { width: 46px; height: 46px; padding: 11px; border-radius: 14px; background: rgba(212,245,60,.12); fill: none; stroke: var(--lime); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.info__row strong { display: block; font-family: var(--font-d); font-weight: 800; font-size: 26px; line-height: 1.1; text-transform: uppercase; }
+.info__row strong a:hover { color: var(--lime); }
+.info__row span { color: var(--muted); font-size: 15.5px; }
+.hours { display: grid; gap: 6px; flex: 1; }
+.hours p { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.hours span { color: var(--muted); }
+.hours b { font-family: var(--font-d); font-weight: 700; font-size: 19px; text-transform: uppercase; letter-spacing: .03em; }
+.contato__ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+.map { position: relative; border-radius: var(--r-xl); overflow: hidden; min-height: 460px; border: 1px solid var(--line); background: var(--navy-800); }
+.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: invert(.9) hue-rotate(200deg) saturate(.9) contrast(.9); }
+@media (max-width: 900px) { .contato__grid { grid-template-columns: 1fr; } .map { min-height: 360px; } }
+
+/* ========================== Final CTA ========================== */
+.final { position: relative; overflow: hidden; padding-block: clamp(100px, 14vw, 190px); background: var(--lime); color: var(--navy-900); }
+.final__word { position: absolute; top: 50%; left: 0; transform: translateY(-50%); white-space: nowrap; font-family: var(--font-d); font-weight: 900; font-style: italic; font-size: clamp(120px, 20vw, 300px); line-height: 1; color: transparent; -webkit-text-stroke: 2px rgba(5, 11, 46, .12); animation: marquee 40s linear infinite; }
+.final__inner { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 44px; }
+.final__title { font-family: var(--font-d); font-weight: 900; text-transform: uppercase; font-size: clamp(48px, 8vw, 120px); line-height: .9; max-width: 14ch; text-wrap: balance; }
+.final__title em { color: var(--royal); }
+.final .btn--lime { background: var(--navy-900); color: var(--lime); box-shadow: 0 20px 50px -20px rgba(5,11,46,.7); }
+.final .btn--lime:hover { background: var(--royal); color: var(--white); }
+
+/* ========================== Footer ========================== */
+.footer { background: var(--navy-950); padding-top: 80px; }
+.footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 60px; }
+.footer__brand p { color: var(--muted); margin-top: 18px; max-width: 34ch; font-size: 15.5px; }
+.footer__title { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--lime); font-size: 15px; margin-bottom: 16px; }
+.footer ul { display: grid; gap: 10px; color: var(--muted); font-size: 15.5px; }
+.footer ul a:hover { color: var(--white); }
+.footer__bottom { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-block: 26px; border-top: 1px solid var(--line); color: rgba(255,255,255,.5); font-size: 14px; }
+.footer__top:hover { color: var(--lime); }
+@media (max-width: 860px) { .footer__grid { grid-template-columns: 1fr 1fr; } .footer__brand { grid-column: 1 / -1; } }
+
+/* ========================== WhatsApp float ========================== */
+.wa-float {
+  position: fixed; right: 20px; bottom: 20px; z-index: 90;
+  width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center;
+  background: #25D366; color: #fff; box-shadow: 0 14px 30px -8px rgba(37, 211, 102, .6);
+  transition: transform .35s var(--ease-spring);
+}
+.wa-float svg { width: 32px; height: 32px; }
+.wa-float:hover { transform: scale(1.1) rotate(-8deg); }
+.wa-float::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #25D366; animation: waRing 2.4s infinite; }
+@keyframes waRing { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(1.6); opacity: 0; } }
+
+/* ========================== Reveal (JS) ========================== */
+.js [data-reveal] { opacity: 0; transform: translateY(42px); transition: opacity .9s var(--ease-out), transform 1.1s var(--ease-out); }
+.js [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* ========================== Reduced motion ========================== */
+@media (prefers-reduced-motion: reduce) {
+  html:not(.force-motion) *, html:not(.force-motion) *::before, html:not(.force-motion) *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  html:not(.force-motion).js [data-reveal] { opacity: 1; transform: none; }
+  html:not(.force-motion) .tape__track, html:not(.force-motion) .final__word { animation: none; }
+  html:not(.force-motion) .btn__racket, html:not(.force-motion) .btn__ball { display: none; }
+}
+  </style>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Blu Padel e Esportes de Areia",
+    "description": "Complexo esportivo com quadras de padel, vôlei de praia, futevôlei e beach tennis para locação e aulas.",
+    "telephone": "+55 47 98872-4664",
+    "url": "https://www.blupadel.com.br/",
+    "image": "assets/img/quadras-padel.webp",
+    "logo": "assets/img/logo-blu-padel.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua São Paulo, 2815",
+      "addressLocality": "Blumenau",
+      "addressRegion": "SC",
+      "postalCode": "89030-001",
+      "addressCountry": "BR"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "09:00", "closes": "21:00" }
+    ],
+    "sameAs": ["https://www.instagram.com/blu.padel/"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- cursor bola (somente mouse) -->
+  <div class="cursor-ball" aria-hidden="true"></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="header">
+    <div class="tourbar" id="tourbar" hidden>
+      <a class="tourbar__link" href="#torneios">
+        <span class="tourbar__dot" aria-hidden="true"></span>
+        <b>Inscrições abertas</b>
+        <span class="tourbar__name" id="tourbar-name"></span>
+        <span class="tourbar__cta">Ver torneio <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <button class="tourbar__close" type="button" aria-label="Fechar aviso do torneio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="container header__inner">
+      <a href="#topo" class="logo">
+        <img class="logo__img" src="assets/img/logo-blu-padel.webp" width="900" height="484" alt="Blu Padel e Esportes de Areia">
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Principal">
+        <ul class="nav__list">
+          <li><a href="#clube">O clube</a></li>
+          <li><a href="#como-funciona">Como jogar</a></li>
+          <li><a href="#torneios" class="nav__tour">Torneios</a></li>
+          <li><a href="#replays">Replays</a></li>
+          <li><a href="#patrocinio">Patrocínio</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+        <a class="btn btn--lime btn--sm nav__cta" href="https://www.blupadel.com.br/ords/r/jdb/blu-padel/agendar" target="_blank" rel="noopener">Reservar quadra</a>
+      </nav>
+
+      <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="topo" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__glow"></div>
+        <div class="hero__floor"><div class="hero__floor-lines"></div></div>
+        <div class="hero__bgword">PADEL</div>
+      </div>
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+      <div class="container hero__inner">
+        <p class="eyebrow hero__eyebrow"><span class="dot"></span>Blumenau · SC — Padel &amp; Esportes de Areia</p>
+        <h1 class="hero__title" id="hero-title">
+          <span class="line"><span class="line__in">O seu <em class="hit-word">jogo</em></span></span>
+          <span class="line"><span class="line__in">começa aqui.</span></span>
+        </h1>
+        <p class="hero__lead">5 quadras de padel cobertas e 9 de areia no coração de Blumenau. Reserve online, jogue sem mensalidade e reveja seus melhores lances em replay.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--lime btn--lg btn-hit" href="https://www.blupadel.com.br/ords/r/jdb/blu-padel/agendar" target="_blank" rel="noopener">
+            <span class="btn__racket" aria-hidden="true"><svg viewBox="0 0 44 96"><path d="M22 2c11 0 19 9 19 24 0 14-8 24-15 29l-1 8h-6l-1-8C11 50 3 40 3 26 3 11 11 2 22 2z" fill="#0F2275" stroke="#D4F53C" stroke-width="3"/><g fill="#D4F53C" opacity=".85"><circle cx="15" cy="16" r="2"/><circle cx="22" cy="13" r="2"/><circle cx="29" cy="16" r="2"/><circle cx="12" cy="25" r="2"/><circle cx="19" cy="23" r="2"/><circle cx="26" cy="23" r="2"/><circle cx="33" cy="25" r="2"/><circle cx="15" cy="32" r="2"/><circle cx="22" cy="31" r="2"/><circle cx="29" cy="32" r="2"/></g><rect x="17.5" y="62" width="9" height="32" rx="4" fill="#fff"/></svg></span>
+            <span class="btn__ball" aria-hidden="true"></span>
+            <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+            <span>Reservar quadra</span>
+          </a>
+          <a class="btn btn--ghost btn--lg" href="https://wa.me/5547988724664" data-wa="Olá! Vim pelo site da Blu Padel e gostaria de mais informações." target="_blank" rel="noopener">
+            <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 16.8L2 22l5.3-1.2A11 11 0 0 0 20.5 3.5z"/><path d="M8.5 8.5c.3 2.6 2.4 5 5 6l1.4-1.2 2.2 1-.4 1.7c-4.6.5-9.3-4.2-8.8-8.8l1.7-.4 1 2.2z"/></svg>
+            <span>Chamar no WhatsApp</span>
+          </a>
+        </div>
+        <ul class="hero__facts">
+          <li><strong>05</strong><span>quadras de padel<br>de vidro cobertas</span></li>
+          <li><strong>09</strong><span>quadras de areia<br>cobertas</span></li>
+          <li><strong>Livre</strong><span>sem mensalidade,<br>sem ser sócio</span></li>
+        </ul>
+      </div>
+
+      <p class="hero__hint" aria-hidden="true"><span class="hero__hint-ball"></span>Clique na raquete para rebater</p>
+      <a class="hero__scroll" href="#clube" aria-label="Rolar para conhecer o clube"><span></span></a>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="tapes" aria-hidden="true">
+      <div class="tape tape--navy">
+        <div class="tape__track" data-speed="-42"><span>Sem mensalidade</span><b></b><span>Aulas</span><b></b><span>Torneios</span><b></b><span>Day Pass</span><b></b><span>Rotativos</span><b></b><span>Happy hour</span><b></b><span>Churrasqueiras</span><b></b><span>Sem mensalidade</span><b></b><span>Aulas</span><b></b><span>Torneios</span><b></b><span>Day Pass</span><b></b><span>Rotativos</span><b></b><span>Happy hour</span><b></b><span>Churrasqueiras</span><b></b></div>
+      </div>
+      <div class="tape tape--lime">
+        <div class="tape__track" data-speed="58"><span>Padel</span><i></i><span>Beach Tennis</span><i></i><span>Vôlei de Praia</span><i></i><span>Futevôlei</span><i></i><span>Tênis de Mesa</span><i></i><span>Replay System</span><i></i><span>Padel</span><i></i><span>Beach Tennis</span><i></i><span>Vôlei de Praia</span><i></i><span>Futevôlei</span><i></i><span>Tênis de Mesa</span><i></i><span>Replay System</span><i></i></div>
+      </div>
+    </div>
+
+    <!-- ============ O CLUBE ============ -->
+    <section class="section clube" id="clube" aria-labelledby="clube-title">
+      <div class="container clube__grid">
+        <div class="clube__text">
+          <p class="eyebrow" data-reveal>O clube</p>
+          <h2 class="h2" id="clube-title" data-reveal>Um complexo esportivo completo. <em>Aberto pra você.</em></h2>
+          <p class="lead" data-reveal>No Blu Padel você não precisa ser sócio nem pagar mensalidade para jogar. Escolha o que quer viver: alugar uma quadra por hora, fazer aulas com profissionais ou entrar em um rotativo para conhecer gente nova.</p>
+          <div class="stats" data-reveal>
+            <div class="stat"><strong data-count="5" data-pad="2">05</strong><span>Quadras de padel de vidro, profissionais e cobertas</span></div>
+            <div class="stat"><strong data-count="9" data-pad="2">09</strong><span>Quadras de areia para beach tennis, vôlei e futevôlei</span></div>
+            <div class="stat"><strong data-count="3" data-pad="2">03</strong><span>Churrasqueiras para locação e confraternização</span></div>
+            <div class="stat"><strong>Bar</strong><span>Bebidas, petiscos e happy hour depois do jogo</span></div>
+          </div>
+        </div>
+        <div class="clube__media">
+          <figure class="clube__img clube__img--a" data-tilt>
+            <img src="assets/img/quadras-padel.webp" alt="Quadras de padel azuis do Blu Padel com estrutura coberta" width="1688" height="932" loading="lazy">
+          </figure>
+          <figure class="clube__img clube__img--b" data-tilt>
+            <img src="assets/img/dupla-sorrisos.webp" alt="Duas atletas sorrindo com raquetes de padel na quadra" width="1088" height="1445" loading="lazy">
+          </figure>
+          <div class="clube__badge" aria-hidden="true">
+            <svg viewBox="0 0 120 120"><defs><path id="circ" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#circ">CLUBE ABERTO • SEM MENSALIDADE • </textPath></text></svg>
+            <span class="clube__badge-ball"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ QUADRA 3D (pinned) ============ -->
+    <section class="court" id="padel" aria-labelledby="court-title">
+      <div class="court__stage">
+        <canvas id="court-canvas" aria-hidden="true"></canvas>
+        <div class="court__vignette" aria-hidden="true"></div>
+        <div class="court__rec" aria-hidden="true"><i></i>REC · QUADRA 03</div>
+        <div class="court__saved" aria-hidden="true">
+          <span class="court__saved-ico"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <span><b>Lance salvo!</b><small>Assista e compartilhe no replay</small></span>
+        </div>
+        <div class="container court__ui">
+          <div class="court__head">
+            <p class="eyebrow">Primeira vez no padel?</p>
+            <h2 class="h2" id="court-title">Entenda o jogo em <em>4 lances</em></h2>
+          </div>
+          <ol class="court__steps">
+            <li class="court-step is-active">
+              <span class="court-step__n">01</span>
+              <h3>A quadra</h3>
+              <p>20 × 10 metros, fechada por vidro e tela. Menor que uma quadra de tênis — e muito mais dinâmica.</p>
+            </li>
+            <li class="court-step">
+              <span class="court-step__n">02</span>
+              <h3>Sempre em duplas</h3>
+              <p>Dois contra dois, cada dupla de um lado da rede. Fácil de aprender e viciante desde o primeiro jogo.</p>
+            </li>
+            <li class="court-step">
+              <span class="court-step__n">03</span>
+              <h3>A parede joga com você</h3>
+              <p>O saque quica no chão, bate no vidro e volta — e o adversário ainda pode devolver. É isso que deixa os pontos longos e divertidos.</p>
+            </li>
+            <li class="court-step">
+              <span class="court-step__n">04</span>
+              <h3>Seus lances em replay</h3>
+              <p>Fez o ponto da partida? Aperte o botão de replay na quadra: a câmera salva o lance para você assistir e compartilhar.</p>
+            </li>
+          </ol>
+          <div class="court__progress" aria-hidden="true"><span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MODALIDADES ============ -->
+    <section class="section modal" id="modalidades" aria-labelledby="modal-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow" data-reveal>Modalidades</p>
+          <h2 class="h2" id="modal-title" data-reveal>Vidro ou areia? <em>Aqui tem os dois.</em></h2>
+        </div>
+        <div class="modal__grid">
+          <article class="mcard" data-reveal>
+            <div class="mcard__img"><img src="assets/img/quadras-padel.webp" alt="Vista das 5 quadras de padel cobertas" width="1688" height="932" loading="lazy" data-parallax></div>
+            <div class="mcard__body">
+              <span class="mcard__num">05</span>
+              <div>
+                <h3>Padel</h3>
+                <p>Quadras de vidro profissionais e cobertas — jogue com chuva ou sol, de dia ou à noite.</p>
+              </div>
+              <a class="arrow-link" href="https://www.blupadel.com.br/ords/r/jdb/blu-padel/agendar" target="_blank" rel="noopener" aria-label="Reservar quadra de padel">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </article>
+          <article class="mcard" data-reveal>
+            <div class="mcard__img"><img src="assets/img/quadras-areia.webp" alt="Quadras de areia cobertas com redes laranjas" width="1691" height="930" loading="lazy" data-parallax></div>
+            <div class="mcard__body">
+              <span class="mcard__num">09</span>
+              <div>
+                <h3>Esportes de areia</h3>
+                <p>Beach Tennis, Vôlei de Praia e Futevôlei em quadras cobertas, com areia tratada.</p>
+              </div>
+              <a class="arrow-link" href="https://www.blupadel.com.br/ords/r/jdb/blu-padel/agendar" target="_blank" rel="noopener" aria-label="Reservar quadra de areia">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+        <ul class="chips" data-reveal>
+          <li>Padel</li><li>Beach Tennis</li><li>Vôlei de Praia</li><li>Futevôlei</li><li>Tênis de Mesa</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ COMO FUNCIONA ============ -->
+    <section class="section how" id="como-funciona" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div>
+            <p class="eyebrow eyebrow--dark" data-reveal>Como jogar</p>
+            <h2 class="h2" id="how-title" data-reveal>Escolha o seu <em>formato de jogo</em></h2>
+          </div>
+          <p class="lead" data-reveal>Do primeiro contato com a raquete ao ranking do clube — tem um jeito certo para cada momento seu.</p>
+        </div>
+
+        <div class="how__grid">
+          <article class="pcard pcard--feature" data-reveal>
+            <div class="pcard__top"><span class="tag">Mais procurado</span><svg class="pcard__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18M8 15h3"/></svg></div>
+            <h3>Locação avulsa</h3>
+            <p>Reserve a quadra pelo tempo que quiser e divida o valor com a galera. Agendamento e pagamento 100% online.</p>
+            <ul class="ticks"><li>Padel ou areia</li><li>Sem mensalidade</li><li>Escolha o horário no app</li></ul>
+            <a class="btn btn--lime btn-hit" href="https://www.blupadel.com.br/ords/r/jdb/blu-padel/agendar" target="_blank" rel="noopener">
+              <span class="btn__racket" aria-hidden="true"><svg viewBox="0 0 44 96"><path d="M22 2c11 0 19 9 19 24 0 14-8 24-15 29l-1 8h-6l-1-8C11 50 3 40 3 26 3 11 11 2 22 2z" fill="#0F2275" stroke="#D4F53C" stroke-width="3"/><g fill="#D4F53C" opacity=".85"><circle cx="15" cy="16" r="2"/><circle cx="22" cy="13" r="2"/><circle cx="29" cy="16" r="2"/><circle cx="12" cy="25" r="2"/><circle cx="19" cy="23" r="2"/><circle cx="26" cy="23" r="2"/><circle cx="33" cy="25" r="2"/><circle cx="15" cy="32" r="2"/><circle cx="22" cy="31" r="2"/><circle cx="29" cy="32" r="2"/></g><rect x="17.5" y="62" width="9" height="32" rx="4" fill="#fff"/></svg></span>
+              <span class="btn__ball" aria-hidden="true"></span>
+              <span>Ver horários livres</span>
+            </a>
+          </article>
+
+          <article class="pcard" data-reveal>
+            <div class="pcard__top"><svg class="pcard__ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-6 6.5-6s5.9 2.4 6.5 6"/><path d="M16 4.5a3.5 3.5 0 0 1 0 6M18.5 14.5c1.6.9 2.7 2.8 3 5.5"/></svg></div>
+            <h3>Aulas com profissionais</h3>
+            <p>Individuais ou em grupos de até 4 pessoas, com professores fixos e plano mensal. Evolua com método.</p>
+            <ul class="ticks"><li>Do iniciante ao avançado</li><li>Padel e areia</li><li>Horários combinados com você</li></ul>
+            <a class="btn btn--navy" href="https://wa.me/5547988724664" data-wa="Olá! Vim pelo site e quero saber sobre as aulas na Blu Padel." target="_blank" rel="noopener"><span>Quero fazer aula</span></a>
+          </article>
+
+          <article class="pcard" data-reveal>
+            <div class="pcard__top"><svg class="pcard__ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
+            <h3>Day Pass</h3>
+            <p>Jogue nas quadras de areia durante o dia, em dias de semana, pagando uma taxa única individual.</p>
+            <ul class="ticks"><li>Sem alugar quadra inteira</li><li>Ideal pra treinar mais</li><li>Valor individual</li></ul>
+            <a class="btn btn--navy" href="https://wa.me/5547988724664" data-wa="Olá! Quero saber como funciona o Day Pass da Blu Padel." target="_blank" rel="noopener"><span>Saber mais</span></a>
+          </article>
+
+          <article class="pcard" data-reveal>
+            <div class="pcard__top"><svg class="pcard__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></svg></div>
+            <h3>Rotativos &amp; Americanos</h3>
+            <p>Eventos do clube com valor individual: você joga com parceiros e adversários diferentes em rodízio.</p>
+            <ul class="ticks"><li>Sábados: Beach Tennis</li><li>Domingos: Padel</li><li>Conheça a comunidade</li></ul>
+            <a class="btn btn--navy" href="https://wa.me/5547988724664" data-wa="Olá! Quero participar do próximo rotativo/americano da Blu Padel." target="_blank" rel="noopener"><span>Quero participar</span></a>
+          </article>
+        </div>
+
+        <div class="steps3" data-reveal>
+          <p class="steps3__title">Reserva em 3 passos</p>
+          <ol>
+            <li><span>1</span>Escolha a quadra e o horário no app</li>
+            <li><span>2</span>Pague online, 100% digital</li>
+            <li><span>3</span>Chegue, jogue e assista ao replay</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REPLAYS ============ -->
+    <section class="section replay" id="replays" aria-labelledby="replay-title">
+      <div class="container replay__grid">
+        <div class="replay__text">
+          <p class="eyebrow" data-reveal>Replay System</p>
+          <h2 class="h2" id="replay-title" data-reveal>Jogou bem? <em>Tem replay.</em></h2>
+          <p class="lead" data-reveal>Câmeras integradas às quadras gravam a sua partida. Salve aquele ponto impossível, reveja suas jogadas e acompanhe transmissões ao vivo dos torneios.</p>
+          <ul class="ticks ticks--light" data-reveal><li>Salve os melhores lances</li><li>Compartilhe nas redes</li><li>Transmissões ao vivo de torneios</li></ul>
+          <a class="btn btn--lime btn--lg" href="https://blupadel.scoreclick.com.br" target="_blank" rel="noopener" data-reveal>
+            <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l5.5-3.5z" fill="currentColor"/></svg>
+            <span>Ver replays e transmissões</span>
+          </a>
+        </div>
+        <a class="screen" href="https://blupadel.scoreclick.com.br" target="_blank" rel="noopener" aria-label="Abrir replays e transmissões ao vivo" data-tilt>
+          <img src="assets/img/voleio.webp" alt="" width="1089" height="1444" loading="lazy">
+          <span class="screen__ui" aria-hidden="true">
+            <span class="screen__live"><i></i>AO VIVO</span>
+            <span class="screen__court">QUADRA 02</span>
+            <span class="screen__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="screen__bar"><span></span></span>
+            <span class="screen__tag">REPLAY • 00:12</span>
+          </span>
+          <span class="screen__scan" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ TORNEIOS ============ -->
+    <section class="section torneios" id="torneios" aria-labelledby="torneios-title">
+      <div class="container">
+        <div class="torneios__grid">
+          <div class="tour-media" data-reveal>
+            <div class="stack" id="tour-stack" role="group" aria-roledescription="carrossel" aria-label="Cartazes dos circuitos">
+              <figure class="stack__card" data-caption="Circuito Blu Padel · Etapa final">
+                <img class="stack__bg" src="assets/img/circuito-blu-padel.webp" alt="" aria-hidden="true" loading="lazy">
+                <img class="stack__img" src="assets/img/circuito-blu-padel.webp" alt="Cartaz da etapa final do Circuito Blu Padel" width="737" height="749" loading="lazy">
+              </figure>
+              <figure class="stack__card" data-caption="Circuito Blu Padel · 2ª etapa">
+                <img class="stack__bg" src="assets/img/circuito-2etapa-a.webp" alt="" aria-hidden="true" loading="lazy">
+                <img class="stack__img" src="assets/img/circuito-2etapa-a.webp" alt="Cartaz da 2ª etapa do Circuito Blu Padel" width="1120" height="1405" loading="lazy">
+              </figure>
+              <figure class="stack__card" data-caption="Circuito Blu Padel · 2ª etapa">
+                <img class="stack__bg" src="assets/img/circuito-2etapa-b.webp" alt="" aria-hidden="true" loading="lazy">
+                <img class="stack__img" src="assets/img/circuito-2etapa-b.webp" alt="Cartaz alternativo da 2ª etapa do Circuito Blu Padel" width="1116" height="1409" loading="lazy">
+              </figure>
+            </div>
+            <div class="stack__bar">
+              <p class="stack__label" id="stack-label"><i aria-hidden="true"></i><span>Circuitos já realizados</span></p>
+              <div class="stack__btns">
+                <button class="stack__btn" type="button" data-stack="prev" aria-label="Cartaz anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+                <button class="stack__btn" type="button" data-stack="next" aria-label="Próximo cartaz"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="eyebrow" data-reveal>Torneios &amp; eventos</p>
+            <h2 class="h2" id="torneios-title" data-reveal>Palco das competições <em>do Vale.</em></h2>
+            <div class="tour-live" id="tour-live" hidden aria-live="polite"></div>
+            <div class="events">
+              <article class="event" data-reveal>
+                <span class="event__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></span>
+                <div><h3>Circuito Blu Padel</h3><p>O ranking oficial do clube, com categorias masculina, feminina e mista — da iniciante à 1ª classe. Troféu, premiação e brinde para os inscritos.</p></div>
+              </article>
+              <article class="event" data-reveal>
+                <span class="event__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6.5 7 .9-5.1 4.8 1.3 6.9L12 17.8 5.8 21.1l1.3-6.9L2 9.4l7-.9z"/></svg></span>
+                <div><h3>Copa do Vale</h3><p>Etapas regionais que trazem atletas de todo o estado para as nossas quadras.</p></div>
+              </article>
+              <article class="event" data-reveal>
+                <span class="event__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M12 13v9M9 19h6"/></svg></span>
+                <div><h3>Padel Delas</h3><p>Eventos e clínicas pensados exclusivamente para o público feminino.</p></div>
+              </article>
+            </div>
+            <div class="torneios__ctas" data-reveal>
+              <a class="btn btn--lime" id="tour-cta" href="https://wa.me/5547988724664" data-wa="Olá! Quero informações sobre o próximo torneio da Blu Padel." target="_blank" rel="noopener"><span>Quero jogar o próximo torneio</span></a>
+              <a class="btn btn--ghost" href="https://www.instagram.com/blu.padel/" target="_blank" rel="noopener"><span>Ver agenda no Instagram</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rail-head container">
+        <div>
+          <p class="eyebrow" data-reveal>Nossa galera</p>
+          <h3 class="h3" data-reveal>Quem vem, <em>volta.</em></h3>
+          <p class="rail-sub" data-reveal>Risada, ponto suado e comemoração: momentos de quem escolheu jogar na Blu Padel. Toque numa foto para ampliar.</p>
+        </div>
+        <a class="btn btn--ghost" href="https://www.instagram.com/blu.padel/" target="_blank" rel="noopener" data-reveal><svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span>Ver mais no Instagram</span></a>
+      </div>
+      <div class="rail" id="rail" aria-label="Fotos de clientes jogando na Blu Padel">
+        <button class="rail__item" type="button" data-index="0" aria-label="Ampliar foto: Atleta saltando para um smash"><img src="assets/img/smash.webp" alt="Atleta saltando para um smash" width="1087" height="1446" loading="lazy" draggable="false"></button>
+        <button class="rail__item" type="button" data-index="1" aria-label="Ampliar foto: Atleta comemorando ponto com o punho cerrado"><img src="assets/img/vibracao.webp" alt="Atleta comemorando ponto com o punho cerrado" width="1087" height="1446" loading="lazy" draggable="false"></button>
+        <button class="rail__item" type="button" data-index="2" aria-label="Ampliar foto: Atleta concentrada segurando a raquete"><img src="assets/img/foco.webp" alt="Atleta concentrada segurando a raquete" width="1087" height="1447" loading="lazy" draggable="false"></button>
+        <button class="rail__item" type="button" data-index="3" aria-label="Ampliar foto: Dupla feminina posando na rede"><img src="assets/img/dupla-rede.webp" alt="Dupla feminina posando na rede" width="1084" height="1451" loading="lazy" draggable="false"></button>
+        <button class="rail__item" type="button" data-index="4" aria-label="Ampliar foto: Atleta em posição de espera na quadra"><img src="assets/img/atleta-concentrado.webp" alt="Atleta em posição de espera na quadra" width="1078" height="1459" loading="lazy" draggable="false"></button>
+        <button class="rail__item" type="button" data-index="5" aria-label="Ampliar foto: Jogador sorrindo com bolas de padel na mão"><img src="assets/img/diversao.webp" alt="Jogador sorrindo com bolas de padel na mão" width="1082" height="1454" loading="lazy" draggable="false"></button>
+        <button class="rail__item" type="button" data-index="6" aria-label="Ampliar foto: Atleta comemorando de forma descontraída"><img src="assets/img/atleta-rosa.webp" alt="Atleta comemorando de forma descontraída" width="1085" height="1450" loading="lazy" draggable="false"></button>
+        <button class="rail__item" type="button" data-index="7" aria-label="Ampliar foto: Jogador defendendo bola baixa perto do vidro"><img src="assets/img/voleio.webp" alt="Jogador defendendo bola baixa perto do vidro" width="1089" height="1444" loading="lazy" draggable="false"></button>
+        <button class="rail__item" type="button" data-index="8" aria-label="Ampliar foto: Duas atletas sorrindo com raquetes de padel"><img src="assets/img/dupla-sorrisos.webp" alt="Duas atletas sorrindo com raquetes de padel" width="1088" height="1445" loading="lazy" draggable="false"></button>
+      </div>
+    </section>
+
+    <!-- ============ ESTRUTURA ============ -->
+    <section class="section estrutura" id="estrutura" aria-labelledby="estrutura-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow" data-reveal>Estrutura</p>
+          <h2 class="h2" id="estrutura-title" data-reveal>O jogo acaba. <em>A resenha continua.</em></h2>
+        </div>
+        <div class="bento">
+          <div class="bento__show" data-reveal>
+            <div class="show" id="show" role="region" aria-roledescription="carrossel" aria-label="Fotos da estrutura da Blu Padel">
+              <figure class="show__slide is-active" data-title="A casa do padel em Blumenau" data-text="Rua São Paulo, 2815. Chegou, estacionou, jogou."><img src="assets/img/fachada.webp" alt="Fachada da Blu Padel com palmeiras e quadra de padel azul" width="1672" height="941" loading="lazy"></figure>
+              <figure class="show__slide" data-title="5 quadras de padel cobertas" data-text="Vidro, grama sintética azul e iluminação para jogar de dia ou à noite."><img src="assets/img/quadras-padel.webp" alt="Quadras de padel azuis cobertas" width="1688" height="932" loading="lazy"></figure>
+              <figure class="show__slide" data-title="9 quadras de areia" data-text="Beach tennis, vôlei de praia e futevôlei, tudo coberto."><img src="assets/img/quadras-areia.webp" alt="Quadras de areia cobertas com redes" width="1691" height="930" loading="lazy"></figure>
+              <figure class="show__slide" data-title="Salão de tênis de mesa" data-text="Mesas profissionais em um espaço coberto e bem iluminado."><img src="assets/img/tenis-de-mesa.webp" alt="Salão com mesas de tênis de mesa" width="1691" height="930" loading="lazy"></figure>
+              <figure class="show__slide" data-title="Quiosque &amp; lojinha" data-text="Mesas, bar, telão e raquetes e acessórios à venda."><img src="assets/img/quiosque-lojinha.webp" alt="Quiosque com mesas de madeira, bar e parede de raquetes à venda" width="1689" height="931" loading="lazy"></figure>
+              <div class="show__ui">
+                <div class="show__cap" aria-live="polite"><span class="show__num">01</span><div><p class="show__title">A casa do padel em Blumenau</p><p class="show__text">Rua São Paulo, 2815. Chegou, estacionou, jogou.</p></div></div>
+                <div class="show__bars"><button class="show__bar is-active" type="button" aria-label="Mostrar: A casa do padel em Blumenau" data-go="0"><i></i></button><button class="show__bar" type="button" aria-label="Mostrar: 5 quadras de padel cobertas" data-go="1"><i></i></button><button class="show__bar" type="button" aria-label="Mostrar: 9 quadras de areia" data-go="2"><i></i></button><button class="show__bar" type="button" aria-label="Mostrar: Salão de tênis de mesa" data-go="3"><i></i></button><button class="show__bar" type="button" aria-label="Mostrar: Quiosque &amp; lojinha" data-go="4"><i></i></button></div>
+              </div>
+            </div>
+          </div>
+          <div class="bento__item" data-slide="4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10l-1 7a4 4 0 0 1-8 0z"/><path d="M12 14v7M8 21h8"/></svg><h3>Quiosque &amp; bar</h3><p>Bebidas, petiscos e telão pra comemorar a vitória (ou a revanche).</p></div>
+          <div class="bento__item" data-slide="4"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="14" cy="9" rx="5" ry="6" transform="rotate(35 14 9)"/><path d="M10.5 13.5 4 20"/></svg><h3>Lojinha</h3><p>Raquetes, bolas e acessórios para quem quer jogar melhor.</p></div>
+          <div class="bento__item" data-slide="3"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l7-7"/><circle cx="18" cy="17" r="1.6"/></svg><h3>Tênis de mesa</h3><p>Salão coberto com mesas profissionais.</p></div>
+          <div class="bento__item" data-slide="0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c2 3 5 4.5 5 9a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5.5 2 1.5 3 3 3-1-3 0-5.5 0-7.5z"/></svg><h3>3 churrasqueiras</h3><p>Para locação: aniversário, empresa ou a turma.</p></div>
+          <div class="bento__item" data-slide="0"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg><h3>Estacionamento</h3><p>Próprio, no local. Chegou, estacionou, jogou.</p></div>
+          <div class="bento__item" data-slide="1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4" r="2"/><path d="M9 9h5l-1 5h4l2 6"/><path d="M10.5 11a6 6 0 1 0 5.8 7.5"/></svg><h3>Vestiários &amp; acessível</h3><p>Vestiários preparados e estrutura acessível para cadeirantes.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PATROCÍNIO ============ -->
+    <section class="section sponsor" id="patrocinio" aria-labelledby="sponsor-title">
+      <div class="sponsor__bg" aria-hidden="true"></div>
+      <div class="container sponsor__grid">
+        <div class="sponsor__text">
+          <p class="eyebrow" data-reveal>Seja patrocinador</p>
+          <h2 class="h2" id="sponsor-title" data-reveal>Sua marca onde a paixão pelo padel <em>acontece.</em></h2>
+          <p class="lead" data-reveal>Conecte sua empresa a atletas, famílias e um público cada vez mais engajado — e faça parte do crescimento de um dos esportes que mais crescem no Brasil.</p>
+          <div class="sponsor__stats" data-reveal>
+            <div><strong><span data-count="14">14</span> mil</strong><span>seguidores no Instagram</span></div>
+            <div><strong><span data-count="641">641</span>+</strong><span>publicações</span></div>
+            <div><strong><span data-count="14">14</span></strong><span>quadras com exposição</span></div>
+          </div>
+          <ul class="placements" data-reveal>
+            <li><span>01</span>Banners nas quadras de padel</li>
+            <li><span>02</span>Redes personalizadas nas quadras de areia</li>
+            <li><span>03</span>Naming e presença em torneios e circuitos</li>
+            <li><span>04</span>Ações nas nossas redes sociais</li>
+          </ul>
+          <a class="btn btn--lime btn--lg btn-hit" href="https://wa.me/5547988724664" data-wa="Olá! Tenho interesse em ser patrocinador da Blu Padel. Podemos conversar?" target="_blank" rel="noopener" data-reveal>
+            <span class="btn__racket" aria-hidden="true"><svg viewBox="0 0 44 96"><path d="M22 2c11 0 19 9 19 24 0 14-8 24-15 29l-1 8h-6l-1-8C11 50 3 40 3 26 3 11 11 2 22 2z" fill="#0F2275" stroke="#D4F53C" stroke-width="3"/><g fill="#D4F53C" opacity=".85"><circle cx="15" cy="16" r="2"/><circle cx="22" cy="13" r="2"/><circle cx="29" cy="16" r="2"/><circle cx="12" cy="25" r="2"/><circle cx="19" cy="23" r="2"/><circle cx="26" cy="23" r="2"/><circle cx="33" cy="25" r="2"/><circle cx="15" cy="32" r="2"/><circle cx="22" cy="31" r="2"/><circle cx="29" cy="32" r="2"/></g><rect x="17.5" y="62" width="9" height="32" rx="4" fill="#fff"/></svg></span>
+            <span class="btn__ball" aria-hidden="true"></span>
+            <span>Quero ser patrocinador</span>
+          </a>
+        </div>
+
+        <div class="netscene" aria-hidden="true">
+          <div class="netscene__inner">
+            <div class="net3d">
+              <span class="net3d__post net3d__post--l"></span>
+              <span class="net3d__post net3d__post--r"></span>
+              <div class="net3d__mesh"></div>
+              <div class="net3d__banner">
+                <span class="net3d__small">Sua rede personalizada</span>
+                <span class="net3d__logo">SUA MARCA</span>
+                <span class="net3d__small">aqui</span>
+              </div>
+            </div>
+            <div class="net3d__shadow"></div>
+            <span class="net3d__ball"></span>
+          </div>
+          <img class="netscene__photo" src="assets/img/quadras-areia.webp" alt="" width="1691" height="930" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section class="section contato" id="contato" aria-labelledby="contato-title">
+      <div class="container contato__grid">
+        <div>
+          <p class="eyebrow" data-reveal>Horários &amp; localização</p>
+          <h2 class="h2" id="contato-title" data-reveal>Bora <em>jogar?</em></h2>
+          <div class="info" data-reveal>
+            <div class="info__row">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <div><strong>Rua São Paulo, 2815</strong><span>Blumenau · SC · 89030-001</span></div>
+            </div>
+            <div class="info__row">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <div class="hours">
+                <p><span>Segunda a sexta</span><b>Veja os horários no app</b></p>
+                <p><span>Sábado</span><b>08h às 18h</b></p>
+                <p><span>Domingo</span><b>09h às 21h</b></p>
+              </div>
+            </div>
+            <div class="info__row">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 16.8L2 22l5.3-1.2A11 11 0 0 0 20.5 3.5z"/></svg>
+              <div><strong><a href="https://wa.me/5547988724664" data-wa="Olá! Vim pelo site da Blu Padel e gostaria de mais informações." target="_blank" rel="noopener">(47) 98872-4664</a></strong><span>WhatsApp — atendimento e aulas</span></div>
+            </div>
+          </div>
+          <div class="contato__ctas" data-reveal>
+            <a class="btn btn--lime" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rua+S%C3%A3o+Paulo%2C+2815%2C+Blumenau+-+SC" target="_blank" rel="noopener"><span>Como chegar</span></a>
+            <a class="btn btn--ghost" href="https://www.instagram.com/blu.padel/" target="_blank" rel="noopener">
+              <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+              <span>@blu.padel</span>
+            </a>
+          </div>
+        </div>
+        <div class="map" data-reveal>
+          <iframe title="Mapa da localização da Blu Padel" src="https://www.google.com/maps?q=Rua+S%C3%A3o+Paulo,+2815,+Blumenau,+SC,+89030-001&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <span class="map__pin" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA FINAL ============ -->
+    <section class="final" aria-labelledby="final-title">
+      <div class="final__word" aria-hidden="true">BLU PADEL • BLU PADEL • BLU PADEL • </div>
+      <div class="container final__inner">
+        <h2 class="final__title" id="final-title" data-reveal>Sua próxima partida <em>está a um clique.</em></h2>
+        <a class="btn btn--lime btn--xl btn-hit" href="https://www.blupadel.com.br/ords/r/jdb/blu-padel/agendar" target="_blank" rel="noopener" data-reveal>
+          <span class="btn__racket" aria-hidden="true"><svg viewBox="0 0 44 96"><path d="M22 2c11 0 19 9 19 24 0 14-8 24-15 29l-1 8h-6l-1-8C11 50 3 40 3 26 3 11 11 2 22 2z" fill="#0F2275" stroke="#D4F53C" stroke-width="3"/><g fill="#D4F53C" opacity=".85"><circle cx="15" cy="16" r="2"/><circle cx="22" cy="13" r="2"/><circle cx="29" cy="16" r="2"/><circle cx="12" cy="25" r="2"/><circle cx="19" cy="23" r="2"/><circle cx="26" cy="23" r="2"/><circle cx="33" cy="25" r="2"/><circle cx="15" cy="32" r="2"/><circle cx="22" cy="31" r="2"/><circle cx="29" cy="32" r="2"/></g><rect x="17.5" y="62" width="9" height="32" rx="4" fill="#fff"/></svg></span>
+          <span class="btn__ball" aria-hidden="true"></span>
+          <span>Reservar minha quadra</span>
+          <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#topo" class="logo">
+          <img class="logo__img logo__img--lg" src="assets/img/logo-blu-padel.webp" width="900" height="484" alt="Blu Padel e Esportes de Areia" loading="lazy">
+        </a>
+        <p>Blu Padel e Esportes de Areia. Locação de quadras e aulas com profissionais em Blumenau/SC.</p>
+      </div>
+      <nav aria-label="Rodapé">
+        <p class="footer__title">Navegue</p>
+        <ul>
+          <li><a href="#clube">O clube</a></li>
+          <li><a href="#como-funciona">Como jogar</a></li>
+          <li><a href="#torneios">Torneios</a></li>
+          <li><a href="#patrocinio">Seja patrocinador</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer__title">Jogue</p>
+        <ul>
+          <li><a href="https://www.blupadel.com.br/ords/r/jdb/blu-padel/agendar" target="_blank" rel="noopener">Reservar quadra</a></li>
+          <li><a href="https://blupadel.scoreclick.com.br" target="_blank" rel="noopener">Replays e ao vivo</a></li>
+          <li><a href="https://www.instagram.com/blu.padel/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__title">Contato</p>
+        <ul>
+          <li><a href="https://wa.me/5547988724664" target="_blank" rel="noopener">(47) 98872-4664</a></li>
+          <li>Rua São Paulo, 2815<br>Blumenau · SC</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> Blu Padel e Esportes de Areia</p>
+      <a href="#topo" class="footer__top">Voltar ao topo ↑</a>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a class="wa-float" href="https://wa.me/5547988724664" data-wa="Olá! Vim pelo site da Blu Padel e gostaria de mais informações." target="_blank" rel="noopener" aria-label="Falar com a Blu Padel no WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.4 3.7 5.9 5.2 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5 0-.2-.3-.3-.6-.4z"/></svg>
+  </a>
+
+  <!-- Lightbox de fotos -->
+  <dialog class="lb" id="lightbox" aria-label="Visualizar foto">
+    <figure class="lb__fig"><img class="lb__img" alt=""><figcaption class="lb__cap"></figcaption></figure>
+    <button class="lb__btn lb__prev" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+    <button class="lb__btn lb__next" type="button" aria-label="Próxima foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    <button class="lb__close" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="lb__foot">
+      <p class="lb__count"></p>
+      <a class="btn btn--lime btn--sm lb__ig" href="https://www.instagram.com/blu.padel/" target="_blank" rel="noopener"><svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span>Ver mais no Instagram</span></a>
+    </div>
+  </dialog>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    /* =========================================================
+       CONFIGURAÇÃO DO SUPABASE (Settings > API no painel do Supabase)
+       url: "Project URL"   anonKey: "anon public"
+       A chave anon pode ficar pública: quem protege os dados são as
+       regras de segurança (RLS) criadas pelo supabase/setup.sql.
+       Deixe vazio para o site usar os cartazes fixos do HTML.
+       ========================================================= */
+    window.BP_SUPABASE = { url: '', anonKey: '' };
+  </script>
+  <script>
+/* ==========================================================================
+   BLU PADEL — interações, scroll e animações (GSAP + ScrollTrigger)
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var doc = document.documentElement;
+  doc.classList.add('js');
+
+  // Respeita "reduzir movimento" do sistema. Para ver tudo animado mesmo assim: ?anim=1 (e ?anim=0 volta ao padrão)
+  var forced = false;
+  try {
+    var q = new URLSearchParams(location.search).get('anim');
+    if (q === '1') localStorage.setItem('bp-anim', '1');
+    if (q === '0') localStorage.removeItem('bp-anim');
+    forced = localStorage.getItem('bp-anim') === '1';
+  } catch (e) {}
+  if (forced) doc.classList.add('force-motion');
+  var reduce = !forced && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.BP_REDUCE = reduce;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+  var WA = 'https://wa.me/5547988724664';
+  window.BP = window.BP || {};
+
+  function webglOK() {
+    try { var c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); }
+    catch (e) { return false; }
+  }
+  var hasGL = webglOK();
+
+  /* ---------- WhatsApp: mensagens pré-preenchidas ---------- */
+  document.querySelectorAll('[data-wa]').forEach(function (a) {
+    a.href = WA + '?text=' + encodeURIComponent(a.getAttribute('data-wa'));
+  });
+
+  /* ---------- Ano ---------- */
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  /* ---------- Header ---------- */
+  var header = document.getElementById('header');
+  var burger = document.getElementById('burger');
+  var nav = document.getElementById('nav');
+  var lastY = 0;
+  function onScroll() {
+    var sy = window.scrollY;
+    header.classList.toggle('is-scrolled', sy > 40);
+    var menuOpen = nav.classList.contains('is-open');
+    header.classList.toggle('is-hidden', !menuOpen && sy > 600 && sy > lastY + 4);
+    if (sy < lastY - 4) header.classList.remove('is-hidden');
+    lastY = sy;
+  }
+
+  /* ---------- Menu mobile ---------- */
+  function setMenu(open) {
+    nav.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function () { setMenu(!nav.classList.contains('is-open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); burger.focus(); } });
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Botões com raquete que rebate ---------- */
+  document.querySelectorAll('.btn-hit').forEach(function (btn) {
+    var racket = btn.querySelector('.btn__racket');
+    function hit() {
+      if (reduce || btn.classList.contains('is-hitting')) return;
+      btn.style.setProperty('--bw', btn.offsetWidth + 'px');
+      btn.classList.add('is-hitting');
+    }
+    btn.addEventListener('mouseenter', hit);
+    btn.addEventListener('focus', hit);
+    if (racket) racket.addEventListener('animationend', function () { btn.classList.remove('is-hitting'); });
+  });
+
+  /* ---------- Cursor bola ---------- */
+  var cursor = document.querySelector('.cursor-ball');
+  if (cursor && finePointer && !reduce) {
+    var cx = -100, cy = -100, tx = -100, ty = -100;
+    window.addEventListener('pointermove', function (e) {
+      tx = e.clientX; ty = e.clientY;
+      cursor.classList.add('is-on');
+      var interactive = e.target.closest('a, button, [data-tilt], .rail, .stack, #hero-canvas, .bento__item');
+      cursor.classList.toggle('is-link', !!interactive);
+    }, { passive: true });
+    document.addEventListener('pointerleave', function () { cursor.classList.remove('is-on'); });
+    (function loop() {
+      cx += (tx - cx) * 0.22; cy += (ty - cy) * 0.22;
+      cursor.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  /* ---------- Tilt 3D (cards e fotos) ---------- */
+  if (finePointer && !reduce) {
+    document.querySelectorAll('[data-tilt]').forEach(function (el) {
+      var base = getComputedStyle(el).transform;
+      base = base === 'none' ? '' : base;
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transition = 'transform .12s linear';
+        el.style.transform = base + ' perspective(900px) rotateY(' + (px * 12) + 'deg) rotateX(' + (-py * 10) + 'deg) scale(1.02)';
+      });
+      el.addEventListener('pointerleave', function () {
+        el.style.transition = 'transform .8s cubic-bezier(.16,1,.3,1)';
+        el.style.transform = base;
+      });
+    });
+
+    var scene = document.querySelector('.netscene');
+    var net = document.querySelector('.net3d');
+    if (scene && net) {
+      scene.addEventListener('pointermove', function (e) {
+        var r = scene.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        net.style.transform = 'rotateX(' + (8 - py * 18) + 'deg) rotateY(' + (-24 + px * 40) + 'deg)';
+      });
+      scene.addEventListener('pointerleave', function () { net.style.transform = ''; });
+    }
+  }
+
+  /* ==========================================================
+     LIGHTBOX (galeria e cartazes)
+     ========================================================== */
+  var lb = document.getElementById('lightbox');
+  var LB = { items: [], i: 0 };
+  if (lb && typeof lb.showModal === 'function') {
+    var lbImg = lb.querySelector('.lb__img');
+    var lbCap = lb.querySelector('.lb__cap');
+    var lbCount = lb.querySelector('.lb__count');
+    var lbPrev = lb.querySelector('.lb__prev');
+    var lbNext = lb.querySelector('.lb__next');
+
+    var lbShow = function (dir) {
+      var it = LB.items[LB.i];
+      lbImg.src = it.src;
+      lbImg.alt = it.alt || '';
+      lbCap.textContent = it.caption || '';
+      lbCount.textContent = (LB.i + 1) + ' / ' + LB.items.length;
+      lbPrev.hidden = lbNext.hidden = LB.items.length < 2;
+      lbImg.style.setProperty('--lb-dir', (dir || 0) * 50 + 'px');
+      lbImg.classList.remove('is-in'); void lbImg.offsetWidth; lbImg.classList.add('is-in');
+    };
+    var lbStep = function (d) { LB.i = (LB.i + d + LB.items.length) % LB.items.length; lbShow(d); };
+
+    window.BP.lightbox = function (items, i) {
+      LB.items = items; LB.i = i || 0;
+      lbShow(0);
+      if (!lb.open) lb.showModal();
+      document.body.style.overflow = 'hidden';
+      window.dispatchEvent(new CustomEvent('bp:lightbox', { detail: true }));
+    };
+    lb.addEventListener('close', function () {
+      document.body.style.overflow = '';
+      window.dispatchEvent(new CustomEvent('bp:lightbox', { detail: false }));
+    });
+    lbPrev.addEventListener('click', function () { lbStep(-1); });
+    lbNext.addEventListener('click', function () { lbStep(1); });
+    lb.querySelector('.lb__close').addEventListener('click', function () { lb.close(); });
+    lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lb__fig')) lb.close(); });
+    lb.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') lbStep(1);
+      if (e.key === 'ArrowLeft') lbStep(-1);
+    });
+    var lsx = null;
+    lbImg.addEventListener('pointerdown', function (e) { lsx = e.clientX; });
+    lbImg.addEventListener('pointerup', function (e) {
+      if (lsx === null) return;
+      var dx = e.clientX - lsx; lsx = null;
+      if (Math.abs(dx) > 40) lbStep(dx < 0 ? 1 : -1);
+    });
+  }
+
+  /* ==========================================================
+     GALERIA: rolagem automática infinita + arrastar + ampliar
+     ========================================================== */
+  var rail = document.getElementById('rail');
+  if (rail) {
+    var originals = Array.prototype.slice.call(rail.children);
+    var photos = originals.map(function (b) {
+      var im = b.querySelector('img');
+      return { src: im.getAttribute('src'), alt: im.alt, caption: im.alt };
+    });
+    originals.forEach(function (b) {
+      var c = b.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      c.tabIndex = -1;
+      rail.appendChild(c);
+    });
+
+    var loopW = 0;
+    var measure = function () { loopW = rail.children[originals.length].offsetLeft - rail.children[0].offsetLeft; };
+    measure();
+    window.addEventListener('resize', measure);
+    window.addEventListener('load', measure);
+
+    var pos = 0, speedK = 1, hovering = false, lbOpen = false, inView = false, idleUntil = 0;
+    var down = false, moved = false, startX = 0, startPos = 0;
+    var BASE = 42; // px por segundo
+
+    rail.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') hovering = true; });
+    rail.addEventListener('pointerleave', function () { hovering = false; });
+    rail.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse') { idleUntil = Infinity; return; }
+      down = true; moved = false; startX = e.clientX; startPos = pos;
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!down) return;
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > 5) { moved = true; rail.classList.add('is-dragging'); }
+      pos = startPos - dx;
+    });
+    window.addEventListener('pointerup', function (e) {
+      if (e.pointerType !== 'mouse') idleUntil = Date.now() + 2500;
+      if (!down) return;
+      down = false; rail.classList.remove('is-dragging');
+    });
+    rail.addEventListener('touchend', function () { idleUntil = Date.now() + 2500; }, { passive: true });
+    rail.addEventListener('wheel', function () { idleUntil = Date.now() + 2000; }, { passive: true });
+    rail.addEventListener('focusin', function () { idleUntil = Infinity; });
+    rail.addEventListener('focusout', function () { idleUntil = Date.now() + 1500; });
+    rail.addEventListener('scroll', function () {
+      // rolagem manual (toque, trackpad, teclado): sincroniza
+      if (Math.abs(rail.scrollLeft - Math.round(pos)) > 2) pos = rail.scrollLeft;
+    }, { passive: true });
+
+    rail.addEventListener('click', function (e) {
+      if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; return; }
+      var item = e.target.closest('.rail__item');
+      if (item && window.BP.lightbox) window.BP.lightbox(photos, +item.getAttribute('data-index'));
+    }, true);
+    window.addEventListener('bp:lightbox', function (e) { lbOpen = e.detail; });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { inView = en[0].isIntersecting; }).observe(rail);
+
+    var last = performance.now();
+    (function tick(now) {
+      var dt = Math.min((now - last) / 1000, 0.05); last = now;
+      var auto = !reduce && inView && !lbOpen && !down && Date.now() > idleUntil && !document.hidden;
+      speedK += ((hovering ? 0.25 : 1) - speedK) * 0.06;
+      if (auto) pos += BASE * speedK * dt;
+      if (loopW > 0) {
+        if (pos >= loopW) { pos -= loopW; startPos -= loopW; }
+        if (pos < 0) { pos += loopW; startPos += loopW; }
+      }
+      if (auto || down) rail.scrollLeft = pos;
+      requestAnimationFrame(tick);
+    })(last);
+  }
+
+  /* ==========================================================
+     ESTRUTURA: slideshow automático
+     ========================================================== */
+  var show = document.getElementById('show');
+  if (show) {
+    var slides = show.querySelectorAll('.show__slide');
+    var bars = show.querySelectorAll('.show__bar');
+    var capBox = show.querySelector('.show__cap');
+    var capNum = show.querySelector('.show__num');
+    var capTitle = show.querySelector('.show__title');
+    var capText = show.querySelector('.show__text');
+    var cur = 0;
+    show.style.setProperty('--show-dur', '5200ms');
+
+    var go = function (n) {
+      if (n === cur) return;
+      slides.forEach(function (s, i) { s.classList.toggle('is-prev', i === cur); s.classList.remove('is-active'); });
+      void slides[n].offsetWidth;
+      slides[n].classList.add('is-active');
+      bars.forEach(function (b, i) {
+        b.classList.remove('is-active');
+        b.classList.toggle('is-done', i < n);
+      });
+      void bars[n].offsetWidth;
+      bars[n].classList.add('is-active');
+      capNum.textContent = String(n + 1).padStart(2, '0');
+      capTitle.innerHTML = slides[n].getAttribute('data-title');
+      capText.textContent = slides[n].getAttribute('data-text');
+      capBox.classList.remove('is-swap'); void capBox.offsetWidth; capBox.classList.add('is-swap');
+      cur = n;
+      document.querySelectorAll('.bento__item').forEach(function (it) {
+        it.classList.toggle('is-linked', +it.getAttribute('data-slide') === n && it.matches(':hover'));
+      });
+    };
+    bars.forEach(function (b) {
+      b.addEventListener('click', function () { go(+b.getAttribute('data-go')); });
+      if (!reduce) b.querySelector('i').addEventListener('animationend', function () {
+        if (b.classList.contains('is-active')) go((cur + 1) % slides.length);
+      });
+    });
+    show.addEventListener('pointerenter', function () { show.classList.add('is-paused'); });
+    show.addEventListener('pointerleave', function () { show.classList.remove('is-paused'); });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) { show.classList.toggle('is-off', !en[0].isIntersecting); show.classList.toggle('is-paused', !en[0].isIntersecting); }, { threshold: 0.25 }).observe(show);
+    }
+    document.querySelectorAll('.bento__item[data-slide]').forEach(function (it) {
+      var n = +it.getAttribute('data-slide');
+      it.addEventListener('pointerenter', function () { go(n); show.classList.add('is-paused'); });
+      it.addEventListener('pointerleave', function () { show.classList.remove('is-paused'); });
+      it.addEventListener('click', function () { go(n); });
+    });
+    if (reduce) show.classList.add('is-paused');
+  }
+
+  /* ==========================================================
+     FITAS: rolam sozinhas e aceleram/invertem com o scroll
+     ========================================================== */
+  var tracks = Array.prototype.slice.call(document.querySelectorAll('.tape__track'));
+  if (tracks.length && !reduce) {
+    var tapesEl = document.querySelector('.tapes');
+    var tapesOn = true;
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { tapesOn = en[0].isIntersecting; }).observe(tapesEl);
+    var tState = tracks.map(function (t) { return { el: t, x: 0, speed: parseFloat(t.getAttribute('data-speed')) || 50, half: t.scrollWidth / 2 }; });
+    window.addEventListener('resize', function () { tState.forEach(function (s) { s.half = s.el.scrollWidth / 2; }); });
+    window.addEventListener('load', function () { tState.forEach(function (s) { s.half = s.el.scrollWidth / 2; }); });
+    var prevSY = window.scrollY, dirSign = 1, boost = 0, tl0 = performance.now();
+    (function tapeTick(now) {
+      var dt = Math.min((now - tl0) / 1000, 0.05); tl0 = now;
+      var sy = window.scrollY, dy = sy - prevSY; prevSY = sy;
+      if (dy > 0.5) dirSign = 1; else if (dy < -0.5) dirSign = -1;
+      boost += (Math.min(Math.abs(dy) / Math.max(dt, 0.001) * 0.35, 520) - boost) * 0.12;
+      if (tapesOn) {
+        tState.forEach(function (s) {
+          var v = (Math.abs(s.speed) + boost) * Math.sign(s.speed) * dirSign;
+          s.x -= v * dt;
+          if (s.half > 0) { while (s.x <= -s.half) s.x += s.half; while (s.x > 0) s.x -= s.half; }
+          s.el.style.transform = 'translate3d(' + s.x.toFixed(2) + 'px,0,0)';
+        });
+      }
+      requestAnimationFrame(tapeTick);
+    })(tl0);
+  } else {
+    doc.classList.remove('js-tapes');
+    tracks.forEach(function (t) { t.style.animation = 'none'; });
+  }
+
+  /* ---------- Reveals (CSS + IntersectionObserver) ---------- */
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  function revealNow(el, delay) {
+    el.style.transitionDelay = (delay || 0) + 's';
+    el.classList.add('is-in');
+    setTimeout(function () { el.removeAttribute('data-reveal'); el.classList.remove('is-in'); el.style.transitionDelay = ''; }, 1400 + (delay || 0) * 1000);
+  }
+  if (reduce || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.removeAttribute('data-reveal'); });
+  } else {
+    var rio = new IntersectionObserver(function (entries) {
+      var n = 0;
+      entries.forEach(function (e) {
+        // na tela: entra animado; já passou (pulo de âncora): aparece direto
+        if (e.isIntersecting) { rio.unobserve(e.target); revealNow(e.target, Math.min(n++, 5) * 0.08); }
+        else if (e.boundingClientRect.bottom < 0) { rio.unobserve(e.target); e.target.removeAttribute('data-reveal'); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    revealEls.forEach(function (el) { rio.observe(el); });
+  }
+
+  /* ---------- Sem GSAP: mostra tudo e sai ---------- */
+  if (!hasGsap) {
+    doc.classList.remove('js');
+    window.__court = { progress: 0 };
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ==========================================================
+     QUADRA 3D: pin + progresso por etapa
+     ========================================================== */
+  window.__court = { progress: 0 };
+  var court = document.querySelector('.court');
+  if (court) {
+    var steps = court.querySelectorAll('.court-step');
+    var bar = court.querySelector('.court__progress span');
+    var setStep = function (p) {
+      var idx = Math.min(steps.length - 1, Math.floor(p * steps.length * 0.999));
+      steps.forEach(function (s, i) { s.classList.toggle('is-active', i === idx); });
+      court.setAttribute('data-step', idx + 1);
+      court.classList.toggle('is-rec', idx === steps.length - 1);
+      if (bar) bar.style.transform = 'scaleX(' + p + ')';
+    };
+    ScrollTrigger.create({
+      trigger: court,
+      start: 'top top',
+      end: function () { return '+=' + Math.round(window.innerHeight * 4.6); },
+      pin: true,
+      scrub: true,
+      anticipatePin: 1,
+      onUpdate: function (self) { window.__court.progress = self.progress; setStep(self.progress); }
+    });
+    setStep(0);
+  }
+
+  if (reduce) return;
+
+  /* ---------- Hero: entrada ---------- */
+  var tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+  tl.from('.hero__title .line__in', { yPercent: 115, rotate: 4, duration: 1.2, stagger: 0.12 }, 0.35)
+    .from('.hero__eyebrow', { y: 20, opacity: 0, duration: .8 }, 0.3)
+    .from('.hero__lead', { y: 24, opacity: 0, duration: .9 }, 0.75)
+    .from('.hero__ctas > *', { y: 24, opacity: 0, duration: .8, stagger: 0.08 }, 0.9)
+    .from('.hero__facts li', { y: 20, opacity: 0, duration: .8, stagger: 0.08 }, 1.05)
+    .from('.hero__bgword', { xPercent: 12, opacity: 0, duration: 1.8, ease: 'expo.out' }, 0)
+    .from('.header', { y: -30, opacity: 0, duration: .8 }, 0.2);
+
+  /* Hero: o texto sobe e some ao rolar */
+  gsap.to('.hero__inner', { yPercent: -18, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.hero__bgword', { xPercent: -25, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+  var word = document.querySelector('.hit-word');
+  window.addEventListener('padel:hit', function () {
+    if (!word) return;
+    word.classList.remove('is-hit'); void word.offsetWidth; word.classList.add('is-hit');
+  });
+
+  /* ---------- Fitas: entrada ---------- */
+  gsap.from('.tape--lime', { xPercent: -30, autoAlpha: 0, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: '.tapes', start: 'top 95%' } });
+  gsap.from('.tape--navy', { xPercent: 30, autoAlpha: 0, duration: 1.4, ease: 'expo.out', delay: .1, scrollTrigger: { trigger: '.tapes', start: 'top 95%' } });
+
+  /* ---------- Títulos: entrada palavra por palavra ---------- */
+  function splitWords(root) {
+    Array.prototype.slice.call(root.childNodes).forEach(function (n) {
+      if (n.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function (part) {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+          var w = document.createElement('span'); w.className = 'w';
+          var wi = document.createElement('span'); wi.className = 'w__in'; wi.textContent = part;
+          w.appendChild(wi); frag.appendChild(w);
+        });
+        n.parentNode.replaceChild(frag, n);
+      } else if (n.nodeType === 1 && n.tagName !== 'BR') {
+        splitWords(n);
+      }
+    });
+  }
+  document.querySelectorAll('.h2[data-reveal], .h3[data-reveal], .final__title').forEach(function (h) {
+    splitWords(h);
+    h.removeAttribute('data-reveal');
+    gsap.set(h, { opacity: 1 });
+    gsap.from(h.querySelectorAll('.w__in'), {
+      yPercent: 118, rotate: 7, duration: 1.05, ease: 'power4.out', stagger: 0.055,
+      scrollTrigger: { trigger: h, start: 'top 88%', once: true }
+    });
+  });
+
+
+  /* ---------- Contadores ---------- */
+  document.querySelectorAll('[data-count]').forEach(function (el) {
+    var end = parseFloat(el.getAttribute('data-count'));
+    var pad = parseInt(el.getAttribute('data-pad') || '0', 10);
+    var o = { v: 0 };
+    ScrollTrigger.create({
+      trigger: el, start: 'top 90%', once: true,
+      onEnter: function () {
+        gsap.to(o, {
+          v: end, duration: 1.6, ease: 'power2.out',
+          onUpdate: function () { el.textContent = String(Math.round(o.v)).padStart(pad, '0'); }
+        });
+      }
+    });
+  });
+
+  /* ---------- Parallax de imagens ---------- */
+  document.querySelectorAll('[data-parallax]').forEach(function (img) {
+    gsap.fromTo(img, { yPercent: -10 }, {
+      yPercent: 0, ease: 'none',
+      scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+  });
+
+  /* Fotos do clube: entrada em 3D */
+  gsap.from('.clube__img--a', { rotateY: -25, rotateX: 8, x: -60, opacity: 0, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: '.clube__media', start: 'top 80%' } });
+  gsap.from('.clube__img--b', { rotateY: 25, rotateX: -6, x: 60, y: 40, opacity: 0, duration: 1.4, delay: .15, ease: 'expo.out', scrollTrigger: { trigger: '.clube__media', start: 'top 80%' } });
+  gsap.from('.clube__badge', { scale: 0, rotate: -120, duration: 1.2, delay: .4, ease: 'back.out(1.6)', scrollTrigger: { trigger: '.clube__media', start: 'top 80%' } });
+
+
+
+  /* Rede do patrocínio: entra em 3D */
+  gsap.from('.net3d', { rotateY: -80, rotateX: 30, opacity: 0, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.netscene', start: 'top 75%' } });
+  gsap.from('.net3d__banner', { z: 200, opacity: 0, duration: 1.2, delay: .5, ease: 'back.out(1.4)', scrollTrigger: { trigger: '.netscene', start: 'top 75%' } });
+
+  /* Título final: escala com o scroll */
+  gsap.from('.final__title', { scale: .86, ease: 'none', scrollTrigger: { trigger: '.final', start: 'top bottom', end: 'center center', scrub: true } });
+
+  window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+})();
+  </script>
+  <script>
+/* ==========================================================================
+   BLU PADEL — Torneios: lê o painel (/api/public), mostra o torneio com
+   inscrições abertas (aviso no topo + botão de inscrição) ou a pilha de
+   circuitos já realizados. Sem servidor, usa os cartazes do HTML.
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var section = document.getElementById('torneios');
+  var stack = document.getElementById('tour-stack');
+  if (!section || !stack) return;
+
+  var reduce = (typeof window.BP_REDUCE === 'boolean' ? window.BP_REDUCE : window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var WA = 'https://wa.me/5547988724664';
+  var MONTHS = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+  var MON = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+
+  function parts(iso) { var p = String(iso).split('-'); return { y: +p[0], m: +p[1] - 1, d: +p[2] }; }
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function fmtRange(ds, de) {
+    var a = parts(ds), b = parts(de || ds);
+    if (ds === (de || ds)) return pad(a.d) + ' de ' + MONTHS[a.m];
+    if (a.m === b.m && a.y === b.y) return pad(a.d) + ' a ' + pad(b.d) + ' de ' + MONTHS[a.m];
+    return pad(a.d) + ' ' + MON[a.m] + ' a ' + pad(b.d) + ' ' + MON[b.m];
+  }
+  function fmtShort(ds, de) {
+    var a = parts(ds), b = parts(de || ds);
+    if (ds === (de || ds)) return pad(a.d) + ' ' + MON[a.m];
+    if (a.m === b.m) return pad(a.d) + '–' + pad(b.d) + ' ' + MON[a.m];
+    return pad(a.d) + ' ' + MON[a.m] + '–' + pad(b.d) + ' ' + MON[b.m];
+  }
+  function fmtPrice(v) {
+    if (v === null || v === undefined || v === '' || isNaN(v)) return null;
+    return Number(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: Number(v) % 1 ? 2 : 0 });
+  }
+  function daysBetween(fromIso, toIso) {
+    var a = parts(fromIso), b = parts(toIso);
+    return Math.round((Date.UTC(b.y, b.m, b.d) - Date.UTC(a.y, a.m, a.d)) / 864e5);
+  }
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined && text !== null) e.textContent = text;
+    return e;
+  }
+  function safeUrl(u) {
+    try { var x = new URL(u, location.href); return (x.protocol === 'https:' || x.protocol === 'http:') ? x.href : null; }
+    catch (e) { return null; }
+  }
+  function nameOf(t) { return t.title + (t.stage ? ' · ' + t.stage : ''); }
+
+  /* ---------------- cartões ---------------- */
+  function makeCard(t, live) {
+    var fig = el('figure', 'stack__card' + (live ? ' is-live' : ''));
+    fig.setAttribute('data-caption', nameOf(t));
+    var bg = el('img', 'stack__bg'); bg.src = t.cover; bg.alt = ''; bg.setAttribute('aria-hidden', 'true');
+    var img = el('img', 'stack__img'); img.src = t.cover; img.alt = 'Cartaz: ' + nameOf(t);
+    fig.appendChild(bg); fig.appendChild(img);
+    if (live) {
+      var rib = el('span', 'stack__ribbon');
+      rib.appendChild(el('i'));
+      rib.appendChild(document.createTextNode('Inscrições abertas'));
+      fig.appendChild(rib);
+    }
+    return fig;
+  }
+
+  function renderPast(list) {
+    stack.textContent = '';
+    list.slice(0, 6).forEach(function (t) { stack.appendChild(makeCard(t, false)); });
+  }
+
+  function renderLive(t, today) {
+    section.classList.add('is-live');
+    stack.textContent = '';
+    stack.appendChild(makeCard(t, true));
+    var label = document.getElementById('stack-label');
+    if (label) { label.classList.add('is-live'); label.querySelector('span').textContent = 'Inscrições abertas'; }
+    var btns = section.querySelector('.stack__btns');
+    if (btns) btns.hidden = true;
+
+    // bloco de informações
+    var box = document.getElementById('tour-live');
+    box.textContent = '';
+    var tag = el('p', 'tour-live__tag'); tag.appendChild(el('i')); tag.appendChild(document.createTextNode('Próximo torneio'));
+    box.appendChild(tag);
+    var h = el('h3', 'tour-live__title', t.title + ' ');
+    if (t.stage) h.appendChild(el('em', '', t.stage));
+    box.appendChild(h);
+    var meta = el('div', 'tour-live__meta');
+    function cell(label, value, note) {
+      var c = el('div');
+      c.appendChild(el('small', '', label));
+      c.appendChild(el('b', '', value));
+      if (note) c.appendChild(el('span', '', note));
+      meta.appendChild(c);
+    }
+    cell('Quando', fmtRange(t.dateStart, t.dateEnd));
+    var price = fmtPrice(t.price);
+    cell('Inscrição', price ? price : 'Consulte', price ? (t.priceNote || 'por atleta') : t.priceNote);
+    var d = daysBetween(today, t.dateStart);
+    if (d > 1) cell('Começa em', d + ' dias');
+    else if (d === 1) cell('Começa', 'Amanhã');
+    else cell('Status', 'Acontecendo agora');
+    box.appendChild(meta);
+    if (t.categories) box.appendChild(el('p', 'tour-live__cats', t.categories));
+    box.hidden = false;
+
+    // botão principal
+    var cta = document.getElementById('tour-cta');
+    if (cta) {
+      var url = t.registrationUrl ? safeUrl(t.registrationUrl) : null;
+      cta.removeAttribute('data-wa');
+      cta.textContent = '';
+      if (url) {
+        cta.href = url;
+        cta.appendChild(el('span', '', 'Fazer minha inscrição'));
+        var ico = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        ico.setAttribute('viewBox', '0 0 24 24'); ico.setAttribute('class', 'btn__ico'); ico.setAttribute('aria-hidden', 'true');
+        var path = document.createElementNS('http://www.w3.org/2000/svg', 'path'); path.setAttribute('d', 'M7 17 17 7M8 7h9v9');
+        ico.appendChild(path); cta.appendChild(ico);
+      } else {
+        cta.href = WA + '?text=' + encodeURIComponent('Olá! Quero me inscrever no ' + nameOf(t) + '.');
+        cta.appendChild(el('span', '', 'Quero jogar o próximo torneio'));
+      }
+      cta.classList.add('btn--lg');
+    }
+
+    // aviso no topo + ponto no menu
+    var nav = document.querySelector('.nav__tour');
+    if (nav) nav.classList.add('has-live');
+    var bar = document.getElementById('tourbar');
+    var key = 'bp-tourbar-' + t.id;
+    var dismissed = false;
+    try { dismissed = sessionStorage.getItem(key) === '1'; } catch (e) {}
+    if (bar && !dismissed) {
+      document.getElementById('tourbar-name').textContent = nameOf(t) + ' · ' + fmtShort(t.dateStart, t.dateEnd);
+      bar.hidden = false;
+      bar.querySelector('.tourbar__close').addEventListener('click', function () {
+        bar.hidden = true;
+        try { sessionStorage.setItem(key, '1'); } catch (e) {}
+      });
+    }
+  }
+
+  /* ---------------- pilha animada ---------------- */
+  function initStack() {
+    var cards = Array.prototype.slice.call(stack.querySelectorAll('.stack__card'));
+    var order = cards.map(function (_, i) { return i; });
+    var busy = false;
+
+    function apply() {
+      order.forEach(function (ci, k) {
+        var c = cards[ci];
+        c.style.setProperty('--i', k);
+        c.tabIndex = k === 0 ? 0 : -1;
+        c.setAttribute('aria-hidden', k === 0 ? 'false' : 'true');
+        if (k === 0) { c.setAttribute('role', 'button'); c.setAttribute('aria-label', 'Ampliar ' + (c.getAttribute('data-caption') || 'cartaz')); }
+        else { c.removeAttribute('role'); c.removeAttribute('aria-label'); }
+      });
+    }
+    apply();
+
+    function move(dir) {
+      if (cards.length < 2 || busy) return;
+      var card;
+      if (dir > 0) { card = cards[order[0]]; order.push(order.shift()); }
+      else { order.unshift(order.pop()); card = cards[order[0]]; }
+      if (reduce || !card.animate) { apply(); return; }
+      busy = true;
+      var before = getComputedStyle(card).transform;
+      card.style.transition = 'none';
+      apply();
+      var after = getComputedStyle(card).transform;
+      card.style.zIndex = dir > 0 ? 30 : 0;
+      var side = dir > 0 ? 1 : -1;
+      var anim = card.animate([
+        { transform: before },
+        { transform: 'translate3d(' + (side * 112) + '%, -8%, 60px) rotate(' + (side * 16) + 'deg) scale(.96)', offset: 0.45 },
+        { transform: after }
+      ], { duration: 950, easing: 'cubic-bezier(.65, 0, .35, 1)' });
+      setTimeout(function () { card.style.zIndex = ''; if (dir < 0) card.style.zIndex = 30; }, 430);
+      anim.onfinish = anim.oncancel = function () { card.style.transition = ''; card.style.zIndex = ''; busy = false; };
+    }
+
+    section.querySelectorAll('[data-stack]').forEach(function (b) {
+      b.addEventListener('click', function () { move(b.getAttribute('data-stack') === 'next' ? 1 : -1); pauseFor(8000); });
+    });
+
+    function openTop() {
+      if (!window.BP || !window.BP.lightbox) return;
+      var items = order.map(function (ci) {
+        var img = cards[ci].querySelector('.stack__img');
+        return { src: img.currentSrc || img.src, alt: img.alt, caption: cards[ci].getAttribute('data-caption') };
+      });
+      window.BP.lightbox(items, 0);
+    }
+
+    // arrastar para o lado troca o cartaz; toque simples amplia
+    var sx = null, sy = null;
+    stack.addEventListener('pointerdown', function (e) { sx = e.clientX; sy = e.clientY; });
+    stack.addEventListener('pointerup', function (e) {
+      if (sx === null) return;
+      var dx = e.clientX - sx, dy = e.clientY - sy;
+      sx = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { move(dx < 0 ? 1 : -1); pauseFor(8000); }
+      else if (Math.abs(dx) < 8 && Math.abs(dy) < 8) openTop();
+    });
+    stack.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openTop(); }
+      if (e.key === 'ArrowRight') move(1);
+      if (e.key === 'ArrowLeft') move(-1);
+    });
+
+    // troca automática enquanto visível
+    var inView = false, hover = false, pausedUntil = 0;
+    function pauseFor(ms) { pausedUntil = Date.now() + ms; }
+    stack.addEventListener('pointerenter', function () { hover = true; });
+    stack.addEventListener('pointerleave', function () { hover = false; });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) { inView = en[0].isIntersecting; }, { threshold: 0.35 }).observe(stack);
+    }
+    if (!reduce && cards.length > 1) {
+      setInterval(function () {
+        if (inView && !hover && !document.hidden && Date.now() > pausedUntil) move(1);
+      }, 3800);
+    }
+
+    // leque de cartazes conforme o scroll
+    if (window.gsap && window.ScrollTrigger && !reduce && cards.length > 1) {
+      ScrollTrigger.create({
+        trigger: stack, start: 'top 85%', end: 'center 45%', scrub: true,
+        onUpdate: function (self) { stack.style.setProperty('--fan', self.progress.toFixed(3)); }
+      });
+    } else {
+      stack.style.setProperty('--fan', cards.length > 1 ? 0.6 : 0);
+    }
+  }
+
+  /* ---------------- dados do Supabase ---------------- */
+  function todayISO() {
+    try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()); }
+    catch (e) { var d = new Date(); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  }
+  function fromRow(r) {
+    return {
+      id: r.id, title: r.title, stage: r.stage || '', cover: r.cover_url,
+      dateStart: r.date_start, dateEnd: r.date_end || r.date_start,
+      price: r.price === null || r.price === undefined ? null : Number(r.price),
+      priceNote: r.price_note || '', categories: r.categories || '', registrationUrl: r.registration_url || '',
+    };
+  }
+
+  var done = false;
+  function start() { if (done) return; done = true; initStack(); if (window.ScrollTrigger) ScrollTrigger.refresh(); }
+
+  var cfg = window.BP_SUPABASE || {};
+  if (!cfg.url || !cfg.anonKey) { start(); return; }
+
+  var ctrl = 'AbortController' in window ? new AbortController() : null;
+  var timer = setTimeout(function () { if (ctrl) ctrl.abort(); start(); }, 4000);
+  var q = '/rest/v1/tournaments?select=id,title,stage,cover_url,date_start,date_end,price,price_note,categories,registration_url&published=eq.true&order=date_start.desc&limit=30';
+  fetch(cfg.url.replace(/\/+$/, '') + q, {
+    headers: { apikey: cfg.anonKey, Authorization: 'Bearer ' + cfg.anonKey },
+    signal: ctrl ? ctrl.signal : undefined
+  })
+    .then(function (r) { if (!r.ok) throw new Error('supabase ' + r.status); return r.json(); })
+    .then(function (rows) {
+      if (done || !Array.isArray(rows)) return;
+      var today = todayISO();
+      var list = rows.map(fromRow).filter(function (t) { return t.cover && t.dateStart; });
+      var open = list.filter(function (t) { return t.dateEnd >= today; }).sort(function (a, b) { return a.dateStart.localeCompare(b.dateStart); });
+      var past = list.filter(function (t) { return t.dateEnd < today; });
+      if (open.length) renderLive(open[0], today);
+      else if (past.length) renderPast(past);
+    })
+    .catch(function () { /* sem conexão: mantém os cartazes do HTML */ })
+    .then(function () { clearTimeout(timer); start(); });
+})();
+  </script>
+  <script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+/* ======================= Objetos 3D (raquete, bola, quadra) ======================= */
+/* ==========================================================================
+   BLU PADEL — objetos 3D procedurais (raquete e bola), sem modelos externos
+   1 unidade = 10 cm
+   ========================================================================== */
+
+const COLORS = {
+  navy: '#050B2E',
+  navy700: '#0F2275',
+  royal: '#1B3FD1',
+  court: '#2158E8',
+  lime: '#D4F53C',
+};
+
+function canvasTexture(w, h, draw) {
+  const c = document.createElement('canvas');
+  c.width = w; c.height = h;
+  draw(c.getContext('2d'), w, h);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  t.anisotropy = 8;
+  return t;
+}
+
+/* ---------------------------- Bola ---------------------------- */
+let ballTex = null;
+function ballTexture() {
+  if (ballTex) return ballTex;
+  ballTex = canvasTexture(1024, 512, (g, w, h) => {
+    g.fillStyle = '#CFEF2E';
+    g.fillRect(0, 0, w, h);
+    // feltro
+    for (let i = 0; i < 26000; i++) {
+      const x = Math.random() * w, y = Math.random() * h;
+      g.fillStyle = Math.random() > 0.5 ? 'rgba(250,255,200,0.16)' : 'rgba(110,140,0,0.14)';
+      g.fillRect(x, y, 2, 2);
+    }
+    // costura
+    g.strokeStyle = 'rgba(255,255,255,0.96)';
+    g.lineWidth = 12; g.lineCap = 'round';
+    g.beginPath();
+    for (let x = 0; x <= w; x += 2) {
+      const lon = (x / w) * Math.PI * 2;
+      const y = h / 2 + Math.sin(lon * 2) * h * 0.24;
+      x === 0 ? g.moveTo(x, y) : g.lineTo(x, y);
+    }
+    g.stroke();
+  });
+  return ballTex;
+}
+
+function makeBall(radius = 0.33) {
+  const mat = new THREE.MeshPhysicalMaterial({
+    map: ballTexture(),
+    roughness: 0.85,
+    sheen: 1,
+    sheenRoughness: 0.5,
+    sheenColor: new THREE.Color('#F4FFB0'),
+    emissive: new THREE.Color('#9BBF10'),
+    emissiveIntensity: 0.12,
+  });
+  return new THREE.Mesh(new THREE.SphereGeometry(radius, 48, 32), mat);
+}
+
+/* ---------------------------- Raquete ---------------------------- */
+function faceTexture() {
+  return canvasTexture(768, 1024, (g, w, h) => {
+    // base navy
+    const bg = g.createLinearGradient(0, 0, w, h);
+    bg.addColorStop(0, '#13288A');
+    bg.addColorStop(0.55, '#0A1650');
+    bg.addColorStop(1, '#040A2A');
+    g.fillStyle = bg; g.fillRect(0, 0, w, h);
+
+    // trama de carbono
+    const s = 10;
+    for (let y = 0; y < h; y += s) {
+      for (let x = 0; x < w; x += s) {
+        const odd = ((x + y) / s) % 2 === 0;
+        g.fillStyle = odd ? 'rgba(255,255,255,0.045)' : 'rgba(0,0,0,0.12)';
+        g.fillRect(x, y, s, s);
+      }
+    }
+
+    // faixas diagonais (identidade: limão + azul)
+    g.save();
+    g.translate(w / 2, h * 0.42);
+    g.rotate(-0.55);
+    g.fillStyle = '#D4F53C';
+    g.fillRect(-w, -26, w * 2, 52);
+    g.fillStyle = '#2158E8';
+    g.fillRect(-w, 40, w * 2, 22);
+    g.fillStyle = 'rgba(255,255,255,0.85)';
+    g.fillRect(-w, -44, w * 2, 6);
+    g.restore();
+
+    // halo central
+    const rg = g.createRadialGradient(w * 0.5, h * 0.36, 10, w * 0.5, h * 0.36, w * 0.6);
+    rg.addColorStop(0, 'rgba(255,255,255,0.10)');
+    rg.addColorStop(1, 'rgba(255,255,255,0)');
+    g.fillStyle = rg; g.fillRect(0, 0, w, h);
+
+    // marca
+    g.textAlign = 'left';
+    g.font = 'italic 900 104px "Barlow Condensed", "Arial Narrow", sans-serif';
+    const wBlu = g.measureText('BLU ').width;
+    const wPad = g.measureText('PADEL').width;
+    const x0 = (w - wBlu - wPad) / 2;
+    g.fillStyle = '#FFFFFF';
+    g.fillText('BLU', x0, h * 0.695);
+    g.fillStyle = '#D4F53C';
+    g.fillText('PADEL', x0 + wBlu, h * 0.695);
+
+    // pescoço
+    g.fillStyle = '#D4F53C';
+    g.fillRect(w * 0.44, h * 0.9, w * 0.12, 8);
+  });
+}
+
+function gripTexture() {
+  const t = canvasTexture(256, 256, (g, w, h) => {
+    g.fillStyle = '#F4F6FB'; g.fillRect(0, 0, w, h);
+    g.strokeStyle = 'rgba(15,34,117,0.22)';
+    g.lineWidth = 6;
+    for (let i = -h; i < h * 2; i += 42) {
+      g.beginPath(); g.moveTo(0, i); g.lineTo(w, i + 70); g.stroke();
+    }
+    for (let i = 0; i < 3000; i++) {
+      g.fillStyle = 'rgba(0,0,0,0.04)';
+      g.fillRect(Math.random() * w, Math.random() * h, 2, 2);
+    }
+  });
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.repeat.set(2, 3);
+  return t;
+}
+
+function racketOutline() {
+  const shape = new THREE.Shape();
+  shape.moveTo(0, 1.55);
+  shape.bezierCurveTo(0.85, 1.55, 1.3, 1.1, 1.3, 0.35);
+  shape.bezierCurveTo(1.3, -0.45, 0.8, -1.0, 0.34, -1.38);
+  shape.lineTo(0.2, -1.98);
+  shape.lineTo(-0.2, -1.98);
+  shape.lineTo(-0.34, -1.38);
+  shape.bezierCurveTo(-0.8, -1.0, -1.3, -0.45, -1.3, 0.35);
+  shape.bezierCurveTo(-1.3, 1.1, -0.85, 1.55, 0, 1.55);
+  return shape;
+}
+
+function makeRacket() {
+  const shape = new THREE.Shape();
+  shape.moveTo(0, 1.55);
+  shape.bezierCurveTo(0.85, 1.55, 1.3, 1.1, 1.3, 0.35);
+  shape.bezierCurveTo(1.3, -0.45, 0.8, -1.0, 0.34, -1.38);
+  shape.lineTo(0.2, -1.98);
+  shape.lineTo(-0.2, -1.98);
+  shape.lineTo(-0.34, -1.38);
+  shape.bezierCurveTo(-0.8, -1.0, -1.3, -0.45, -1.3, 0.35);
+  shape.bezierCurveTo(-1.3, 1.1, -0.85, 1.55, 0, 1.55);
+
+  // abertura do coração (garganta)
+  const throat = new THREE.Path();
+  throat.moveTo(0, -0.98);
+  throat.quadraticCurveTo(0.36, -1.2, 0.1, -1.62);
+  throat.lineTo(-0.1, -1.62);
+  throat.quadraticCurveTo(-0.36, -1.2, 0, -0.98);
+  shape.holes.push(throat);
+
+  // furos da face
+  const r = 0.05, step = 0.205;
+  let row = 0;
+  for (let y = -0.6; y <= 1.25; y += step, row++) {
+    const off = row % 2 ? step / 2 : 0;
+    for (let x = -1.05; x <= 1.05; x += step) {
+      const px = x + off;
+      const nx = px / 0.98, ny = (y - 0.3) / 0.98;
+      if (nx * nx + ny * ny > 0.86) continue;
+      const p = new THREE.Path();
+      p.absarc(px, y, r, 0, Math.PI * 2, true);
+      shape.holes.push(p);
+    }
+  }
+
+  const depth = 0.34;
+  const geo = new THREE.ExtrudeGeometry(shape, {
+    depth, bevelEnabled: true, bevelThickness: 0.05, bevelSize: 0.045, bevelSegments: 4, curveSegments: 18,
+  });
+  geo.translate(0, 0, -depth / 2);
+
+  // UV planar para a face
+  geo.computeBoundingBox();
+  const bb = geo.boundingBox;
+  const pos = geo.attributes.position, uv = geo.attributes.uv;
+  const bw = bb.max.x - bb.min.x, bh = bb.max.y - bb.min.y;
+  for (let i = 0; i < pos.count; i++) {
+    const u = (pos.getX(i) - bb.min.x) / bw;
+    // face de trás: espelha o U para a marca não aparecer invertida
+    uv.setXY(i, pos.getZ(i) < -depth / 2 + 0.001 ? 1 - u : u, (pos.getY(i) - bb.min.y) / bh);
+  }
+  uv.needsUpdate = true;
+  geo.computeVertexNormals();
+
+  const faceMat = new THREE.MeshPhysicalMaterial({
+    map: faceTexture(), roughness: 0.38, metalness: 0.15, clearcoat: 1, clearcoatRoughness: 0.12, envMapIntensity: 0.9,
+  });
+  const sideMat = new THREE.MeshPhysicalMaterial({
+    color: '#0B1A55', roughness: 0.3, metalness: 0.3, clearcoat: 1, clearcoatRoughness: 0.1, envMapIntensity: 1,
+  });
+
+  const racket = new THREE.Group();
+  const head = new THREE.Mesh(geo, [faceMat, sideMat]);
+  racket.add(head);
+
+  // filete limão no aro (protetor)
+  const pts = shape.getSpacedPoints(420);
+  const keep = pts.map(p => p.y > -1.18);
+  const A = [], B = [];
+  let i = 0;
+  while (i < pts.length && keep[i]) A.push(pts[i++]);
+  while (i < pts.length && !keep[i]) i++;
+  while (i < pts.length) { if (keep[i]) B.push(pts[i]); i++; }
+  const rim = B.concat(A).map(p => {
+    const d = new THREE.Vector2(p.x, p.y - 0.25).normalize();
+    return new THREE.Vector3(p.x + d.x * 0.052, p.y + d.y * 0.052, 0);
+  });
+  const rimCurve = new THREE.CatmullRomCurve3(rim);
+  const rimMesh = new THREE.Mesh(
+    new THREE.TubeGeometry(rimCurve, 360, 0.032, 10, false),
+    new THREE.MeshStandardMaterial({ color: COLORS.lime, roughness: 0.35, emissive: '#7E9A00', emissiveIntensity: 0.25 })
+  );
+  racket.add(rimMesh);
+
+  // anel do pescoço
+  const collar = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.215, 0.215, 0.09, 32),
+    new THREE.MeshStandardMaterial({ color: COLORS.lime, roughness: 0.4 })
+  );
+  collar.position.y = -2.02;
+  racket.add(collar);
+
+  // cabo
+  const grip = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.175, 0.195, 1.3, 40),
+    new THREE.MeshStandardMaterial({ map: gripTexture(), roughness: 0.85 })
+  );
+  grip.position.y = -2.7;
+  racket.add(grip);
+
+  const cap = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.205, 0.22, 0.1, 32),
+    new THREE.MeshPhysicalMaterial({ color: '#0B1A55', roughness: 0.3, clearcoat: 1 })
+  );
+  cap.position.y = -3.4;
+  racket.add(cap);
+
+  // cordão de pulso
+  const cord = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(0, -3.42, 0),
+    new THREE.Vector3(0.16, -3.85, 0.06),
+    new THREE.Vector3(0.02, -4.3, 0.02),
+    new THREE.Vector3(-0.16, -3.85, -0.06),
+    new THREE.Vector3(0, -3.42, 0),
+  ], true);
+  racket.add(new THREE.Mesh(
+    new THREE.TubeGeometry(cord, 80, 0.02, 8, true),
+    new THREE.MeshStandardMaterial({ color: '#0A0F22', roughness: 0.6 })
+  ));
+
+  // ponto de contato (centro do "sweet spot", na frente da face)
+  const anchor = new THREE.Object3D();
+  anchor.position.set(0, 0.3, depth / 2 + 0.06 + 0.33);
+  racket.add(anchor);
+
+  return { racket, anchor, gripEndY: -3.4 };
+}
+
+/* ------------------- Textura de brilho circular (sombras/ondas) ------------------- */
+function radialTexture(inner = 'rgba(0,0,0,0.55)', outer = 'rgba(0,0,0,0)') {
+  return canvasTexture(128, 128, (g, w, h) => {
+    const rg = g.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2);
+    rg.addColorStop(0, inner);
+    rg.addColorStop(1, outer);
+    g.fillStyle = rg; g.fillRect(0, 0, w, h);
+  });
+}
+
+/* ==========================================================================
+   BLU PADEL — construção da quadra de padel 3D (20 × 10 m, 1 unidade = 1 m)
+   Usado pela seção "Entenda o jogo" e pela cena do hero.
+   ========================================================================== */
+
+function buildCourt({ groundSize = 80, lamps = true } = {}) {
+  const group = new THREE.Group();
+  const fadeables = []; // [material, opacidade base]
+  const track = (m, base, keepT = false) => { fadeables.push([m, base, keepT || base < 1]); return m; };
+
+  /* Piso externo */
+  const ground = new THREE.Mesh(
+    new THREE.PlaneGeometry(groundSize, groundSize),
+    track(new THREE.MeshStandardMaterial({ color: 0x071240, roughness: 0.95 }), 1)
+  );
+  ground.rotation.x = -Math.PI / 2;
+  ground.position.y = -0.01;
+  group.add(ground);
+
+  /* Grama sintética azul + linhas */
+  const turf = canvasTexture(512, 1024, (g, w, h) => {
+    g.fillStyle = '#1D55E2'; g.fillRect(0, 0, w, h);
+    for (let i = 0; i < 40000; i++) {
+      g.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,255,0.035)' : 'rgba(0,0,40,0.06)';
+      g.fillRect(Math.random() * w, Math.random() * h, 2, 2);
+    }
+    const m = w / 10;
+    g.strokeStyle = 'rgba(255,255,255,0.95)';
+    g.lineWidth = 5;
+    const yTop = (10 - 6.95) * m, yBot = (10 + 6.95) * m;
+    g.beginPath();
+    g.moveTo(0, yTop); g.lineTo(w, yTop);
+    g.moveTo(0, yBot); g.lineTo(w, yBot);
+    g.moveTo(w / 2, yTop); g.lineTo(w / 2, yBot);
+    g.stroke();
+    g.strokeRect(2.5, 2.5, w - 5, h - 5);
+  });
+  const floor = new THREE.Mesh(
+    new THREE.PlaneGeometry(10, 20),
+    track(new THREE.MeshStandardMaterial({ map: turf, roughness: 0.9 }), 1)
+  );
+  floor.rotation.x = -Math.PI / 2;
+  group.add(floor);
+
+  /* Paredes */
+  const glassMat = track(new THREE.MeshPhysicalMaterial({
+    color: 0xbfe0ff, roughness: 0.04, metalness: 0, opacity: 0.13,
+    side: THREE.DoubleSide, depthWrite: false, envMapIntensity: 1.4,
+  }), 0.13);
+  const edgeMat = track(new THREE.LineBasicMaterial({ color: 0x9cc3ff, opacity: 0.45 }), 0.45);
+  const meshTexBase = canvasTexture(64, 64, (g, w, h) => {
+    g.clearRect(0, 0, w, h);
+    g.strokeStyle = 'rgba(190,205,240,0.32)';
+    g.lineWidth = 1.5;
+    g.beginPath(); g.moveTo(0, 0); g.lineTo(w, h); g.moveTo(w, 0); g.lineTo(0, h); g.stroke();
+  });
+  const postMat = track(new THREE.MeshStandardMaterial({ color: 0x0a0f22, metalness: 0.6, roughness: 0.4 }), 1);
+
+  const glassPanels = [];
+  function panel(w, h, x, y, z, rotY, kind) {
+    let mat;
+    if (kind === 'glass') mat = glassMat;
+    else {
+      const t = meshTexBase.clone();
+      t.wrapS = t.wrapT = THREE.RepeatWrapping;
+      t.repeat.set(w * 4, h * 4);
+      t.needsUpdate = true;
+      mat = track(new THREE.MeshBasicMaterial({ map: t, side: THREE.DoubleSide, depthWrite: false }), 1, true);
+    }
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), mat);
+    m.position.set(x, y, z);
+    m.rotation.y = rotY;
+    group.add(m);
+    if (kind === 'glass') {
+      glassPanels.push(m);
+      const e = new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry), edgeMat);
+      e.position.copy(m.position); e.rotation.copy(m.rotation);
+      group.add(e);
+    }
+    return m;
+  }
+  [-10, 10].forEach((z) => {
+    for (let x = -4; x <= 4; x += 2) panel(2, 3, x, 1.5, z, 0, 'glass');
+    panel(10, 1, 0, 3.5, z, 0, 'mesh');
+  });
+  [-5, 5].forEach((x) => {
+    [-1, 1].forEach((s) => {
+      panel(2, 3, x, 1.5, s * 9, Math.PI / 2, 'glass');
+      panel(2, 1, x, 3.5, s * 9, Math.PI / 2, 'mesh');
+      panel(2, 2, x, 1, s * 7, Math.PI / 2, 'glass');
+      panel(2, 1, x, 2.5, s * 7, Math.PI / 2, 'mesh');
+    });
+    panel(12, 3, x, 1.5, 0, Math.PI / 2, 'mesh');
+  });
+
+  /* Postes e trilhos */
+  const postGeo = new THREE.BoxGeometry(0.08, 1, 0.08);
+  function post(x, z, h) {
+    const p = new THREE.Mesh(postGeo, postMat);
+    p.scale.y = h; p.position.set(x, h / 2, z);
+    group.add(p);
+  }
+  for (let z = -10; z <= 10; z += 2) {
+    const h = Math.abs(z) >= 8 ? 4 : 3;
+    post(-5, z, h); post(5, z, h);
+  }
+  for (let x = -3; x <= 3; x += 2) { post(x, -10, 4); post(x, 10, 4); }
+  function rail(len, x, y, z, rotY) {
+    const r = new THREE.Mesh(new THREE.BoxGeometry(len, 0.06, 0.06), postMat);
+    r.position.set(x, y, z); r.rotation.y = rotY; group.add(r);
+  }
+  rail(10, 0, 4, -10, 0); rail(10, 0, 4, 10, 0);
+  [-5, 5].forEach((x) => { rail(12, x, 3, 0, Math.PI / 2); rail(4, x, 4, 8, Math.PI / 2); rail(4, x, 4, -8, Math.PI / 2); });
+
+  /* Rede */
+  const netTex = canvasTexture(64, 64, (g, w, h) => {
+    g.clearRect(0, 0, w, h);
+    g.strokeStyle = 'rgba(15,20,40,0.85)';
+    g.lineWidth = 3;
+    g.strokeRect(0, 0, w, h);
+  });
+  netTex.wrapS = netTex.wrapT = THREE.RepeatWrapping;
+  netTex.repeat.set(10 / 0.06, 0.88 / 0.06);
+  const net = new THREE.Mesh(
+    new THREE.PlaneGeometry(10, 0.88),
+    track(new THREE.MeshBasicMaterial({ map: netTex, side: THREE.DoubleSide, depthWrite: false }), 1, true)
+  );
+  net.position.set(0, 0.44, 0);
+  group.add(net);
+  const band = new THREE.Mesh(new THREE.BoxGeometry(10, 0.07, 0.03), track(new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.6 }), 1));
+  band.position.set(0, 0.88, 0);
+  group.add(band);
+  [-5.05, 5.05].forEach((x) => {
+    const p = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 1, 16), postMat);
+    p.position.set(x, 0.5, 0); group.add(p);
+  });
+
+  /* Luminárias */
+  if (lamps) {
+    const lampMat = track(new THREE.MeshBasicMaterial({ color: 0xffffff }), 1);
+    for (let z = -8; z <= 8; z += 4) {
+      [-3, 3].forEach((x) => {
+        const l = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.05, 0.3), lampMat);
+        l.position.set(x, 8, z); group.add(l);
+      });
+    }
+  }
+
+  // todos os materiais opacos só ficam transparentes durante o fade
+  fadeables.forEach(([m, base, keepT]) => { m.transparent = keepT; m.opacity = base; });
+
+  let current = 1;
+  function setOpacity(k) {
+    if (k === current) return;
+    current = k;
+    group.visible = k > 0.001;
+    fadeables.forEach(([m, base, keepT]) => {
+      m.opacity = base * k;
+      const t = keepT || k < 0.999;
+      if (m.transparent !== t) { m.transparent = t; m.needsUpdate = true; }
+    });
+  }
+
+  return { group, glassMat, glassPanels, setOpacity };
+}
+
+/* ======================= Hero 3D ======================= */
+{
+  /* ==========================================================================
+     BLU PADEL — Hero 3D: raquete que rebate a bola na direção do usuário.
+     • Intro: a raquete entra girando.
+     • Rebate sozinha a cada poucos segundos; clique na raquete para rebater.
+     • Ao rolar a página, a raquete gira e sobe.
+     ========================================================================== */
+
+  const canvas = document.getElementById('hero-canvas');
+  const hero = document.querySelector('.hero');
+  const reduce = (typeof window.BP_REDUCE === 'boolean' ? window.BP_REDUCE : window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  function webglOK() {
+    try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); }
+    catch (e) { return false; }
+  }
+
+  function init() {
+    const gsap = window.gsap;
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
+
+    const scene = new THREE.Scene();
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+    const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+    camera.position.set(0, 0, 14);
+
+    scene.add(new THREE.HemisphereLight(0x8fa8ff, 0x050b2e, 0.7));
+    const key = new THREE.DirectionalLight(0xffffff, 2.4);
+    key.position.set(4, 6, 8);
+    scene.add(key);
+    const limeLight = new THREE.PointLight(COLORS.lime, 40, 18, 2);
+    limeLight.position.set(-3, 2, 4);
+    scene.add(limeLight);
+    const blueLight = new THREE.PointLight(COLORS.court, 80, 20, 2);
+    blueLight.position.set(6, -3, -3);
+    scene.add(blueLight);
+
+    /* Raquete: rig (posição) > pivot (no cabo, para o swing) > raquete */
+    const { racket, anchor, gripEndY } = makeRacket();
+    const rig = new THREE.Group();
+    const pivot = new THREE.Group();
+    racket.position.y = -gripEndY;
+    pivot.add(racket);
+    rig.add(pivot);
+    scene.add(rig);
+
+    const ball = makeBall(0.33);
+    ball.visible = false;
+    scene.add(ball);
+
+    /* Partículas do impacto */
+    const N = 90;
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(N * 3);
+    const pVel = new Float32Array(N * 3);
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const pMat = new THREE.PointsMaterial({ color: COLORS.lime, size: 0.09, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending });
+    scene.add(new THREE.Points(pGeo, pMat));
+
+    const ring = new THREE.Mesh(
+      new THREE.RingGeometry(0.42, 0.5, 64),
+      new THREE.MeshBasicMaterial({ color: COLORS.lime, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false, blending: THREE.AdditiveBlending })
+    );
+    scene.add(ring);
+
+    /* Layout responsivo */
+    const layout = { x: 2.7, y: -3.2, z: 0, rz: -0.3, ry: -0.5, scale: 0.9 };
+    function resize() {
+      const w = canvas.clientWidth || hero.clientWidth, h = canvas.clientHeight || hero.clientHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      const portrait = camera.aspect < 0.9;
+      camera.fov = portrait ? 44 : 32;
+      camera.updateProjectionMatrix();
+      if (portrait) Object.assign(layout, { x: 1.0, y: -3.7, z: 0, rz: -0.36, ry: -0.45, scale: 1.2 });
+      else if (camera.aspect < 1.3) Object.assign(layout, { x: 2.6, y: -3.6, z: -1, rz: -0.3, ry: -0.5, scale: 0.9 });
+      else Object.assign(layout, { x: 2.7, y: -3.2, z: 0, rz: -0.3, ry: -0.5, scale: 0.9 });
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const mouse = { x: 0, y: 0, sx: 0, sy: 0 };
+    window.addEventListener('pointermove', (e) => {
+      mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = (e.clientY / window.innerHeight) * 2 - 1;
+    }, { passive: true });
+
+    /* ------------------- Rebatida ------------------- */
+    const tmp = new THREE.Vector3();
+    const state = { inT: 0, outT: 0, phase: 'idle', spin: 0 };
+    const P = { start: new THREE.Vector3(), ctrl: new THREE.Vector3(), contact: new THREE.Vector3(), end: new THREE.Vector3(), ctrl2: new THREE.Vector3() };
+    let busy = false;
+    let nextTimer = null;
+
+    function contactPoint(out) {
+      const saved = pivot.rotation.x;
+      pivot.rotation.x = 0;
+      rig.updateMatrixWorld(true);
+      anchor.getWorldPosition(out);
+      pivot.rotation.x = saved;
+      rig.updateMatrixWorld(true);
+      return out;
+    }
+
+    function burst(at) {
+      for (let i = 0; i < N; i++) {
+        pPos[i * 3] = at.x; pPos[i * 3 + 1] = at.y; pPos[i * 3 + 2] = at.z;
+        const a = Math.random() * Math.PI * 2;
+        const s = 2 + Math.random() * 6;
+        pVel[i * 3] = Math.cos(a) * s;
+        pVel[i * 3 + 1] = Math.sin(a) * s;
+        pVel[i * 3 + 2] = 2 + Math.random() * 6;
+      }
+      pGeo.attributes.position.needsUpdate = true;
+      pMat.opacity = 1;
+      ring.position.copy(at);
+      ring.lookAt(camera.position);
+      ring.scale.setScalar(1);
+      ring.material.opacity = 0.95;
+      gsap.to(ring.scale, { x: 7, y: 7, z: 7, duration: 0.7, ease: 'expo.out' });
+      gsap.to(ring.material, { opacity: 0, duration: 0.7, ease: 'power2.out' });
+      gsap.fromTo(ball.scale, { x: 1.35, y: 0.7, z: 1.35 }, { x: 1, y: 1, z: 1, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
+      window.dispatchEvent(new CustomEvent('padel:hit'));
+    }
+
+    function hit() {
+      if (busy || !gsap) return;
+      busy = true;
+      clearTimeout(nextTimer);
+
+      contactPoint(P.contact);
+      P.start.copy(P.contact).add(tmp.set(-7, 5.5, -9));
+      P.ctrl.copy(P.contact).add(tmp.set(-3.5, 6.5, -4));
+      P.end.set(P.contact.x - 5.5, P.contact.y + 3.2, camera.position.z + 2);
+      P.ctrl2.copy(P.contact).add(tmp.set(-2, 2.6, 4));
+
+      state.inT = 0; state.outT = 0; state.phase = 'in';
+      ball.visible = true;
+      ball.scale.setScalar(1);
+      state.spin = 4;
+
+      const tl = gsap.timeline({
+        onComplete: () => {
+          busy = false;
+          ball.visible = false;
+          state.phase = 'idle';
+          if (!reduce) nextTimer = setTimeout(hit, 3200);
+        }
+      });
+      tl.to(state, { inT: 1, duration: 0.95, ease: 'power1.in' }, 0)
+        .to(pivot.rotation, { x: -1.15, duration: 0.55, ease: 'power2.out' }, 0.05)
+        .to(pivot.rotation, { x: 0, duration: 0.24, ease: 'power3.in' }, 0.71)
+        .add(() => { state.phase = 'out'; state.spin = 22; contactPoint(P.contact); burst(P.contact); }, 0.95)
+        .to(state, { outT: 1, duration: 0.85, ease: 'power2.in' }, 0.95)
+        .to(pivot.rotation, { x: 0.95, duration: 0.28, ease: 'power2.out' }, 0.95)
+        .to(pivot.rotation, { x: 0, duration: 1.1, ease: 'elastic.out(1, 0.55)' }, 1.25);
+    }
+
+    function bezier(a, b, c, t, out) {
+      const u = 1 - t;
+      return out.set(
+        u * u * a.x + 2 * u * t * b.x + t * t * c.x,
+        u * u * a.y + 2 * u * t * b.y + t * t * c.y,
+        u * u * a.z + 2 * u * t * b.z + t * t * c.z
+      );
+    }
+
+    canvas.addEventListener('click', hit);
+
+    /* Intro: a raquete entra girando */
+    const intro = { t: reduce || !gsap ? 1 : 0 };
+    if (!reduce && gsap) gsap.to(intro, { t: 1, duration: 2, ease: 'expo.out', delay: 0.15 });
+
+    /* ------------------- Loop ------------------- */
+    const clock = new THREE.Clock();
+    let visible = true;
+    new IntersectionObserver((entries) => { visible = entries[0].isIntersecting; }, { threshold: 0 }).observe(hero);
+    let spin = 0;
+
+    function frame() {
+      requestAnimationFrame(frame);
+      const dt = Math.min(clock.getDelta(), 0.05);
+      if (!visible) return;
+      const t = clock.elapsedTime;
+
+      mouse.sx += (mouse.x - mouse.sx) * 0.06;
+      mouse.sy += (mouse.y - mouse.sy) * 0.06;
+
+      // giro com o scroll (suavizado): uma volta completa até sair do topo
+      const sp = Math.min(window.scrollY / Math.max(hero.clientHeight, 1), 1.2);
+      spin += (sp - spin) * Math.min(1, dt * 8);
+      const e = intro.t;
+
+      rig.position.set(
+        layout.x + mouse.sx * 0.25,
+        layout.y + Math.sin(t * 1.1) * 0.12 + spin * 2.2 - (1 - e) * 8,
+        layout.z
+      );
+      rig.rotation.set(
+        mouse.sy * 0.12 + spin * 0.35,
+        layout.ry + mouse.sx * 0.35 + Math.sin(t * 0.5) * 0.08 + spin * Math.PI * 2 + (1 - e) * Math.PI * 2.4,
+        layout.rz + Math.sin(t * 0.7) * 0.03 + (1 - e) * 0.9
+      );
+      rig.scale.setScalar(layout.scale * (0.55 + 0.45 * e));
+
+      if (state.phase === 'in') bezier(P.start, P.ctrl, P.contact, state.inT, ball.position);
+      else if (state.phase === 'out') bezier(P.contact, P.ctrl2, P.end, state.outT, ball.position);
+      ball.rotation.x += state.spin * dt;
+      ball.rotation.z += state.spin * 0.3 * dt;
+
+      if (pMat.opacity > 0) {
+        for (let i = 0; i < N; i++) {
+          pVel[i * 3 + 1] -= 6 * dt;
+          pPos[i * 3] += pVel[i * 3] * dt;
+          pPos[i * 3 + 1] += pVel[i * 3 + 1] * dt;
+          pPos[i * 3 + 2] += pVel[i * 3 + 2] * dt;
+        }
+        pGeo.attributes.position.needsUpdate = true;
+        pMat.opacity = Math.max(0, pMat.opacity - dt * 1.5);
+      }
+
+      limeLight.position.x = -3 + mouse.sx * 2;
+      renderer.render(scene, camera);
+    }
+
+    if (reduce) {
+      rig.position.set(layout.x, layout.y, layout.z);
+      rig.rotation.set(0, layout.ry, layout.rz);
+      rig.scale.setScalar(layout.scale);
+      contactPoint(P.contact);
+      ball.position.copy(P.contact).add(tmp.set(-0.9, 0.6, 0.3));
+      ball.visible = true;
+      renderer.render(scene, camera);
+      window.addEventListener('resize', () => renderer.render(scene, camera));
+      return;
+    }
+
+    frame();
+    nextTimer = setTimeout(hit, 2100);
+  }
+
+  if (canvas && hero && webglOK()) {
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(init);
+  } else {
+    document.documentElement.classList.add('no-webgl');
+  }
+}
+
+/* ======================= Quadra 3D (4 lances) ======================= */
+{
+  /* ==========================================================================
+     BLU PADEL — "Entenda o jogo em 4 lances" (quadra 3D presa ao scroll)
+     01 A quadra       → câmera aérea + medidas
+     02 Duplas         → uma raquete entra e vira a dupla A
+     03 A parede       → dupla B entra; saque, quique, vidro e devolução
+     04 Replay         → jogador vai até o botão da quadra e salva o lance
+     1 unidade = 1 metro. Progresso vem do pin em main.js (window.__court).
+     ========================================================================== */
+
+  const section = document.getElementById('padel');
+  const canvas = document.getElementById('court-canvas');
+  const reduce = (typeof window.BP_REDUCE === 'boolean' ? window.BP_REDUCE : window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  function webglOK() {
+    try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); }
+    catch (e) { return false; }
+  }
+
+
+  const clamp01 = (x) => Math.min(1, Math.max(0, x));
+  const smooth = (x) => { x = clamp01(x); return x * x * (3 - 2 * x); };
+  const range = (p, a, b) => clamp01((p - a) / (b - a));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const backOut = (x) => { x = clamp01(x); const c = 1.9; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+
+  /* ------------------------------------------------------------------ */
+  /* Jogador estilizado (low-poly)                                        */
+  /* ------------------------------------------------------------------ */
+  function smallRacket(rim) {
+    const g = new THREE.Group();
+    const geo = new THREE.ExtrudeGeometry(racketOutline(), { depth: 0.3, bevelEnabled: true, bevelThickness: 0.05, bevelSize: 0.05, bevelSegments: 2, curveSegments: 10 });
+    geo.translate(0, 0, -0.15);
+    const head = new THREE.Mesh(geo, [
+      new THREE.MeshStandardMaterial({ color: 0x0f2275, roughness: 0.4, metalness: 0.2 }),
+      new THREE.MeshStandardMaterial({ color: rim, roughness: 0.4 }),
+    ]);
+    head.scale.setScalar(0.1);
+    head.position.y = 0.198 + 0.12;
+    g.add(head);
+    const grip = new THREE.Mesh(new THREE.CylinderGeometry(0.017, 0.019, 0.14, 12), new THREE.MeshStandardMaterial({ color: 0xf4f6fb, roughness: 0.8 }));
+    grip.position.y = 0.06;
+    g.add(grip);
+    return g;
+  }
+
+  function makePlayer({ shirt, shorts = 0x0a1650, skin = 0xd9a07a, hair = 0x2a1a10, rim }) {
+    const M = (c, r = 0.7) => new THREE.MeshStandardMaterial({ color: c, roughness: r });
+    const mShirt = M(shirt, 0.6), mShorts = M(shorts), mSkin = M(skin, 0.65), mHair = M(hair, 0.9), mShoe = M(0xffffff, 0.5);
+
+    const root = new THREE.Group();     // posição/rotação no chão
+    const pop = new THREE.Group();      // escala de entrada
+    root.add(pop);
+    const hips = new THREE.Group();
+    hips.position.y = 0.92;
+    pop.add(hips);
+
+    const legs = [-1, 1].map((side) => {
+      const leg = new THREE.Group();
+      leg.position.set(side * 0.1, -0.02, 0);
+      const thigh = new THREE.Mesh(new THREE.CapsuleGeometry(0.085, 0.3, 4, 10), mShorts);
+      thigh.position.y = -0.2;
+      const shin = new THREE.Mesh(new THREE.CapsuleGeometry(0.065, 0.42, 4, 10), mSkin);
+      shin.position.y = -0.58;
+      const shoe = new THREE.Mesh(new THREE.BoxGeometry(0.11, 0.08, 0.24), mShoe);
+      shoe.position.set(0, -0.86, 0.04);
+      leg.add(thigh, shin, shoe);
+      hips.add(leg);
+      return leg;
+    });
+
+    const torso = new THREE.Group();
+    hips.add(torso);
+    const body = new THREE.Mesh(new THREE.CapsuleGeometry(0.17, 0.36, 4, 14), mShirt);
+    body.position.y = 0.32;
+    body.scale.set(1.08, 1, 0.78);
+    torso.add(body);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.115, 20, 16), mSkin);
+    head.position.y = 0.77;
+    torso.add(head);
+    const hairCap = new THREE.Mesh(new THREE.SphereGeometry(0.12, 20, 12, 0, Math.PI * 2, 0, Math.PI * 0.55), mHair);
+    hairCap.position.set(0, 0.785, -0.01);
+    hairCap.rotation.x = -0.25;
+    torso.add(hairCap);
+
+    const arms = [-1, 1].map((side) => {
+      const arm = new THREE.Group();
+      arm.position.set(side * 0.235, 0.56, 0);
+      const upper = new THREE.Mesh(new THREE.CapsuleGeometry(0.055, 0.26, 4, 8), mShirt);
+      upper.position.y = -0.15;
+      const fore = new THREE.Mesh(new THREE.CapsuleGeometry(0.047, 0.26, 4, 8), mSkin);
+      fore.position.y = -0.43;
+      arm.add(upper, fore);
+      const hand = new THREE.Object3D();
+      hand.position.y = -0.6;
+      arm.add(hand);
+      arm.userData.hand = hand;
+      torso.add(arm);
+      return arm;
+    });
+
+    // raquete na mão direita (+x do modelo), cabeça apontando para fora
+    const racket = smallRacket(rim);
+    racket.rotation.z = Math.PI;
+    arms[1].userData.hand.add(racket);
+
+    const shadow = new THREE.Mesh(
+      new THREE.PlaneGeometry(1, 1),
+      new THREE.MeshBasicMaterial({ map: radialTexture('rgba(0,0,25,0.6)'), transparent: true, depthWrite: false })
+    );
+    shadow.rotation.x = -Math.PI / 2;
+    shadow.position.y = 0.012;
+    root.add(shadow);
+
+    const ring = new THREE.Mesh(
+      new THREE.RingGeometry(0.42, 0.5, 40),
+      new THREE.MeshBasicMaterial({ color: rim, transparent: true, opacity: 0.85, side: THREE.DoubleSide, depthWrite: false })
+    );
+    ring.rotation.x = -Math.PI / 2;
+    ring.position.y = 0.015;
+    root.add(ring);
+
+    return { root, pop, hips, torso, legs, armL: arms[0], armR: arms[1], racket, shadow, ring };
+  }
+
+  /* pose base: posição de espera (joelhos flexionados, raquete à frente) */
+  function poseReady(pl, t, phase = 0) {
+    const b = Math.sin(t * 5 + phase) * 0.012;
+    pl.hips.position.y = 0.88 + b;
+    pl.hips.rotation.set(0, 0, 0);
+    pl.torso.rotation.set(0.12, 0, 0);
+    pl.legs[0].rotation.set(-0.12, 0, 0.06);
+    pl.legs[1].rotation.set(-0.12, 0, -0.06);
+    pl.armR.rotation.set(-0.75, 0, 0.25);
+    pl.armL.rotation.set(-0.55, 0, -0.35);
+  }
+  function poseWalk(pl, cyc) {
+    const s = Math.sin(cyc);
+    pl.hips.position.y = 0.9 + Math.abs(Math.cos(cyc)) * 0.03;
+    pl.legs[0].rotation.set(s * 0.55, 0, 0.04);
+    pl.legs[1].rotation.set(-s * 0.55, 0, -0.04);
+    pl.armL.rotation.set(-s * 0.45, 0, -0.18);
+    pl.armR.rotation.set(s * 0.45 - 0.3, 0, 0.18);
+    pl.torso.rotation.set(0.06, 0, 0);
+  }
+  /* golpe: u 0..1 (0 → preparação, ~0.45 → contato, 1 → terminação) */
+  function poseSwing(pl, u) {
+    let a;
+    if (u < 0.3) a = lerp(-0.6, 1.1, smooth(u / 0.3));          // leva a raquete para trás
+    else if (u < 0.45) a = lerp(1.1, 0, (u - 0.3) / 0.15);         // acelera até o contato
+    else a = lerp(0, -1.9, smooth((u - 0.45) / 0.55));             // terminação
+    pl.armR.rotation.set(a, 0, 0.35);
+    pl.torso.rotation.set(0.12, lerp(0.5, -0.45, smooth(u)), 0);
+  }
+
+  /* rótulo em sprite (pílula) */
+  function labelSprite(text, { bg = '#D4F53C', fg = '#050B2E', scale = 1 } = {}) {
+    const tex = canvasTexture(512, 160, (g, w, h) => {
+      g.clearRect(0, 0, w, h);
+      g.font = 'italic 900 92px "Barlow Condensed", "Arial Narrow", sans-serif';
+      const tw = g.measureText(text).width;
+      const pw = Math.min(w - 8, tw + 70);
+      const x = (w - pw) / 2;
+      g.fillStyle = bg;
+      g.beginPath();
+      if (g.roundRect) g.roundRect(x, 18, pw, h - 36, 40); else g.rect(x, 18, pw, h - 36);
+      g.fill();
+      g.fillStyle = fg;
+      g.textAlign = 'center';
+      g.textBaseline = 'middle';
+      g.fillText(text, w / 2, h / 2 + 4);
+    });
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false, depthTest: false }));
+    s.scale.set(3.2 * scale, 1 * scale, 1);
+    s.renderOrder = 10;
+    return s;
+  }
+
+  /* ------------------------------------------------------------------ */
+  function init() {
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.Fog(0x030719, 30, 75);
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 200);
+
+    scene.add(new THREE.HemisphereLight(0xa9bcff, 0x050b2e, 0.9));
+    const sun = new THREE.DirectionalLight(0xffffff, 1.6);
+    sun.position.set(6, 16, 8);
+    scene.add(sun);
+
+    const court = buildCourt({ groundSize: 80 });
+    scene.add(court.group);
+
+    /* ---------- Medidas (etapa 1) ---------- */
+    const dims = new THREE.Group();
+    const lineMat = new THREE.LineBasicMaterial({ color: COLORS.lime, transparent: true, opacity: 0.9 });
+    const mkLine = (a, b) => new THREE.Line(new THREE.BufferGeometry().setFromPoints([a, b]), lineMat);
+    dims.add(mkLine(new THREE.Vector3(6.2, 0.05, -10), new THREE.Vector3(6.2, 0.05, 10)));
+    dims.add(mkLine(new THREE.Vector3(-5, 0.05, 11.2), new THREE.Vector3(5, 0.05, 11.2)));
+    const l20 = labelSprite('20 m'); l20.position.set(6.4, 1.1, 0); dims.add(l20);
+    const l10 = labelSprite('10 m'); l10.position.set(0, 1.1, 11.6); dims.add(l10);
+    scene.add(dims);
+
+    /* ---------- Jogadores ---------- */
+    const A1 = makePlayer({ shirt: COLORS.lime, rim: COLORS.lime, skin: 0xd9a07a, hair: 0x3b2414 });
+    const A2 = makePlayer({ shirt: COLORS.lime, rim: COLORS.lime, skin: 0xb07a55, hair: 0x15100c });
+    const B1 = makePlayer({ shirt: 0xffffff, rim: 0xffffff, skin: 0xe2b08e, hair: 0x6b4423, shorts: 0x1b3fd1 });
+    const B2 = makePlayer({ shirt: 0xffffff, rim: 0xffffff, skin: 0x8a5a3c, hair: 0x0e0b08, shorts: 0x1b3fd1 });
+    [A1, A2, B1, B2].forEach((p) => scene.add(p.root));
+    // time A (camisa limão) olha para -z, time B (branca) para +z
+    const HOME = {
+      A1: new THREE.Vector3(2.3, 0, 7.8), A2: new THREE.Vector3(-2.4, 0, 3.6),
+      B1: new THREE.Vector3(-2.85, 0, -8.2), B2: new THREE.Vector3(2.4, 0, -3.8),
+    };
+    A2.root.position.copy(HOME.A2); A2.root.rotation.y = Math.PI;
+    B2.root.position.copy(HOME.B2);
+
+    /* ---------- Raquete grande (etapa 2) ---------- */
+    const big = makeRacket();
+    const bigRig = new THREE.Group();
+    big.racket.scale.setScalar(0.24);
+    bigRig.add(big.racket);
+    scene.add(bigRig);
+
+    /* ---------- Bola ---------- */
+    const ball = makeBall(0.07);
+    const halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: radialTexture('rgba(220,255,90,0.8)'), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0.5 }));
+    halo.scale.setScalar(0.55);
+    ball.add(halo);
+    scene.add(ball);
+    const bShadow = new THREE.Mesh(new THREE.PlaneGeometry(0.5, 0.5), new THREE.MeshBasicMaterial({ map: radialTexture('rgba(0,0,20,0.7)'), transparent: true, depthWrite: false }));
+    bShadow.rotation.x = -Math.PI / 2;
+    scene.add(bShadow);
+    const TRAIL = 40;
+    const trailPos = new Float32Array(TRAIL * 3);
+    const trailGeo = new THREE.BufferGeometry();
+    trailGeo.setAttribute('position', new THREE.BufferAttribute(trailPos, 3));
+    const trail = new THREE.Line(trailGeo, new THREE.LineBasicMaterial({ color: COLORS.lime, transparent: true, opacity: 0.6 }));
+    trail.frustumCulled = false;
+    scene.add(trail);
+
+    /* ---------- Ondas e rótulos do lance (etapa 3) ---------- */
+    const fx = () => new THREE.MeshBasicMaterial({ color: COLORS.lime, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false, blending: THREE.AdditiveBlending });
+    const ripFloor1 = new THREE.Mesh(new THREE.RingGeometry(0.2, 0.28, 48), fx()); ripFloor1.rotation.x = -Math.PI / 2;
+    const ripGlass = new THREE.Mesh(new THREE.RingGeometry(0.2, 0.28, 48), fx());
+    const ripFloor2 = new THREE.Mesh(new THREE.RingGeometry(0.2, 0.28, 48), fx()); ripFloor2.rotation.x = -Math.PI / 2;
+    scene.add(ripFloor1, ripGlass, ripFloor2);
+    const lab1 = labelSprite('1 · QUICA', { scale: 0.95 });
+    const lab2 = labelSprite('2 · VIDRO', { scale: 1.05 });
+    const lab3 = labelSprite('3 · DEVOLVE', { scale: 1.05, bg: '#FFFFFF' });
+    scene.add(lab1, lab2, lab3);
+
+    /* Trajetória do saque e da devolução (sub-progresso da etapa 3) */
+    const K = {
+      contactA: new THREE.Vector3(1.95, 0.85, 7.35),
+      bounce1: new THREE.Vector3(-2.3, 0.07, -4.6),
+      glass: new THREE.Vector3(-3.0, 1.35, -9.9),
+      contactB: new THREE.Vector3(-2.55, 1.0, -7.75),
+      bounce2: new THREE.Vector3(1.4, 0.07, 5.0),
+      bounce3: new THREE.Vector3(1.9, 0.07, 7.4),
+    };
+    ripFloor1.position.set(K.bounce1.x, 0.03, K.bounce1.z);
+    ripGlass.position.set(K.glass.x, K.glass.y, -9.88);
+    ripFloor2.position.set(K.bounce2.x, 0.03, K.bounce2.z);
+    lab1.position.set(K.bounce1.x, 0.9, K.bounce1.z);
+    lab2.position.set(K.glass.x - 0.6, 3.3, -9.7);
+    lab3.position.set(K.contactB.x + 2.2, 2.1, K.contactB.z + 0.6);
+    const R = { toss0: 0.14, hit: 0.34, b1: 0.5, gl: 0.62, hitB: 0.76, b2: 0.92, b3: 1.0 };
+    const SEGS = [
+      { a: K.contactA, b: K.bounce1, arc: 1.05, t0: R.hit, t1: R.b1 },
+      { a: K.bounce1, b: K.glass, arc: 0.5, t0: R.b1, t1: R.gl },
+      { a: K.glass, b: K.contactB, arc: 0.35, t0: R.gl, t1: R.hitB },
+      { a: K.contactB, b: K.bounce2, arc: 1.7, t0: R.hitB, t1: R.b2 },
+      { a: K.bounce2, b: K.bounce3, arc: 0.4, t0: R.b2, t1: R.b3 },
+    ];
+    const tossFrom = new THREE.Vector3();
+
+    function ballRally(s, out) {
+      if (s < R.toss0) { out.copy(tossFrom); return 'hand'; }
+      if (s < R.hit) {
+        const u = range(s, R.toss0, R.hit);
+        out.lerpVectors(tossFrom, K.contactA, u);
+        out.y += 4 * u * (1 - u) * 0.9;
+        return 'toss';
+      }
+      for (const sg of SEGS) {
+        if (s <= sg.t1) {
+          const u = range(s, sg.t0, sg.t1);
+          out.lerpVectors(sg.a, sg.b, u);
+          out.y += sg.arc * 4 * u * (1 - u);
+          return 'fly';
+        }
+      }
+      out.copy(K.bounce3);
+      return 'end';
+    }
+
+    /* ---------- Botão de replay + câmera (etapa 4) ---------- */
+    const replay = new THREE.Group();
+    replay.position.set(4.55, 0, 6.1);
+    const postM = new THREE.MeshStandardMaterial({ color: 0x0a0f22, metalness: 0.5, roughness: 0.4 });
+    const rpPost = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.06, 1.25, 16), postM);
+    rpPost.position.y = 0.625;
+    const rpBox = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.34, 0.3), postM);
+    rpBox.position.y = 1.32;
+    const btnMat = new THREE.MeshStandardMaterial({ color: COLORS.lime, emissive: new THREE.Color(COLORS.lime), emissiveIntensity: 0.3, roughness: 0.35 });
+    const rpBtn = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.05, 32), btnMat);
+    rpBtn.rotation.z = Math.PI / 2;
+    rpBtn.position.set(-0.1, 1.34, 0);
+    const rpLabel = labelSprite('REPLAY', { scale: 0.32 });
+    rpLabel.position.set(-0.2, 1.7, 0);
+    const rpWave = new THREE.Mesh(new THREE.RingGeometry(0.14, 0.2, 40), fx());
+    rpWave.rotation.y = -Math.PI / 2;
+    rpWave.position.set(-0.14, 1.34, 0);
+    replay.add(rpPost, rpBox, rpBtn, rpLabel, rpWave);
+    const btnLight = new THREE.PointLight(COLORS.lime, 0, 4, 2);
+    btnLight.position.set(-0.4, 1.4, 0);
+    replay.add(btnLight);
+    scene.add(replay);
+    // câmera no alto do vidro
+    const camUnit = new THREE.Group();
+    camUnit.position.set(4.85, 4.15, 9.6);
+    const cuBody = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.16, 0.32), postM);
+    const recLed = new THREE.Mesh(new THREE.SphereGeometry(0.035, 12, 8), new THREE.MeshBasicMaterial({ color: 0xff3b3b }));
+    recLed.position.set(-0.12, 0.04, -0.12);
+    camUnit.add(cuBody, recLed);
+    camUnit.lookAt(0, 0.5, -2);
+    scene.add(camUnit);
+
+    /* ---------- Câmera por etapa ---------- */
+    const shots = [
+      { pos: new THREE.Vector3(15, 13, 19), look: new THREE.Vector3(0, 0, 0) },
+      { pos: new THREE.Vector3(9.5, 4.2, 14.5), look: new THREE.Vector3(0, 1, 5.2) },
+      { pos: new THREE.Vector3(6.2, 5.4, 12.5), look: new THREE.Vector3(-1.4, 0.6, -4.2) },
+      { pos: new THREE.Vector3(10.5, 3.0, 11.2), look: new THREE.Vector3(3.4, 1.05, 6.2) },
+    ];
+    const camPos = shots[0].pos.clone();
+    const camLook = shots[0].look.clone();
+    const wantPos = new THREE.Vector3();
+    const wantLook = new THREE.Vector3();
+    const tmp = new THREE.Vector3();
+    const tmpB = new THREE.Vector3();
+    const walkTo = new THREE.Vector3(4.05, 0, 6.1);
+    let portrait = false;
+
+    function resize() {
+      const w = section.clientWidth, h = window.innerHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      portrait = camera.aspect < 0.9;
+      camera.fov = portrait ? 60 : 40;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function shotFor(P, t) {
+      const f = clamp01(P) * 4;
+      const i = Math.min(3, Math.floor(f));
+      const s = f - i;
+      const prev = shots[Math.max(0, i - 1)], cur = shots[i];
+      const k = i === 0 ? 1 : smooth(s / 0.3);
+      if (i === 0) { // órbita aérea na etapa 1
+        const ang = lerp(0.65, -0.35, smooth(s));
+        wantPos.set(Math.sin(ang) * 24, 13.5, Math.cos(ang) * 24);
+        wantLook.set(0, 0, 0);
+      } else {
+        const from = i === 1 ? tmp.set(Math.sin(-0.35) * 24, 13.5, Math.cos(-0.35) * 24) : prev.pos;
+        wantPos.lerpVectors(from, cur.pos, k);
+        wantLook.lerpVectors(prev.look, cur.look, k);
+      }
+      wantPos.x += Math.sin(t * 0.25) * 0.35;
+      if (portrait) {
+        tmp.subVectors(wantPos, wantLook).multiplyScalar(1.38);
+        wantPos.copy(wantLook).add(tmp);
+      } else {
+        const side = tmp.subVectors(wantLook, wantPos).cross(camera.up).normalize();
+        wantLook.addScaledVector(side, -2.6);
+      }
+    }
+
+    /* ---------- HTML ---------- */
+    const savedEl = section.querySelector('.court__saved');
+    let savedOn = false;
+
+    /* ---------- Cena em função do progresso ---------- */
+    function applyScene(P, t) {
+      const step = Math.min(3, Math.floor(clamp01(P) * 4 * 0.9999));
+      const s = clamp01(P * 4 - step);
+      const s2 = step > 1 ? 1 : step === 1 ? s : 0;
+      const s3 = step > 2 ? 1 : step === 2 ? s : 0;
+      const s4 = step === 3 ? s : 0;
+
+      // medidas
+      const dimK = step === 0 ? smooth(range(s, 0.1, 0.4)) : step === 1 ? 1 - smooth(range(s, 0, 0.25)) : 0;
+      dims.visible = dimK > 0.01;
+      lineMat.opacity = 0.9 * dimK;
+      l20.material.opacity = l10.material.opacity = dimK;
+
+      // entrada dos jogadores
+      const popA2 = step > 1 ? 1 : step === 1 ? backOut(range(s2, 0.4, 0.58)) : 0;
+      const popA1 = step > 1 ? 1 : step === 1 ? backOut(range(s2, 0.55, 0.75)) : 0;
+      const popB = step > 2 ? 1 : step === 2 ? backOut(range(s3, 0.0, 0.12)) : 0;
+      const popB2 = step > 2 ? 1 : step === 2 ? backOut(range(s3, 0.04, 0.16)) : 0;
+      [[A1, popA1], [A2, popA2], [B1, popB], [B2, popB2]].forEach(([pl, k]) => {
+        pl.root.visible = k > 0.001;
+        pl.pop.scale.setScalar(Math.max(0.001, k));
+        pl.shadow.material.opacity = clamp01(k);
+        pl.ring.material.opacity = 0.85 * clamp01(k) * (step === 1 || step === 2 ? 1 : 0.35);
+        pl.ring.scale.setScalar(1 + (step === 1 ? Math.sin(t * 5) * 0.12 : 0));
+      });
+
+      // poses
+      poseReady(A2, t, 1.3); poseReady(B2, t, 2.1);
+      // A1: segura a bola, joga pra cima e saca (etapa 3); vai até o botão (etapa 4)
+      A1.root.position.copy(HOME.A1);
+      A1.root.rotation.y = Math.PI;
+      poseReady(A1, t, 0.4);
+      if (step === 2) {
+        const tossK = smooth(range(s3, R.toss0 - 0.06, R.toss0 + 0.03)) * (1 - smooth(range(s3, R.toss0 + 0.08, R.hit)));
+        A1.armL.rotation.set(lerp(-0.55, -2.3, tossK), 0, -0.25);
+        if (s3 < 0.24) A1.armR.rotation.set(-0.75, 0, 0.25);
+        else poseSwing(A1, range(s3, 0.24, 0.44));
+      }
+      if (step === 3) {
+        const walk = smooth(range(s4, 0.02, 0.42));
+        A1.root.position.lerpVectors(HOME.A1, walkTo, walk);
+        A1.root.rotation.y = lerp(Math.PI, Math.PI / 2, smooth(range(s4, 0.0, 0.3)));
+        if (s4 < 0.44) poseWalk(A1, walk * 26);
+        const press = smooth(range(s4, 0.44, 0.54)) * (1 - smooth(range(s4, 0.58, 0.66)));
+        if (s4 >= 0.44 && s4 < 0.7) A1.armR.rotation.set(lerp(-0.4, -1.5, press), 0, 0.05);
+        if (s4 >= 0.7) { // comemora
+          const c = smooth(range(s4, 0.7, 0.82));
+          A1.armL.rotation.set(-2.6 * c, 0, -0.5 * c);
+          A1.armR.rotation.set(-2.6 * c, 0, 0.5 * c);
+          A1.hips.position.y = 0.9 + Math.abs(Math.sin(t * 6)) * 0.06 * c;
+        }
+      }
+      // B1: se posiciona e devolve depois do vidro
+      B1.root.position.copy(HOME.B1);
+      poseReady(B1, t, 0.9);
+      if (step === 2 && s3 >= 0.5) {
+        B1.root.position.x = HOME.B1.x + 0.25 * smooth(range(s3, 0.5, 0.7));
+        if (s3 >= 0.62) poseSwing(B1, range(s3, 0.62, 0.86));
+      }
+
+      // raquete grande: desce girando e "entra" na mão do A1
+      bigRig.visible = step === 1 && s2 < 0.78;
+      if (bigRig.visible) {
+        A1.root.updateMatrixWorld(true);
+        A1.armR.userData.hand.getWorldPosition(tmpB);
+        const d = smooth(range(s2, 0.0, 0.35));
+        const m = smooth(range(s2, 0.55, 0.78));
+        bigRig.position.set(0.6, lerp(7, 1.9 + Math.sin(t * 2) * 0.08, d), 5.6);
+        bigRig.position.lerp(tmpB, m);
+        bigRig.rotation.set(0.15, t * 1.4 + (1 - d) * 6, Math.sin(t) * 0.1);
+        bigRig.scale.setScalar(lerp(1, 0.06, m));
+      }
+
+      // bola
+      let bstate = null;
+      if (step === 2) {
+        A1.root.updateMatrixWorld(true);
+        if (s3 < R.toss0) A1.armL.userData.hand.getWorldPosition(tossFrom);
+        bstate = ballRally(s3, ball.position);
+      }
+      ball.visible = !!bstate && popA1 > 0.9;
+      halo.material.opacity = ball.visible ? 0.5 : 0;
+      bShadow.visible = ball.visible;
+      if (ball.visible) {
+        ball.rotation.x = s3 * 120;
+        bShadow.position.set(ball.position.x, 0.02, ball.position.z);
+        bShadow.scale.setScalar(1 + ball.position.y * 0.4);
+        bShadow.material.opacity = Math.max(0.15, 1 - ball.position.y * 0.3);
+      }
+      trail.visible = ball.visible && bstate === 'fly';
+      if (trail.visible) {
+        for (let i = 0; i < TRAIL; i++) {
+          ballRally(Math.max(R.hit, s3 - i * 0.006), tmpB);
+          trailPos[i * 3] = tmpB.x; trailPos[i * 3 + 1] = tmpB.y; trailPos[i * 3 + 2] = tmpB.z;
+        }
+        trailGeo.attributes.position.needsUpdate = true;
+      }
+
+      // ondas + rótulos
+      const wave = (m, at, dur, size) => {
+        const a = step === 2 ? (s3 - at) / dur : -1;
+        const on = a >= 0 && a <= 1;
+        m.material.opacity = on ? (1 - a) : 0;
+        if (on) m.scale.setScalar(1 + a * size);
+      };
+      wave(ripFloor1, R.b1, 0.12, 6);
+      wave(ripGlass, R.gl, 0.12, 7);
+      wave(ripFloor2, R.b2, 0.1, 6);
+      const labK = (at) => (step === 2 ? smooth(range(s3, at, at + 0.05)) : 0);
+      lab1.material.opacity = labK(R.b1);
+      lab2.material.opacity = labK(R.gl);
+      lab3.material.opacity = labK(R.hitB - 0.02);
+      [lab1, lab2, lab3].forEach((l) => { l.visible = l.material.opacity > 0.01; });
+
+      // botão de replay
+      replay.visible = step === 3 || (step === 2 && s3 > 0.9);
+      const pressed = step === 3 && s4 >= 0.52;
+      rpBtn.position.x = pressed && s4 < 0.6 ? -0.08 : -0.1;
+      btnMat.emissiveIntensity = pressed ? 1.4 + Math.sin(t * 8) * 0.4 : 0.3 + Math.sin(t * 3) * 0.15;
+      btnLight.intensity = pressed ? 3 : 0;
+      const wa = step === 3 ? (s4 - 0.52) / 0.2 : -1;
+      rpWave.material.opacity = wa >= 0 && wa <= 1 ? 1 - wa : 0;
+      if (wa >= 0 && wa <= 1) rpWave.scale.setScalar(1 + wa * 10);
+      recLed.material.color.set(step === 3 && Math.sin(t * 7) > 0 ? 0xff3b3b : 0x551111);
+      if (savedEl && pressed !== savedOn) { savedOn = pressed; savedEl.classList.toggle('is-on', pressed); }
+    }
+
+    /* ---------- Loop ---------- */
+    let visible = false;
+    new IntersectionObserver((e) => { visible = e[0].isIntersecting; }, { threshold: 0 }).observe(section);
+    const clock = new THREE.Clock();
+    let shown = 0;
+
+    function frame() {
+      requestAnimationFrame(frame);
+      const dt = Math.min(clock.getDelta(), 0.05);
+      if (!visible) return;
+      const t = clock.elapsedTime;
+      const target = (window.__court && window.__court.progress) || 0;
+      shown += (target - shown) * Math.min(1, dt * 7);
+      if (Math.abs(target - shown) < 0.0003) shown = target;
+
+      shotFor(shown, t);
+      camPos.lerp(wantPos, 0.08);
+      camLook.lerp(wantLook, 0.08);
+      camera.position.copy(camPos);
+      camera.lookAt(camLook);
+      applyScene(shown, t);
+      renderer.render(scene, camera);
+    }
+
+    if (reduce) {
+      const draw = () => {
+        const p = (window.__court && window.__court.progress) || 0;
+        // quadro estático representativo de cada etapa
+        const step = Math.min(3, Math.floor(p * 4 * 0.9999));
+        const still = [0.15, 0.25 + 0.25 * 0.9, 0.5 + 0.25 * 0.56, 0.75 + 0.25 * 0.8][step];
+        shotFor(step * 0.25 + 0.2, 0);
+        camera.position.copy(wantPos); camera.lookAt(wantLook);
+        applyScene(still, 0);
+        renderer.render(scene, camera);
+      };
+      draw();
+      window.addEventListener('scroll', draw, { passive: true });
+      window.addEventListener('resize', draw);
+      return;
+    }
+    frame();
+  }
+
+  if (section && canvas && webglOK()) init();
+  else document.documentElement.classList.add('no-webgl');
+}
+  </script>
+</body>
+</html>

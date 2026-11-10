@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://*.supabase.co; connect-src https://*.supabase.co wss://*.supabase.co; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <title>Painel · Blu Padel</title>
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,800;1,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --navy-950: #030719; --navy-900: #050B2E; --navy-850: #071240; --navy-800: #0A1650; --navy-700: #0F2275;
+  --royal: #1B3FD1; --lime: #D4F53C; --white: #fff; --muted: rgba(255,255,255,.66); --line: rgba(255,255,255,.12);
+  --danger: #FF5A5F;
+  --font-d: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-b: 'Barlow', system-ui, sans-serif;
+  --ease: cubic-bezier(.16, 1, .3, 1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { color-scheme: dark; }
+body { margin: 0; min-height: 100vh; background: radial-gradient(80% 60% at 100% 0%, rgba(27,63,209,.35), transparent 60%), var(--navy-900); color: var(--white); font-family: var(--font-b); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+h1, h2, p { margin: 0; }
+button, input, textarea { font: inherit; color: inherit; }
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.muted { color: var(--muted); }
+:focus-visible { outline: 3px solid var(--lime); outline-offset: 2px; border-radius: 8px; }
+
+/* botões */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 999px; border: 0; cursor: pointer; font-family: var(--font-d); font-weight: 800; font-size: 17px; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; transition: transform .2s var(--ease), background .2s, color .2s, border-color .2s; white-space: nowrap; }
+.btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+.btn:active { transform: scale(.97); }
+.btn--lime { background: var(--lime); color: var(--navy-900); }
+.btn--lime:hover { background: #E4FF5C; }
+.btn--ghost { background: transparent; border: 1.5px solid var(--line); color: var(--white); }
+.btn--ghost:hover { border-color: var(--lime); color: var(--lime); }
+.btn--danger { background: transparent; border: 1.5px solid rgba(255,90,95,.5); color: var(--danger); }
+.btn--danger:hover { background: rgba(255,90,95,.12); }
+.btn--sm { min-height: 40px; padding: 0 16px; font-size: 15px; }
+.btn--block { width: 100%; }
+.btn[disabled] { opacity: .6; cursor: progress; }
+.icon-btn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--line); background: none; display: grid; place-items: center; cursor: pointer; }
+.icon-btn svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; }
+.icon-btn:hover { border-color: var(--lime); color: var(--lime); }
+
+/* campos */
+.field { display: grid; gap: 6px; }
+.field > span { font-family: var(--font-d); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 14px; color: rgba(255,255,255,.8); }
+.field input, .field textarea { width: 100%; min-height: 48px; padding: 11px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: rgba(255,255,255,.05); transition: border-color .2s, background .2s; resize: vertical; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--lime); background: rgba(255,255,255,.08); }
+.field small { color: var(--muted); font-size: 13px; line-height: 1.4; }
+.form-error { color: #FF8A8E; font-weight: 600; font-size: 15px; min-height: 1.5em; }
+
+/* ============ login ============ */
+.login { min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; }
+.login__card { width: min(420px, 100%); display: grid; gap: 18px; padding: 36px 30px; border-radius: 28px; background: rgba(3,7,25,.6); border: 1px solid var(--line); backdrop-filter: blur(10px); box-shadow: 0 40px 80px -40px rgba(0,0,0,.8); animation: rise .7s var(--ease) both; }
+.login__logo { width: 150px; margin-bottom: 4px; }
+.login h1 { font-family: var(--font-d); font-weight: 900; text-transform: uppercase; font-size: 34px; line-height: 1; }
+.login__back { text-align: center; color: var(--muted); font-size: 14px; text-decoration: none; }
+.login__back:hover { color: var(--lime); }
+@keyframes rise { from { opacity: 0; transform: translateY(20px); } }
+
+/* ============ app ============ */
+.topbar { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px clamp(16px, 4vw, 40px); background: rgba(5,11,46,.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.topbar__brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.topbar__brand img { height: 40px; width: auto; }
+.topbar__brand span { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 14px; color: var(--lime); border-left: 1px solid var(--line); padding-left: 12px; }
+.topbar__right { display: flex; align-items: center; gap: 10px; }
+.topbar__user { color: var(--muted); font-size: 14px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 32px clamp(16px, 4vw, 40px) 80px; }
+
+.live { border-radius: 24px; padding: 24px; border: 1px solid var(--line); background: rgba(255,255,255,.03); display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.live--on { border-color: rgba(212,245,60,.45); background: linear-gradient(120deg, rgba(212,245,60,.12), rgba(27,63,209,.12)); }
+.live__dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,.3); flex-shrink: 0; }
+.live--on .live__dot { background: var(--lime); box-shadow: 0 0 0 0 rgba(212,245,60,.6); animation: ping 1.8s infinite; }
+@keyframes ping { 70% { box-shadow: 0 0 0 12px rgba(212,245,60,0); } 100% { box-shadow: 0 0 0 0 rgba(212,245,60,0); } }
+.live__text { flex: 1; min-width: 220px; }
+.live__text b { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 22px; display: block; line-height: 1.1; }
+.live__text span { color: var(--muted); font-size: 15px; }
+
+.list-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; margin: 40px 0 18px; }
+.list-head h2 { font-family: var(--font-d); font-weight: 900; text-transform: uppercase; font-size: 40px; line-height: 1; }
+.list-head p { margin-top: 6px; max-width: 60ch; }
+
+.t-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+.t-card { border-radius: 22px; overflow: hidden; background: rgba(255,255,255,.04); border: 1px solid var(--line); display: flex; flex-direction: column; transition: transform .3s var(--ease), border-color .3s; animation: rise .5s var(--ease) both; }
+.t-card:hover { transform: translateY(-4px); border-color: rgba(212,245,60,.4); }
+.t-card__img { position: relative; aspect-ratio: 4 / 5; background: var(--navy-950); overflow: hidden; }
+.t-card__img img { width: 100%; height: 100%; object-fit: contain; }
+.t-card__img .bg { position: absolute; inset: -20px; width: calc(100% + 40px); height: calc(100% + 40px); object-fit: cover; filter: blur(18px) brightness(.5); }
+.t-card__img img:not(.bg) { position: relative; }
+.chip { position: absolute; left: 12px; top: 12px; z-index: 1; font-family: var(--font-d); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: 13px; padding: 5px 10px; border-radius: 8px; background: rgba(3,7,25,.8); }
+.chip--open { background: var(--lime); color: var(--navy-900); }
+.chip--past { background: rgba(255,255,255,.85); color: var(--navy-900); }
+.chip--draft { background: rgba(3,7,25,.85); border: 1px dashed rgba(255,255,255,.5); }
+.t-card__body { padding: 18px; display: grid; gap: 4px; flex: 1; }
+.t-card__body b { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 22px; line-height: 1.05; }
+.t-card__body span { color: var(--muted); font-size: 14.5px; }
+.t-card__actions { display: flex; gap: 8px; padding: 0 18px 18px; }
+.t-card__actions .btn { flex: 1; }
+.empty { grid-column: 1 / -1; padding: 50px 20px; text-align: center; border: 1.5px dashed var(--line); border-radius: 22px; color: var(--muted); }
+
+/* ============ editor ============ */
+.editor { width: min(1080px, calc(100% - 24px)); max-height: calc(100vh - 24px); padding: 0; border: 1px solid var(--line); border-radius: 28px; background: var(--navy-850); color: var(--white); box-shadow: 0 60px 120px -40px rgba(0,0,0,.9); }
+.editor::backdrop { background: rgba(3,7,25,.7); backdrop-filter: blur(4px); }
+.editor[open] { animation: rise .45s var(--ease) both; }
+.editor__grid { display: grid; grid-template-columns: 1.25fr .9fr; }
+.editor__form { padding: 26px; display: grid; gap: 18px; align-content: start; }
+.editor__head { display: flex; justify-content: space-between; align-items: center; }
+.editor__head h2 { font-family: var(--font-d); font-weight: 900; text-transform: uppercase; font-size: 32px; line-height: 1; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field--wide { grid-column: 1 / -1; }
+.editor__actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.spacer { flex: 1; }
+
+.drop { border-radius: 18px; border: 2px dashed rgba(255,255,255,.22); background: rgba(255,255,255,.03); transition: border-color .2s, background .2s; overflow: hidden; }
+.drop.is-over { border-color: var(--lime); background: rgba(212,245,60,.08); }
+.drop__label { position: relative; display: grid; place-items: center; min-height: 170px; cursor: pointer; }
+.drop__label img { max-height: 260px; width: auto; margin: 12px auto; border-radius: 10px; }
+.drop__empty { display: grid; justify-items: center; gap: 6px; text-align: center; padding: 20px; }
+.drop__empty svg { width: 38px; height: 38px; stroke: var(--lime); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.drop__empty b { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 20px; }
+.drop__empty small { color: var(--muted); }
+.drop__busy { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(3,7,25,.7); font-family: var(--font-d); font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+.drop:focus-within { border-color: var(--lime); }
+
+.switch { display: flex; align-items: center; gap: 14px; cursor: pointer; padding: 14px 16px; border-radius: 16px; background: rgba(255,255,255,.04); border: 1px solid var(--line); }
+.switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.switch__ui { width: 50px; height: 28px; border-radius: 28px; background: rgba(255,255,255,.2); position: relative; flex-shrink: 0; transition: background .25s; }
+.switch__ui::after { content: ""; position: absolute; left: 3px; top: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; transition: transform .3s var(--ease); }
+.switch input:checked + .switch__ui { background: var(--lime); }
+.switch input:checked + .switch__ui::after { transform: translateX(22px); background: var(--navy-900); }
+.switch input:focus-visible + .switch__ui { outline: 3px solid var(--lime); outline-offset: 2px; }
+.switch b { display: block; font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 18px; }
+.switch small { color: var(--muted); font-size: 13.5px; }
+
+/* prévia */
+.editor__preview { padding: 26px; background: var(--navy-950); border-left: 1px solid var(--line); display: grid; gap: 14px; align-content: start; border-radius: 0 28px 28px 0; }
+.preview__label { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 13px; color: var(--muted); }
+.pv-bar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 12px; background: var(--lime); color: var(--navy-900); font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 14px; letter-spacing: .04em; }
+.pv-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--navy-900); animation: blink 1.2s infinite; flex-shrink: 0; }
+.pv-bar span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@keyframes blink { 50% { opacity: .25; } }
+.pv-card { border-radius: 20px; overflow: hidden; border: 1px solid var(--line); background: var(--navy-900); }
+.pv-poster { position: relative; aspect-ratio: 4 / 5; background: linear-gradient(135deg, var(--navy-700), var(--navy-950)); display: grid; place-items: center; }
+.pv-poster img { width: 100%; height: 100%; object-fit: contain; }
+.pv-ribbon { position: absolute; right: 12px; top: 12px; background: var(--lime); color: var(--navy-900); font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 13px; padding: 5px 10px; border-radius: 8px; }
+.pv-info { padding: 18px; display: grid; gap: 10px; }
+.pv-stage { color: var(--lime); font-family: var(--font-d); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: 13px; min-height: 1em; }
+.pv-title { font-family: var(--font-d); font-weight: 900; text-transform: uppercase; font-size: 28px; line-height: 1; overflow-wrap: anywhere; }
+.pv-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.pv-meta span { background: rgba(255,255,255,.05); border-radius: 12px; padding: 10px 12px; }
+.pv-meta small { display: block; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+.pv-meta b { font-family: var(--font-d); font-weight: 800; font-size: 18px; text-transform: uppercase; }
+.pv-cats { color: var(--muted); font-size: 14px; }
+.pv-btn { display: flex; justify-content: center; align-items: center; min-height: 44px; border-radius: 999px; background: var(--lime); color: var(--navy-900); font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 15px; text-align: center; padding: 0 14px; }
+
+/* toast */
+.toast { position: fixed; left: 50%; bottom: 24px; z-index: 50; transform: translate(-50%, 30px); opacity: 0; pointer-events: none; padding: 12px 20px; border-radius: 14px; background: var(--lime); color: var(--navy-900); font-weight: 700; transition: opacity .3s, transform .4s var(--ease); max-width: calc(100% - 32px); }
+.toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+.toast--err { background: #FF8A8E; }
+
+@media (max-width: 880px) {
+  .editor__grid { grid-template-columns: 1fr; }
+  .editor__preview { border-left: 0; border-top: 1px solid var(--line); border-radius: 0 0 28px 28px; }
+  .pv-card { display: grid; grid-template-columns: 140px 1fr; }
+  .pv-poster { aspect-ratio: auto; min-height: 175px; }
+}
+@media (max-width: 560px) {
+  .fields { grid-template-columns: 1fr; }
+  .topbar__user { display: none; }
+  .topbar__brand span { display: none; }
+  .editor__form, .editor__preview { padding: 18px; }
+  .pv-card { grid-template-columns: 1fr; }
+  .pv-poster { aspect-ratio: 4 / 5; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <!-- ============ LOGIN ============ -->
+  <main class="login" id="view-login" hidden>
+    <form class="login__card" id="login-form" novalidate>
+      <img class="login__logo" src="assets/img/logo-blu-padel.webp" width="900" height="484" alt="Blu Padel">
+      <h1>Painel administrativo</h1>
+      <p class="muted">Entre para gerenciar os torneios exibidos no site.</p>
+      <label class="field">
+        <span>Usuário</span>
+        <input name="user" placeholder="bluepadel" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+      </label>
+      <label class="field">
+        <span>Senha</span>
+        <input type="password" name="password" autocomplete="current-password" required>
+      </label>
+      <p class="form-error" role="alert"></p>
+      <button class="btn btn--lime btn--block" type="submit">Entrar</button>
+      <a class="login__back" href="index.html">← Voltar ao site</a>
+    </form>
+  </main>
+
+  <!-- ============ APP ============ -->
+  <div class="app" id="view-app" hidden>
+    <header class="topbar">
+      <a href="admin.html" class="topbar__brand"><img src="assets/img/logo-blu-padel.webp" width="900" height="484" alt="Blu Padel"><span>Painel</span></a>
+      <div class="topbar__right">
+        <span class="topbar__user" id="who"></span>
+        <a class="btn btn--ghost btn--sm" href="index.html#torneios" target="_blank" rel="noopener">Ver site</a>
+        <button class="btn btn--ghost btn--sm" id="btn-logout" type="button">Sair</button>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="live" id="live" aria-live="polite"></section>
+
+      <div class="list-head">
+        <div>
+          <h2>Torneios</h2>
+          <p class="muted">Os publicados aparecem no site. Depois da data final, entram sozinhos em “Circuitos já realizados”.</p>
+        </div>
+        <button class="btn btn--lime" id="btn-new" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          Novo torneio
+        </button>
+      </div>
+
+      <div class="t-list" id="t-list"></div>
+    </main>
+  </div>
+
+  <!-- ============ EDITOR ============ -->
+  <dialog class="editor" id="editor" aria-labelledby="editor-title">
+    <form class="editor__grid" id="t-form" novalidate>
+      <div class="editor__form">
+        <div class="editor__head">
+          <h2 id="editor-title">Novo torneio</h2>
+          <button class="icon-btn" type="button" data-close aria-label="Fechar">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+          </button>
+        </div>
+
+        <div class="drop" id="drop">
+          <input type="file" id="cover-file" accept="image/jpeg,image/png,image/webp" class="sr-only">
+          <label for="cover-file" class="drop__label">
+            <img id="cover-preview" alt="" hidden>
+            <span class="drop__empty" id="drop-empty">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+              <b>Capa do torneio</b>
+              <small>Clique ou arraste a arte aqui (JPG, PNG ou WEBP)</small>
+            </span>
+            <span class="drop__busy" id="drop-busy" hidden>Enviando…</span>
+          </label>
+          <input type="hidden" name="cover">
+        </div>
+
+        <div class="fields">
+          <label class="field field--wide"><span>Nome do torneio *</span><input name="title" maxlength="80" placeholder="Circuito Blu Padel" required></label>
+          <label class="field field--wide"><span>Etapa / subtítulo</span><input name="stage" maxlength="60" placeholder="3ª etapa"></label>
+          <label class="field"><span>Começa em *</span><input type="date" name="dateStart" required></label>
+          <label class="field"><span>Termina em</span><input type="date" name="dateEnd"></label>
+          <label class="field"><span>Valor da inscrição (R$)</span><input type="number" name="price" min="0" step="0.01" inputmode="decimal" placeholder="160"></label>
+          <label class="field"><span>Observação do valor</span><input name="priceNote" maxlength="90" placeholder="R$ 150 para sócios"></label>
+          <label class="field field--wide"><span>Categorias</span><textarea name="categories" maxlength="240" rows="2" placeholder="Masculino e Feminino · 3ª a 7ª categoria"></textarea></label>
+          <label class="field field--wide"><span>Link de inscrição</span><input type="url" name="registrationUrl" maxlength="500" placeholder="https://…"><small>Com link, o site mostra o botão “Fazer minha inscrição”. Sem link, mostra “Quero jogar o próximo torneio” (WhatsApp).</small></label>
+        </div>
+
+        <label class="switch">
+          <input type="checkbox" name="published">
+          <span class="switch__ui" aria-hidden="true"></span>
+          <span><b>Publicar no site</b><small>Torneio publicado e dentro da data mostra o aviso no topo do site.</small></span>
+        </label>
+
+        <p class="form-error" role="alert"></p>
+        <div class="editor__actions">
+          <button class="btn btn--danger btn--sm" type="button" id="btn-delete" hidden>Excluir</button>
+          <span class="spacer"></span>
+          <button class="btn btn--ghost" type="button" data-close>Cancelar</button>
+          <button class="btn btn--lime" type="submit" id="btn-save">Salvar</button>
+        </div>
+      </div>
+
+      <aside class="editor__preview" aria-label="Prévia no site">
+        <p class="preview__label">Prévia no site</p>
+        <div class="pv-bar"><i></i><span id="pv-bar-text">Inscrições abertas</span><b>Ver torneio →</b></div>
+        <div class="pv-card">
+          <div class="pv-poster"><img id="pv-img" alt="" hidden><span class="pv-ribbon">Inscrições abertas</span></div>
+          <div class="pv-info">
+            <p class="pv-stage" id="pv-stage"></p>
+            <p class="pv-title" id="pv-title">Nome do torneio</p>
+            <div class="pv-meta">
+              <span><small>Quando</small><b id="pv-date">—</b></span>
+              <span><small>Inscrição</small><b id="pv-price">—</b></span>
+            </div>
+            <p class="pv-cats" id="pv-cats"></p>
+            <span class="pv-btn" id="pv-btn">Quero jogar o próximo torneio</span>
+          </div>
+        </div>
+      </aside>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* =========================================================
+       CONFIGURAÇÃO DO SUPABASE (Settings > API no painel do Supabase)
+       url: "Project URL"   anonKey: "anon public"
+       A chave anon pode ficar pública: quem protege os dados são as
+       regras de segurança (RLS) criadas pelo supabase/setup.sql.
+       Deixe vazio para o site usar os cartazes fixos do HTML.
+       ========================================================= */
+    window.BP_SUPABASE = { url: '', anonKey: '' };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script>
+/* ==========================================================================
+   BLU PADEL — Painel de torneios (Supabase: Auth + Banco + Storage)
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var MONTHS = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+  var MON = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+  var BUCKET = 'torneios';
+  var LOGIN_DOMAIN = 'blupadel.com.br'; // "bluepadel" vira bluepadel@blupadel.com.br
+
+  var cfg = window.BP_SUPABASE || {};
+  var state = { list: [], today: '', editing: null };
+  var sb = null;
+
+  /* ---------------- utilidades ---------------- */
+  function parts(iso) { var p = String(iso).split('-'); return { y: +p[0], m: +p[1] - 1, d: +p[2] }; }
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function fmtRange(ds, de) {
+    if (!ds) return '—';
+    var a = parts(ds), b = parts(de || ds);
+    if (ds === (de || ds)) return pad(a.d) + ' de ' + MONTHS[a.m];
+    if (a.m === b.m && a.y === b.y) return pad(a.d) + ' a ' + pad(b.d) + ' de ' + MONTHS[a.m];
+    return pad(a.d) + ' ' + MON[a.m] + ' a ' + pad(b.d) + ' ' + MON[b.m];
+  }
+  function fmtPrice(v) {
+    if (v === null || v === '' || v === undefined || isNaN(v)) return '—';
+    return Number(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: Number(v) % 1 ? 2 : 0 });
+  }
+  function todayISO() {
+    try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()); }
+    catch (e) { var d = new Date(); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  }
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+  function friendly(err) {
+    var m = (err && (err.message || err.error_description || err.msg)) || String(err || '');
+    if (/Invalid login credentials/i.test(m)) return 'Usuário ou senha incorretos.';
+    if (/Email not confirmed/i.test(m)) return 'Usuário ainda não confirmado no Supabase.';
+    if (/row-level security|permission denied|not authorized|Unauthorized/i.test(m)) return 'Sem permissão. Confira se este usuário está na tabela de administradores.';
+    if (/JWT expired|invalid JWT/i.test(m)) return 'Sua sessão expirou. Entre novamente.';
+    if (/Failed to fetch|NetworkError/i.test(m)) return 'Sem conexão com o Supabase. Verifique a internet e a configuração.';
+    if (/too many|rate limit/i.test(m)) return 'Muitas tentativas. Aguarde alguns minutos.';
+    return m || 'Não foi possível concluir. Tente novamente.';
+  }
+
+  var toastTimer;
+  function toast(msg, err) {
+    var t = $('#toast');
+    t.textContent = msg;
+    t.classList.toggle('toast--err', !!err);
+    t.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove('is-on'); }, 3600);
+  }
+
+  // linha do banco <-> objeto do formulário
+  function fromRow(r) {
+    return {
+      id: r.id, title: r.title, stage: r.stage || '', cover: r.cover_url,
+      dateStart: r.date_start, dateEnd: r.date_end, price: r.price === null ? null : Number(r.price),
+      priceNote: r.price_note || '', categories: r.categories || '', registrationUrl: r.registration_url || '',
+      published: !!r.published,
+    };
+  }
+  function toRow(d) {
+    return {
+      title: d.title.trim(), stage: d.stage.trim() || null, cover_url: d.cover,
+      date_start: d.dateStart, date_end: d.dateEnd || d.dateStart,
+      price: d.price === '' || d.price === null ? null : Number(d.price),
+      price_note: d.priceNote.trim() || null, categories: d.categories.trim() || null,
+      registration_url: d.registrationUrl.trim() || null, published: !!d.published,
+    };
+  }
+  function storagePath(url) {
+    var mark = '/storage/v1/object/public/' + BUCKET + '/';
+    var i = url ? url.indexOf(mark) : -1;
+    return i >= 0 ? decodeURIComponent(url.slice(i + mark.length)) : null;
+  }
+
+  /* ---------------- views ---------------- */
+  function showLogin(msg) {
+    $('#view-app').hidden = true;
+    $('#view-login').hidden = false;
+    if (msg) $('#login-form .form-error').textContent = msg;
+    setTimeout(function () { $('#login-form [name=user]').focus(); }, 50);
+  }
+  function showApp(email) {
+    $('#view-login').hidden = true;
+    $('#view-app').hidden = false;
+    $('#who').textContent = 'Olá, ' + String(email || '').split('@')[0];
+    load();
+  }
+  function onAuthError(e) {
+    if (e && (e.status === 401 || /JWT/i.test(e.message || ''))) { showLogin('Sua sessão expirou. Entre novamente.'); return true; }
+    return false;
+  }
+
+  /* ---------------- configuração ---------------- */
+  if (!cfg.url || !cfg.anonKey || !window.supabase) {
+    $('#view-login').hidden = false;
+    var f = $('#login-form');
+    f.querySelectorAll('input, button').forEach(function (i) { i.disabled = true; });
+    $('.form-error', f).textContent = !window.supabase
+      ? 'Não foi possível carregar o Supabase. Verifique a internet.'
+      : 'Painel ainda não conectado: preencha a URL e a chave do Supabase no topo deste arquivo.';
+    return;
+  }
+  sb = window.supabase.createClient(cfg.url, cfg.anonKey, { auth: { persistSession: true, autoRefreshToken: true } });
+
+  /* ---------------- login ---------------- */
+  $('#login-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var f = ev.target, err = $('.form-error', f), btn = $('button[type=submit]', f);
+    err.textContent = '';
+    var user = f.user.value.trim().toLowerCase();
+    if (!user || !f.password.value) { err.textContent = 'Preencha usuário e senha.'; return; }
+    var email = user.indexOf('@') > 0 ? user : user + '@' + LOGIN_DOMAIN;
+    btn.disabled = true; btn.textContent = 'Entrando…';
+    sb.auth.signInWithPassword({ email: email, password: f.password.value })
+      .then(function (r) {
+        if (r.error) throw r.error;
+        return sb.rpc('is_admin').then(function (a) {
+          if (a.error) throw a.error;
+          if (!a.data) { return sb.auth.signOut().then(function () { throw new Error('Este usuário não tem permissão de administrador.'); }); }
+          f.password.value = '';
+          showApp(r.data.user.email);
+        });
+      })
+      .catch(function (e) { err.textContent = friendly(e); f.password.select(); })
+      .finally(function () { btn.disabled = false; btn.textContent = 'Entrar'; });
+  });
+
+  $('#btn-logout').addEventListener('click', function () {
+    sb.auth.signOut().finally(function () { showLogin(); });
+  });
+
+  /* ---------------- lista ---------------- */
+  function statusOf(t) {
+    if (!t.published) return 'draft';
+    if ((t.dateEnd || t.dateStart) < state.today) return 'past';
+    return 'open';
+  }
+  function statusLabel(t) {
+    var s = statusOf(t);
+    if (s === 'draft') return ['Rascunho', 'draft'];
+    if (s === 'past') return ['Realizado', 'past'];
+    return [t.dateStart > state.today ? 'Inscrições abertas' : 'Acontecendo agora', 'open'];
+  }
+
+  function load() {
+    state.today = todayISO();
+    sb.from('tournaments').select('*').order('date_start', { ascending: false })
+      .then(function (r) {
+        if (r.error) throw r.error;
+        state.list = r.data.map(fromRow);
+        renderLive(); renderList();
+      })
+      .catch(function (e) { if (!onAuthError(e)) toast(friendly(e), true); });
+  }
+
+  function renderLive() {
+    var box = $('#live');
+    box.textContent = '';
+    var open = state.list.filter(function (t) { return statusOf(t) === 'open'; })
+      .sort(function (a, b) { return a.dateStart.localeCompare(b.dateStart); })[0];
+    box.classList.toggle('live--on', !!open);
+    box.appendChild(el('span', 'live__dot'));
+    var txt = el('div', 'live__text');
+    if (open) {
+      txt.appendChild(el('b', '', 'No ar agora: ' + open.title + (open.stage ? ' · ' + open.stage : '')));
+      txt.appendChild(el('span', '', fmtRange(open.dateStart, open.dateEnd) + ' · ' + (open.registrationUrl ? 'botão “Fazer minha inscrição” ativo' : 'sem link de inscrição (botão leva ao WhatsApp)')));
+    } else {
+      txt.appendChild(el('b', '', 'Nenhum torneio com inscrições abertas'));
+      txt.appendChild(el('span', '', 'O site mostra os circuitos já realizados. Crie um torneio para destacar no topo do site.'));
+    }
+    box.appendChild(txt);
+    if (open) {
+      var b = el('button', 'btn btn--ghost btn--sm', 'Editar');
+      b.type = 'button';
+      b.addEventListener('click', function () { openEditor(open); });
+      box.appendChild(b);
+    }
+  }
+
+  function renderList() {
+    var wrap = $('#t-list');
+    wrap.textContent = '';
+    if (!state.list.length) {
+      wrap.appendChild(el('p', 'empty', 'Nenhum torneio cadastrado ainda. Clique em “Novo torneio”.'));
+      return;
+    }
+    state.list.forEach(function (t, i) {
+      var card = el('article', 't-card');
+      card.style.animationDelay = (i * 0.05) + 's';
+      var media = el('div', 't-card__img');
+      var bg = el('img', 'bg'); bg.src = t.cover; bg.alt = ''; media.appendChild(bg);
+      var img = el('img'); img.src = t.cover; img.alt = 'Capa: ' + t.title; img.loading = 'lazy'; media.appendChild(img);
+      var st = statusLabel(t);
+      media.appendChild(el('span', 'chip chip--' + st[1], st[0]));
+      card.appendChild(media);
+      var body = el('div', 't-card__body');
+      body.appendChild(el('b', '', t.title));
+      body.appendChild(el('span', '', (t.stage ? t.stage + ' · ' : '') + fmtRange(t.dateStart, t.dateEnd)));
+      body.appendChild(el('span', '', 'Inscrição: ' + fmtPrice(t.price)));
+      card.appendChild(body);
+      var act = el('div', 't-card__actions');
+      var ed = el('button', 'btn btn--ghost btn--sm', 'Editar'); ed.type = 'button';
+      ed.addEventListener('click', function () { openEditor(t); });
+      act.appendChild(ed);
+      card.appendChild(act);
+      wrap.appendChild(card);
+    });
+  }
+
+  /* ---------------- editor ---------------- */
+  var dlg = $('#editor'), form = $('#t-form');
+  var FIELDS = ['title', 'stage', 'dateStart', 'dateEnd', 'price', 'priceNote', 'categories', 'registrationUrl', 'cover'];
+
+  function openEditor(t) {
+    state.editing = t || null;
+    form.reset();
+    $('.form-error', form).textContent = '';
+    $('#editor-title').textContent = t ? 'Editar torneio' : 'Novo torneio';
+    $('#btn-delete').hidden = !t;
+    FIELDS.forEach(function (k) { form[k].value = t && t[k] !== null && t[k] !== undefined ? t[k] : ''; });
+    form.published.checked = t ? !!t.published : true;
+    setCover(t ? t.cover : '');
+    preview();
+    dlg.showModal();
+    form.title.focus();
+  }
+  function closeEditor() { dlg.close(); }
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) closeEditor(); });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function (b) { b.addEventListener('click', closeEditor); });
+  $('#btn-new').addEventListener('click', function () { openEditor(null); });
+
+  function setCover(url) {
+    form.cover.value = url || '';
+    var img = $('#cover-preview');
+    img.hidden = !url;
+    $('#drop-empty').hidden = !!url;
+    if (url) img.src = url; else img.removeAttribute('src');
+    preview();
+  }
+
+  function preview() {
+    var title = form.title.value.trim() || 'Nome do torneio';
+    $('#pv-title').textContent = title;
+    $('#pv-stage').textContent = form.stage.value.trim();
+    $('#pv-date').textContent = fmtRange(form.dateStart.value, form.dateEnd.value || form.dateStart.value);
+    $('#pv-price').textContent = fmtPrice(form.price.value === '' ? null : form.price.value);
+    $('#pv-cats').textContent = form.categories.value.trim();
+    $('#pv-btn').textContent = form.registrationUrl.value.trim() ? 'Fazer minha inscrição' : 'Quero jogar o próximo torneio';
+    $('#pv-bar-text').textContent = 'Inscrições abertas · ' + title;
+    var img = $('#pv-img');
+    if (form.cover.value) { img.src = form.cover.value; img.hidden = false; } else { img.hidden = true; }
+  }
+  form.addEventListener('input', preview);
+
+  /* upload: reduz no navegador (máx. 1600 px, WEBP) e envia ao Storage */
+  function shrink(file) {
+    return new Promise(function (resolve, reject) {
+      var url = URL.createObjectURL(file);
+      var im = new Image();
+      im.onload = function () {
+        var max = 1600, w = im.naturalWidth, h = im.naturalHeight;
+        var s = Math.min(1, max / Math.max(w, h));
+        var c = document.createElement('canvas');
+        c.width = Math.round(w * s); c.height = Math.round(h * s);
+        c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        c.toBlob(function (b) {
+          if (b && b.type === 'image/webp') return resolve(b);
+          c.toBlob(function (j) { j ? resolve(j) : reject(new Error('Não foi possível ler a imagem.')); }, 'image/jpeg', 0.88);
+        }, 'image/webp', 0.86);
+      };
+      im.onerror = function () { URL.revokeObjectURL(url); reject(new Error('Arquivo de imagem inválido.')); };
+      im.src = url;
+    });
+  }
+  function randomName(ext) {
+    var a = new Uint8Array(12);
+    crypto.getRandomValues(a);
+    return Array.prototype.map.call(a, function (x) { return x.toString(16).padStart(2, '0'); }).join('') + '.' + ext;
+  }
+  function upload(file) {
+    if (!file) return;
+    if (!/^image\/(jpeg|png|webp)$/.test(file.type)) { toast('Envie uma imagem JPG, PNG ou WEBP.', true); return; }
+    $('#drop-busy').hidden = false;
+    shrink(file)
+      .then(function (blob) {
+        var path = 'capas/' + randomName(blob.type === 'image/webp' ? 'webp' : 'jpg');
+        return sb.storage.from(BUCKET).upload(path, blob, { contentType: blob.type, cacheControl: '31536000', upsert: false })
+          .then(function (r) {
+            if (r.error) throw r.error;
+            return sb.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
+          });
+      })
+      .then(function (url) { setCover(url); toast('Capa enviada.'); })
+      .catch(function (e) { if (!onAuthError(e)) toast(friendly(e), true); })
+      .finally(function () { $('#drop-busy').hidden = true; $('#cover-file').value = ''; });
+  }
+  $('#cover-file').addEventListener('change', function (e) { upload(e.target.files[0]); });
+  var drop = $('#drop');
+  ['dragenter', 'dragover'].forEach(function (n) { drop.addEventListener(n, function (e) { e.preventDefault(); drop.classList.add('is-over'); }); });
+  ['dragleave', 'drop'].forEach(function (n) { drop.addEventListener(n, function (e) { e.preventDefault(); drop.classList.remove('is-over'); }); });
+  drop.addEventListener('drop', function (e) { upload(e.dataTransfer.files[0]); });
+
+  function removeCoverIfUnused(url) {
+    var path = storagePath(url);
+    if (!path) return Promise.resolve();
+    var stillUsed = state.list.some(function (t) { return t.cover === url; });
+    return stillUsed ? Promise.resolve() : sb.storage.from(BUCKET).remove([path]).catch(function () {});
+  }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var err = $('.form-error', form);
+    err.textContent = '';
+    var data = {};
+    FIELDS.forEach(function (k) { data[k] = form[k].value; });
+    data.published = form.published.checked;
+    if (!data.cover) { err.textContent = 'Envie a imagem de capa.'; return; }
+    if (!data.title.trim()) { err.textContent = 'Informe o nome do torneio.'; form.title.focus(); return; }
+    if (!data.dateStart) { err.textContent = 'Informe a data de início.'; form.dateStart.focus(); return; }
+    if (data.dateEnd && data.dateEnd < data.dateStart) { err.textContent = 'A data final não pode ser antes da inicial.'; form.dateEnd.focus(); return; }
+    if (data.registrationUrl.trim() && !/^https?:\/\//i.test(data.registrationUrl.trim())) { err.textContent = 'O link de inscrição precisa começar com https://'; form.registrationUrl.focus(); return; }
+    var btn = $('#btn-save');
+    btn.disabled = true; btn.textContent = 'Salvando…';
+    var old = state.editing;
+    var row = toRow(data);
+    var req = old
+      ? sb.from('tournaments').update(row).eq('id', old.id).select().single()
+      : sb.from('tournaments').insert(row).select().single();
+    req.then(function (r) {
+      if (r.error) throw r.error;
+      if (old && old.cover !== data.cover) {
+        state.list = state.list.map(function (t) { return t.id === old.id ? fromRow(r.data) : t; });
+        removeCoverIfUnused(old.cover);
+      }
+      closeEditor();
+      toast('Torneio salvo. O site já está atualizado.');
+      load();
+    })
+      .catch(function (e) { if (!onAuthError(e)) err.textContent = friendly(e); })
+      .finally(function () { btn.disabled = false; btn.textContent = 'Salvar'; });
+  });
+
+  $('#btn-delete').addEventListener('click', function () {
+    var t = state.editing;
+    if (!t) return;
+    if (!window.confirm('Excluir “' + t.title + (t.stage ? ' · ' + t.stage : '') + '”? Essa ação não pode ser desfeita.')) return;
+    sb.from('tournaments').delete().eq('id', t.id)
+      .then(function (r) {
+        if (r.error) throw r.error;
+        state.list = state.list.filter(function (x) { return x.id !== t.id; });
+        return removeCoverIfUnused(t.cover);
+      })
+      .then(function () { closeEditor(); toast('Torneio excluído.'); load(); })
+      .catch(function (e) { if (!onAuthError(e)) toast(friendly(e), true); });
+  });
+
+  /* ---------------- início ---------------- */
+  sb.auth.getSession().then(function (r) {
+    var s = r.data && r.data.session;
+    if (!s) return showLogin();
+    return sb.rpc('is_admin').then(function (a) {
+      if (a.error || !a.data) return sb.auth.signOut().then(function () { showLogin(); });
+      showApp(s.user.email);
+    });
+  }).catch(function () { showLogin(); });
+})();
+  </script>
+</body>
+</html>
